@@ -1,0 +1,7 @@
+Nathan Flint
+Assignment 1: Part 3: First Java Class
+
+Fact: The General Sherman, a giant sequoia tree in California, is the largest known living single stem tree by volume.
+
+Source: http://en.wikipedia.org/wiki/General_Sherman_(tree)
+Date retrieved: 10 January 2014
