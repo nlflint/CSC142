@@ -32,31 +32,11 @@ public class ArrayFifteen
         {
             int value = array[index];
 
-            if (IsOdd(value) || IsMultipleOfThree(value))
+            if ((value % 2 == 1) || (value % 3 == 0))
             {
                 sum += value;
             }
         }
         return sum;
-    }
-
-    /*
-    Helper function that determines if an int is a multiple of three
-     */
-    private static boolean IsOdd(int number)
-    {
-        if (number % 2 == 1)
-            return true;
-        return false;
-    }
-
-    /*
-    Helper function that determines if an int is a multiple of three
-     */
-    private static boolean IsMultipleOfThree(int number)
-    {
-        if (number % 3 == 0)
-            return true;
-        return false;
     }
 }
