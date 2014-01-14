@@ -31,28 +31,29 @@ public class TrafficLight
 
         NsccRectangle background = new NsccRectangle(20, 20, 90, 250);
         background.setFilled(true);
-        background.setBackground(Color.lightGray);
-        background.setForeground(Color.lightGray);
+        background.setBackground(Color.LIGHT_GRAY);
+        background.setForeground(Color.LIGHT_GRAY);
         mainWindow.add(background);
 
-        NsccEllipse redLight = new NsccEllipse(30,30,70,70);
-        redLight.setFilled(true);
-        redLight.setBackground(Color.red);
-        redLight.setForeground(Color.red);
-        mainWindow.add(redLight);
+        NsccEllipse stopSignal = new NsccEllipse(30,30,70,70);
+        stopSignal.setFilled(true);
+        stopSignal.setBackground(Color.RED);
+        stopSignal.setForeground(Color.RED);
+        mainWindow.add(stopSignal);
 
-        NsccEllipse yellowLight = new NsccEllipse(30,110,70,70);
-        yellowLight.setFilled(true);
-        yellowLight.setBackground(Color.yellow);
-        yellowLight.setForeground(Color.yellow);
-        mainWindow.add(yellowLight);
+        NsccEllipse warningSignal = new NsccEllipse(30,110,70,70);
+        warningSignal.setFilled(true);
+        warningSignal.setBackground(Color.YELLOW);
+        warningSignal.setForeground(Color.YELLOW);
+        mainWindow.add(warningSignal);
 
+
+        NsccEllipse goSignal = new NsccEllipse(30,190,70,70);
+        goSignal.setFilled(true);
         Color darkGreen = new Color(0,128,0);
-        NsccEllipse darkGreenLight = new NsccEllipse(30,190,70,70);
-        darkGreenLight.setFilled(true);
-        darkGreenLight.setBackground(darkGreen);
-        darkGreenLight.setForeground(darkGreen);
-        mainWindow.add(darkGreenLight);
+        goSignal.setBackground(darkGreen);
+        goSignal.setForeground(darkGreen);
+        mainWindow.add(goSignal);
 
         mainWindow.repaint();
     }
