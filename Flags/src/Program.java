@@ -10,6 +10,6 @@ public class Program
     public static void main(String[] args)
     {
         Flags flags = new Flags();
-        flags.drawBahamasFlag();
+        flags.drawNigerFlag();
     }
 }

@@ -9,7 +9,7 @@ import java.awt.*;
  */
 public class Flags
 {
-    public void drawBahamasFlag()
+    public void drawNigerFlag()
     {
         NsccWindow mainWindow = new NsccWindow(100,100,400,350);
 
