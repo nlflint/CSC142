@@ -85,7 +85,7 @@
       <file leaf-file-name="Flags.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Flags.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="91" column="33" selection-start="3040" selection-end="3040" vertical-scroll-proportion="0.41513762" vertical-offset="1184" max-vertical-offset="1680">
+            <state line="129" column="42" selection-start="4563" selection-end="4563" vertical-scroll-proportion="0.75688076" vertical-offset="1605" max-vertical-offset="2265">
               <folding />
             </state>
           </provider>
@@ -391,7 +391,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32861635" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32848838" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -501,7 +501,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Flags.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="91" column="33" selection-start="3040" selection-end="3040" vertical-scroll-proportion="0.41513762" vertical-offset="1184" max-vertical-offset="1680">
+        <state line="129" column="42" selection-start="4563" selection-end="4563" vertical-scroll-proportion="0.75688076" vertical-offset="1605" max-vertical-offset="2265">
           <folding />
         </state>
       </provider>

@@ -92,15 +92,54 @@ public class Flags
         upperLeftRedSquare.setFilled(true);
         baseLayer.add(upperLeftRedSquare);
 
-        NsccRectangle loweLeftWhiteSqure = new NsccRectangle(0,160,112,112);
+        NsccRectangle loweLeftWhiteSqure = new NsccRectangle(0,144,112,112);
         loweLeftWhiteSqure.setBackground(Color.WHITE);
         loweLeftWhiteSqure.setFilled(true);
         baseLayer.add(loweLeftWhiteSqure);
 
-        NsccRectangle lowerLeftRedSquare = new NsccRectangle(0,176,96,96);
+        NsccRectangle lowerLeftRedSquare = new NsccRectangle(0,160,96,96);
         lowerLeftRedSquare.setBackground(Color.RED);
         lowerLeftRedSquare.setFilled(true);
         baseLayer.add(lowerLeftRedSquare);
+
+        NsccRectangle upperRightWhiteSquare = new NsccRectangle(144,0,208,112);
+        upperRightWhiteSquare.setBackground(Color.WHITE);
+        upperRightWhiteSquare.setFilled(true);
+        baseLayer.add(upperRightWhiteSquare);
+
+        NsccRectangle upperRightRedSquare = new NsccRectangle(160,0,192,96);
+        upperRightRedSquare.setBackground(Color.RED);
+        upperRightRedSquare.setFilled(true);
+        baseLayer.add(upperRightRedSquare);
+
+        NsccRectangle lowerRightWhiteSquare = new NsccRectangle(144,144,208,112);
+        lowerRightWhiteSquare.setBackground(Color.WHITE);
+        lowerRightWhiteSquare.setFilled(true);
+        baseLayer.add(lowerRightWhiteSquare);
+
+        NsccRectangle lowerRightRedSquare = new NsccRectangle(160,160,192,96);
+        lowerRightRedSquare.setBackground(Color.RED);
+        lowerRightRedSquare.setFilled(true);
+        baseLayer.add(lowerRightRedSquare);
+
+        mainWindow.repaint();
+    }
+
+    public void drawSeychellesFlag()
+    {
+        NsccWindow mainWindow = new NsccWindow(100,100,544,322);
+
+        NsccRectangle baseLayer = new NsccRectangle(50,50,444,222);
+        baseLayer.setBackground(Color.BLUE);
+        baseLayer.setFilled(true);
+        mainWindow.add(baseLayer);
+
+        NsccRectangle upperLeftWhiteSquare = new NsccRectangle(0,0,112,112);
+        upperLeftWhiteSquare.setBackground(Color.WHITE);
+        upperLeftWhiteSquare.setFilled(true);
+        baseLayer.add(upperLeftWhiteSquare);
+
+
 
         mainWindow.repaint();
     }
