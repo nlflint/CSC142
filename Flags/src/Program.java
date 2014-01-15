@@ -10,7 +10,8 @@ public class Program
     public static void main(String[] args)
     {
         Flags flags = new Flags();
-        flags.drawNigerFlag();
-        flags.drawSwedishFlag();
+        //flags.drawNigerFlag();
+        //flags.drawSwedishFlag();
+        flags.drawNorwayFlag();
     }
 }
