@@ -11,5 +11,6 @@ public class Program
     {
         Flags flags = new Flags();
         flags.drawNigerFlag();
+        flags.drawSwedishFlag();
     }
 }

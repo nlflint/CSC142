@@ -11,15 +11,14 @@ public class Flags
 {
     public void drawNigerFlag()
     {
-
-
         // The scale factor will scale the size of the flag while keeping
         // it in proportion.
-        int scaleFactor = 30;
-        int flagLeftBoundary = 10;
-        int flagTopBoundary = 10;
+        int scaleFactor = 11;
+        int flagLeftBoundary = 40;
+        int flagTopBoundary = 40;
 
-        NsccWindow mainWindow = new NsccWindow(100,100,25 + (29 * scaleFactor),50 + (25 * scaleFactor));
+        NsccWindow mainWindow = new NsccWindow(100,100,(flagLeftBoundary * 3) + (28 * scaleFactor),
+                (flagTopBoundary * 3 ) + (24 * scaleFactor));
 
         int flagHoist = 24 * scaleFactor;
         int flagFly = 28 * scaleFactor;
@@ -53,8 +52,56 @@ public class Flags
         mainWindow.repaint();
     }
 
+
+
     public void drawSwedishFlag()
     {
+        // The scale factor will scale the size of the flag while keeping
+        // it in proportion.
+        int scaleFactor = 30;
+        int flagLeftBoundary = 40;
+        int flagTopBoundary = 40;
 
+        NsccWindow mainWindow = new NsccWindow(100,100,(flagLeftBoundary * 3) + (16 * scaleFactor),
+                (flagTopBoundary * 3 ) + (10 * scaleFactor));
+
+        int flagHoist = 10 * scaleFactor;
+        int flagFly = 16 * scaleFactor;
+        NsccRectangle baseLayer = new NsccRectangle(flagLeftBoundary,flagTopBoundary,flagFly,flagHoist);
+        baseLayer.setBackground(Color.YELLOW);
+        baseLayer.setFilled(true);
+        mainWindow.add(baseLayer);
+
+        int upperLeftSquareHeight = 4 * scaleFactor;
+        int upperLeftSquareWidth = 5 * scaleFactor;
+        NsccRectangle upperLeftSquare = new NsccRectangle(flagLeftBoundary,flagTopBoundary
+                ,upperLeftSquareWidth,upperLeftSquareHeight);
+        upperLeftSquare.setBackground(Color.BLUE);
+        upperLeftSquare.setFilled(true);
+        mainWindow.add(upperLeftSquare);
+
+        int lowerLeftSquareYPostition = flagTopBoundary + (6 * scaleFactor);
+        NsccRectangle lowerLeftSquare = new NsccRectangle(flagLeftBoundary,lowerLeftSquareYPostition
+                ,upperLeftSquareWidth,upperLeftSquareHeight);
+        lowerLeftSquare.setBackground(Color.BLUE);
+        lowerLeftSquare.setFilled(true);
+        mainWindow.add(lowerLeftSquare);
+
+        int upperRightSquareWidth = 9 * scaleFactor;
+        int upperRightSquareXPosition = flagLeftBoundary + (7 * scaleFactor);
+        NsccRectangle upperRightSquare = new NsccRectangle(upperRightSquareXPosition,flagTopBoundary
+                ,upperRightSquareWidth,upperLeftSquareHeight);
+        upperRightSquare.setBackground(Color.BLUE);
+        upperRightSquare.setFilled(true);
+        mainWindow.add(upperRightSquare);
+
+        int lowerRightSquareYPosition = flagLeftBoundary + (6 * scaleFactor);
+        NsccRectangle lowerRightSquare = new NsccRectangle(upperRightSquareXPosition,lowerRightSquareYPosition
+                ,upperRightSquareWidth,upperLeftSquareHeight);
+        lowerRightSquare.setBackground(Color.BLUE);
+        lowerRightSquare.setFilled(true);
+        mainWindow.add(lowerRightSquare);
+
+        mainWindow.repaint();
     }
 }
