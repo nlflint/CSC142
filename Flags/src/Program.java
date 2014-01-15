@@ -12,6 +12,7 @@ public class Program
         Flags flags = new Flags();
         //flags.drawNigerFlag();
         //flags.drawSwedishFlag();
-        flags.drawNorwayFlag();
+        //flags.drawNorwayFlag();
+        flags.drawSeychellesFlag();
     }
 }

@@ -130,16 +130,34 @@ public class Flags
         NsccWindow mainWindow = new NsccWindow(100,100,544,322);
 
         NsccRectangle baseLayer = new NsccRectangle(50,50,444,222);
-        baseLayer.setBackground(Color.BLUE);
+        baseLayer.setBackground(Color.RED);
         baseLayer.setFilled(true);
         mainWindow.add(baseLayer);
 
-        NsccRectangle upperLeftWhiteSquare = new NsccRectangle(0,0,112,112);
-        upperLeftWhiteSquare.setBackground(Color.WHITE);
-        upperLeftWhiteSquare.setFilled(true);
-        baseLayer.add(upperLeftWhiteSquare);
+        NsccDownTriangle yellowBeam = new NsccDownTriangle(-296,0,592,222);
+        yellowBeam.setBackground(Color.YELLOW);
+        yellowBeam.setFilled(true);
+        baseLayer.add(yellowBeam);
 
+        NsccDownTriangle blueBeam = new NsccDownTriangle(-148,0,296,222);
+        blueBeam.setBackground(Color.BLUE);
+        blueBeam.setFilled(true);
+        baseLayer.add(blueBeam);
 
+        NsccUpTriangle whiteBeam = new NsccUpTriangle(0,74,888,148);
+        whiteBeam.setBackground(Color.WHITE);
+        whiteBeam.setFilled(true);
+        baseLayer.add(whiteBeam);
+
+        Color darkGreen = new Color(0,128,0);
+        NsccUpTriangle greenBeam = new NsccUpTriangle(0,148,888,74);
+        greenBeam.setBackground(darkGreen);
+        greenBeam.setFilled(true);
+        baseLayer.add(greenBeam);
+
+        NsccRectangle border = new NsccRectangle(50,50,444,222);
+        border.setFilled(false);
+        mainWindow.add(border);
 
         mainWindow.repaint();
     }
