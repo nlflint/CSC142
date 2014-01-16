@@ -11,7 +11,7 @@ public class Flags
 {
     public void drawNigerFlag()
     {
-        NsccWindow mainWindow = new NsccWindow(100,100,400,350);
+        NsccWindow mainWindow = new NsccWindow(100,100,400,364);
 
         Color nigerOrange = new Color(255,127,0);
         Color nigerGreen = new Color(0,204,0);
@@ -43,7 +43,7 @@ public class Flags
 
     public void drawSwedishFlag()
     {
-        NsccWindow mainWindow = new NsccWindow(100,100,600,400);
+        NsccWindow mainWindow = new NsccWindow(550,100,600,400);
 
         NsccRectangle baseLayer = new NsccRectangle(40,40,480,300);
         baseLayer.setBackground(Color.YELLOW);
@@ -75,7 +75,7 @@ public class Flags
 
     public void drawNorwayFlag()
     {
-        NsccWindow mainWindow = new NsccWindow(100,100,450,350);
+        NsccWindow mainWindow = new NsccWindow(100,500,450,350);
 
         NsccRectangle baseLayer = new NsccRectangle(40,40,352,256);
         baseLayer.setBackground(Color.BLUE);
@@ -127,7 +127,7 @@ public class Flags
 
     public void drawSeychellesFlag()
     {
-        NsccWindow mainWindow = new NsccWindow(100,100,544,322);
+        NsccWindow mainWindow = new NsccWindow(600,500,580,350);
 
         NsccRectangle baseLayer = new NsccRectangle(50,50,444,222);
         baseLayer.setBackground(Color.RED);
@@ -158,6 +158,38 @@ public class Flags
         NsccRectangle border = new NsccRectangle(50,50,444,222);
         border.setFilled(false);
         mainWindow.add(border);
+
+        mainWindow.repaint();
+    }
+
+    public void drawAlabamaFlag()
+    {
+        NsccWindow mainWindow = new NsccWindow(300,250,550,400);
+
+        NsccRectangle baseLayer = new NsccRectangle(50,50,450,270);
+        baseLayer.setBackground(Color.RED);
+        baseLayer.setFilled(true);
+        mainWindow.add(baseLayer);
+
+        NsccDownTriangle topTriangle = new NsccDownTriangle(45,0,360,108);
+        topTriangle.setBackground(Color.WHITE);
+        topTriangle.setFilled(true);
+        baseLayer.add(topTriangle);
+
+        NsccUpTriangle bottomTriangle = new NsccUpTriangle(45,162,360,108);
+        bottomTriangle.setBackground(Color.WHITE);
+        bottomTriangle.setFilled(true);
+        baseLayer.add(bottomTriangle);
+
+        NsccRightTriangle leftTriangle = new NsccRightTriangle(0,27,180,216);
+        leftTriangle.setBackground(Color.WHITE);
+        leftTriangle.setFilled(true);
+        baseLayer.add(leftTriangle);
+
+        NsccLeftTriangle rightTriangle = new NsccLeftTriangle(270,27,180,216);
+        rightTriangle.setBackground(Color.WHITE);
+        rightTriangle.setFilled(true);
+        baseLayer.add(rightTriangle);
 
         mainWindow.repaint();
     }
