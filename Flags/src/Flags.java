@@ -167,53 +167,64 @@ public class Flags
      */
     public void drawNorwayFlag()
     {
+        // Create main window
         NsccWindow mainWindow = new NsccWindow(100,500,450,350);
 
+        // Create base layer
         NsccRectangle baseLayer = new NsccRectangle(40,40,352,256);
         baseLayer.setBackground(Color.BLUE);
         baseLayer.setFilled(true);
         mainWindow.add(baseLayer);
 
+        // Create upper left white square and add to base layer
         NsccRectangle upperLeftWhiteSquare = new NsccRectangle(0,0,112,112);
         upperLeftWhiteSquare.setBackground(Color.WHITE);
         upperLeftWhiteSquare.setFilled(true);
         baseLayer.add(upperLeftWhiteSquare);
 
+        // Create upper left red square and add to base layer
         NsccRectangle upperLeftRedSquare = new NsccRectangle(0,0,96,96);
         upperLeftRedSquare.setBackground(Color.RED);
         upperLeftRedSquare.setFilled(true);
         baseLayer.add(upperLeftRedSquare);
 
-        NsccRectangle loweLeftWhiteSqure = new NsccRectangle(0,144,112,112);
-        loweLeftWhiteSqure.setBackground(Color.WHITE);
-        loweLeftWhiteSqure.setFilled(true);
-        baseLayer.add(loweLeftWhiteSqure);
+        // Create lower left white square and add to base layer
+        NsccRectangle loweLeftWhiteSquare = new NsccRectangle(0,144,112,112);
+        loweLeftWhiteSquare.setBackground(Color.WHITE);
+        loweLeftWhiteSquare.setFilled(true);
+        baseLayer.add(loweLeftWhiteSquare);
 
+        // Create lower left red square and add to base layer
         NsccRectangle lowerLeftRedSquare = new NsccRectangle(0,160,96,96);
         lowerLeftRedSquare.setBackground(Color.RED);
         lowerLeftRedSquare.setFilled(true);
         baseLayer.add(lowerLeftRedSquare);
 
+        // Create upper right white rectangle and add to base layer
         NsccRectangle upperRightWhiteRectangle = new NsccRectangle(144,0,208,112);
         upperRightWhiteRectangle.setBackground(Color.WHITE);
         upperRightWhiteRectangle.setFilled(true);
         baseLayer.add(upperRightWhiteRectangle);
 
+        // Create upper right red rectangle and add to base layer
         NsccRectangle upperRightRedRectangle = new NsccRectangle(160,0,192,96);
         upperRightRedRectangle.setBackground(Color.RED);
         upperRightRedRectangle.setFilled(true);
         baseLayer.add(upperRightRedRectangle);
 
+        // Create lower right white rectangle and add to base layer
         NsccRectangle lowerRightWhiteRectangle = new NsccRectangle(144,144,208,112);
         lowerRightWhiteRectangle.setBackground(Color.WHITE);
         lowerRightWhiteRectangle.setFilled(true);
         baseLayer.add(lowerRightWhiteRectangle);
 
+        // Create lower right red rectangle and add to base layer
         NsccRectangle lowerRightRedRectangle = new NsccRectangle(160,160,192,96);
         lowerRightRedRectangle.setBackground(Color.RED);
         lowerRightRedRectangle.setFilled(true);
         baseLayer.add(lowerRightRedRectangle);
 
+        // Draw everything.
         mainWindow.repaint();
     }
 
