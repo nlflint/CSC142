@@ -1,46 +1,102 @@
 import java.awt.*;
 
 /**
- * Created with IntelliJ IDEA.
- * User: nate
- * Date: 1/13/14
- * Time: 9:44 PM
- * To change this template use File | Settings | File Templates.
+ * This class contains methods that draw a flag within
+ * a created window.
+ *
+ * @author Nathan Flint
+ * @version Assignment 2: Flags
+ *
  */
 public class Flags
 {
+    public static void main(String[] args)
+    {
+        Flags flags = new Flags();
+        flags.drawNigerFlag();
+        flags.drawSwedishFlag();
+        flags.drawNorwayFlag();
+        flags.drawSeychellesFlag();
+        flags.drawAlabamaFlag();
+    }
+
+    /**
+     * Creates a window. Then draws the flag of Niger
+     * within the window.
+     *
+     * Calculations:
+     *    fly:hoist::7:6::308:264
+     *    orange:white:green::1:1:1::88:88:88  along hoist
+     *    middle circle::75%::66
+     *    overall flag:
+     *       dimension: 308x264
+     *       location: (40, 40)
+     *    horizontal bars:
+     *       dimensions: 308x88
+     *       middle bar: height stretched down 1 pixel so border overlaps with bottom bar
+     *       locations: (0,0), (0, 88), (0, 176)
+     *          3 * 88 = 264
+     *    circle:
+     *       dimensions: 66x66
+     *       x position: (308/2) - 33 = 121
+     *       y position: (88/2) - 33 = 11 (placed inside middle stripe)
+     */
     public void drawNigerFlag()
     {
+        // Creates a window
         NsccWindow mainWindow = new NsccWindow(100,100,400,364);
 
-        Color nigerOrange = new Color(255,127,0);
-        Color nigerGreen = new Color(0,204,0);
+        // Create two custom colors
+        Color darkOrange = new Color(255,127,0);
+        Color darkGreen = new Color(0,204,0);
 
+        // Draws a dark orange base layer that is the full dimension of the flag.
         NsccRectangle baseLayer = new NsccRectangle(40,40,308,264);
-        baseLayer.setBackground(nigerOrange);
+        baseLayer.setBackground(darkOrange);
         baseLayer.setFilled(true);
         mainWindow.add(baseLayer);
 
+        // Draws a white stripe across the middle of the flag
         NsccRectangle middleStripe = new NsccRectangle(0,88,308,89);
         middleStripe.setBackground(Color.WHITE);
         middleStripe.setFilled(true);
         baseLayer.add(middleStripe);
 
+        //Draws a green strip at the bottom of the flag.
         NsccRectangle bottomStripe = new NsccRectangle(0,176,308,88);
-        bottomStripe.setBackground(nigerGreen);
+        bottomStripe.setBackground(darkGreen);
         bottomStripe.setFilled(true);
         baseLayer.add(bottomStripe);
 
         NsccEllipse middleCircle = new NsccEllipse(121,11,66,66);
-        middleCircle.setBackground(nigerOrange);
+        middleCircle.setBackground(darkOrange);
         middleCircle.setFilled(true);
         middleStripe.add(middleCircle);
 
         mainWindow.repaint();
     }
 
-
-
+    /**
+     * Draws the Swedish flag.
+     *
+     * Calculations:
+     *    fly:hoist::8:5::480:300
+     *    blue:yellow:blue::4:2:4::120:60:120  along hoist
+     *    blue:yellow:blue::5:2:9::150:60:270 along fly
+     *    overall flag:
+     *       dimension: 480x300
+     *       location: (40, 40)
+     *    rectangles on the left:
+     *       dimensions: 150x120
+     *       locations: (0,0), (0, 120)
+     *       gap between left rectangles: 60
+     *    rectangles on the right:
+     *       dimensions: 270x120
+     *       locations: (210,0), (210, 180)
+     *       gap between right rectangles: 60
+     *    width total: 150 + 60 + 270 = 480
+     *    height total: 180 + 180 + 60 = 300
+     */
     public void drawSwedishFlag()
     {
         NsccWindow mainWindow = new NsccWindow(550,100,600,400);
