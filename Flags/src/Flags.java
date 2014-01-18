@@ -50,36 +50,42 @@ public class Flags
         Color darkOrange = new Color(255,127,0);
         Color darkGreen = new Color(0,204,0);
 
-        // Draws a dark orange base layer that is the full dimension of the flag.
+        // Creates a dark orange base layer that is the full dimension of the flag.
+        // This will also be the top stripe.
         NsccRectangle baseLayer = new NsccRectangle(40,40,308,264);
         baseLayer.setBackground(darkOrange);
         baseLayer.setFilled(true);
         mainWindow.add(baseLayer);
 
-        // Draws a white stripe across the middle of the flag
+        // Creates a white stripe across the middle of the flag
+        // and adds it to the base layer.
         NsccRectangle middleStripe = new NsccRectangle(0,88,308,89);
         middleStripe.setBackground(Color.WHITE);
         middleStripe.setFilled(true);
         baseLayer.add(middleStripe);
 
-        //Draws a green strip at the bottom of the flag.
+        // Creates a green strip at the bottom of the flag
+        // and adds it to the base layer.
         NsccRectangle bottomStripe = new NsccRectangle(0,176,308,88);
         bottomStripe.setBackground(darkGreen);
         bottomStripe.setFilled(true);
         baseLayer.add(bottomStripe);
 
+        // Creates the circle in the middle of the flag
+        // and adds it to the base layer.
         NsccEllipse middleCircle = new NsccEllipse(121,11,66,66);
         middleCircle.setBackground(darkOrange);
         middleCircle.setFilled(true);
         middleStripe.add(middleCircle);
 
+        // Draw everything.
         mainWindow.repaint();
     }
 
     /**
      * Draws the Swedish flag.
      *
-     * Calculations:
+     Calculations:
      *    fly:hoist::8:5::480:300
      *    blue:yellow:blue::4:2:4::120:60:120  along hoist
      *    blue:yellow:blue::5:2:9::150:60:270 along fly
@@ -89,46 +95,76 @@ public class Flags
      *    rectangles on the left:
      *       dimensions: 150x120
      *       locations: (0,0), (0, 120)
-     *       gap between left rectangles: 60
      *    rectangles on the right:
      *       dimensions: 270x120
-     *       locations: (210,0), (210, 180)
-     *       gap between right rectangles: 60
-     *    width total: 150 + 60 + 270 = 480
-     *    height total: 180 + 180 + 60 = 300
+     *       locations: 150+60 = 210, 120+60 = 180: (210,0), (210, 180)
      */
     public void drawSwedishFlag()
     {
+        // Create main window
         NsccWindow mainWindow = new NsccWindow(550,100,600,400);
 
+        // Creates the base layer of the flag
         NsccRectangle baseLayer = new NsccRectangle(40,40,480,300);
         baseLayer.setBackground(Color.YELLOW);
         baseLayer.setFilled(true);
         mainWindow.add(baseLayer);
 
+        // Creates the upper left corner square
+        // and adds it to the base layer.
         NsccRectangle upperLeftSquare = new NsccRectangle(0,0,150,120);
         upperLeftSquare.setBackground(Color.BLUE);
         upperLeftSquare.setFilled(true);
         baseLayer.add(upperLeftSquare);
 
+        // Creates the lower left corner square
+        // and adds it to the base layer.
         NsccRectangle lowerLeftSquare = new NsccRectangle(0,180,150,120);
         lowerLeftSquare.setBackground(Color.BLUE);
         lowerLeftSquare.setFilled(true);
         baseLayer.add(lowerLeftSquare);
 
+        // Creates the upper right corner square
+        // and adds it to the base layer.
         NsccRectangle upperRightSquare = new NsccRectangle(210,0,270,120);
         upperRightSquare.setBackground(Color.BLUE);
         upperRightSquare.setFilled(true);
         baseLayer.add(upperRightSquare);
 
+        // Creates the lower right corner square
+        // and adds it to the base layer.
         NsccRectangle lowerRightSquare = new NsccRectangle(210,180,270,120);
         lowerRightSquare.setBackground(Color.BLUE);
         lowerRightSquare.setFilled(true);
         baseLayer.add(lowerRightSquare);
 
+        // Draw everything.
         mainWindow.repaint();
     }
 
+    /**
+     * Draws the Norwegian flag.
+     *
+     * Calculations:
+     *    fly:hoist::22:16::352:256
+     *    red:white:blue:white:red::6:1:2:1:6::96:16:32:16:96  along hoist
+     *    red:white:blue:white:red::6:1:2:1:12::96:16:32:16:192 along fly
+     *    overall flag:
+     *       dimension: 352x256
+     *       location: (40, 40)
+     *    white squares:
+     *       side: 96+16 = 112
+     *       locations: (0,0), (0, 144)
+     *    white rectangles:
+     *       dimensions: 192+16 = 208, 96 + 16 = 112: 208x112
+     *       locations: 96+16+32 = 114: (144,0), (144, 144)
+     *    red squares:
+     *       side: 96
+     *       locations: (0,0), (0, 160)
+     *    red rectangles:
+     *       dimensions:  192x96
+     *       locations: 96+16+32+16 = 160, (160,0), (160, 160)
+     */
     public void drawNorwayFlag()
     {
         NsccWindow mainWindow = new NsccWindow(100,500,450,350);
@@ -158,25 +194,25 @@ public class Flags
         lowerLeftRedSquare.setFilled(true);
         baseLayer.add(lowerLeftRedSquare);
 
-        NsccRectangle upperRightWhiteSquare = new NsccRectangle(144,0,208,112);
-        upperRightWhiteSquare.setBackground(Color.WHITE);
-        upperRightWhiteSquare.setFilled(true);
-        baseLayer.add(upperRightWhiteSquare);
+        NsccRectangle upperRightWhiteRectangle = new NsccRectangle(144,0,208,112);
+        upperRightWhiteRectangle.setBackground(Color.WHITE);
+        upperRightWhiteRectangle.setFilled(true);
+        baseLayer.add(upperRightWhiteRectangle);
 
-        NsccRectangle upperRightRedSquare = new NsccRectangle(160,0,192,96);
-        upperRightRedSquare.setBackground(Color.RED);
-        upperRightRedSquare.setFilled(true);
-        baseLayer.add(upperRightRedSquare);
+        NsccRectangle upperRightRedRectangle = new NsccRectangle(160,0,192,96);
+        upperRightRedRectangle.setBackground(Color.RED);
+        upperRightRedRectangle.setFilled(true);
+        baseLayer.add(upperRightRedRectangle);
 
-        NsccRectangle lowerRightWhiteSquare = new NsccRectangle(144,144,208,112);
-        lowerRightWhiteSquare.setBackground(Color.WHITE);
-        lowerRightWhiteSquare.setFilled(true);
-        baseLayer.add(lowerRightWhiteSquare);
+        NsccRectangle lowerRightWhiteRectangle = new NsccRectangle(144,144,208,112);
+        lowerRightWhiteRectangle.setBackground(Color.WHITE);
+        lowerRightWhiteRectangle.setFilled(true);
+        baseLayer.add(lowerRightWhiteRectangle);
 
-        NsccRectangle lowerRightRedSquare = new NsccRectangle(160,160,192,96);
-        lowerRightRedSquare.setBackground(Color.RED);
-        lowerRightRedSquare.setFilled(true);
-        baseLayer.add(lowerRightRedSquare);
+        NsccRectangle lowerRightRedRectangle = new NsccRectangle(160,160,192,96);
+        lowerRightRedRectangle.setBackground(Color.RED);
+        lowerRightRedRectangle.setFilled(true);
+        baseLayer.add(lowerRightRedRectangle);
 
         mainWindow.repaint();
     }
