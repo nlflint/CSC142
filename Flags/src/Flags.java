@@ -1,8 +1,8 @@
 import java.awt.*;
 
 /**
- * This class contains methods that draw several flags within
- * a created window.
+ * This class contains methods that draw several flags, each
+ * within a created window.
  *
  * @author Nathan Flint
  * @version Assignment 2: Flags
