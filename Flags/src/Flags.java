@@ -228,40 +228,77 @@ public class Flags
         mainWindow.repaint();
     }
 
+    /**
+     * Draws the Seychelles flag.
+     /**
+     * Draws the Norwegian flag.
+     *
+     * Calculations:
+     *    fly:hoist::2:1::444:222
+     *    red:white:green::1:1:1::74:74:74  along hoist
+     *    blue:yellow:red::1:1:1::148:148:148 along fly
+     *    overall flag:
+     *       dimension: 444x222
+     *       location: (40, 40)
+     *    yellow down triangle:
+     *       dimensions: 148*2 = 296, 296*2 = 592: 592x222
+     *       location: 0 - 148*2 = -296: (-296,0)
+     *    blue down triangle:
+     *       dimensions: 148*2 = 296: 296x222
+     *       location: 0-148 = -148: (-148,0)
+     *    white up triangle:
+     *       dimensions: 444*2 = 888, 74*2 = 148: 888x148
+     *       location: 0+74 = 74: (0,74)
+     *    green up triangle:
+     *       dimensions: 444*2 = 888: 888x74
+     *       location: 74*2 = 148: (0,148)
+     *    empty boundary box:
+     *       dimension: 444x222
+     *       location: (40, 40)
+     */
     public void drawSeychellesFlag()
     {
+        // Create a window
         NsccWindow mainWindow = new NsccWindow(600,500,580,350);
 
+        // Create a base layer that is the size of the flag
         NsccRectangle baseLayer = new NsccRectangle(50,50,444,222);
         baseLayer.setBackground(Color.RED);
         baseLayer.setFilled(true);
         mainWindow.add(baseLayer);
 
+        // Create a the yellow down triangle and add it to the base layer
         NsccDownTriangle yellowBeam = new NsccDownTriangle(-296,0,592,222);
         yellowBeam.setBackground(Color.YELLOW);
         yellowBeam.setFilled(true);
         baseLayer.add(yellowBeam);
 
+        // Create a the blue down triangle and add it to the base layer
         NsccDownTriangle blueBeam = new NsccDownTriangle(-148,0,296,222);
         blueBeam.setBackground(Color.BLUE);
         blueBeam.setFilled(true);
         baseLayer.add(blueBeam);
 
+        // Create a the white up triangle and add it to the base layer
         NsccUpTriangle whiteBeam = new NsccUpTriangle(0,74,888,148);
         whiteBeam.setBackground(Color.WHITE);
         whiteBeam.setFilled(true);
         baseLayer.add(whiteBeam);
 
+        // Create a the green up triangle and add it to the base layer
         Color darkGreen = new Color(0,128,0);
         NsccUpTriangle greenBeam = new NsccUpTriangle(0,148,888,74);
         greenBeam.setBackground(darkGreen);
         greenBeam.setFilled(true);
         baseLayer.add(greenBeam);
 
+        // The baselayer's outline has been broken by the triangle
+        // and this recreates it.
         NsccRectangle border = new NsccRectangle(50,50,444,222);
         border.setFilled(false);
         mainWindow.add(border);
 
+        // Draw everything.
         mainWindow.repaint();
     }
 
