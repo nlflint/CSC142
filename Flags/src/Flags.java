@@ -10,6 +10,12 @@ import java.awt.*;
  */
 public class Flags
 {
+    /**
+     * This the the application method. It will call the the
+     * draw method for each flag.
+     *
+     * @param args Command line arguments
+     */
     public static void main(String[] args)
     {
         Flags flags = new Flags();
@@ -21,8 +27,8 @@ public class Flags
     }
 
     /**
-     * Creates a window. Then draws the flag of Niger
-     * within the window.
+     * Draws the flag of Niger. This will create a window
+     * and then draw the flag if Niger within the window.
      *
      * Calculations:
      *    fly:hoist::7:6::308:264
@@ -300,35 +306,76 @@ public class Flags
         mainWindow.repaint();
     }
 
+    /**
+     * Draws the Alabama flag.
+     *
+     * Calculations:
+     *    fly:hoist::10:6::440:264
+     *    red:white:red::1:9:1::24:216:24  along hoist
+     *    red:white:red::1:9:1::40:360:40 along fly
+     *    overall flag:
+     *       dimension: 440x264
+     *       location: (40, 40)
+     *    down triangle:
+     *       width: 9/11*440 = 360
+     *       line coordinates: (40,0),(440,216+24) = (40,0),(440,240)
+     *       line slope: (240-0)/(440-40) = ~0.6
+     *       line intercept: 0 = 0.6(40) + b: b = -24
+     *       line: y = 0.6x - 24
+     *       x intercept: 440/2: 220
+     *       height: y = 0.6(220) - 24: 108
+     *       location: (40,0)
+     *    up triangle:
+     *       width: 9/11*440 = 360
+     *       height: same as down triangle: 108
+     *       location: (40,264-108): (40,156)
+     *    left triangle:
+     *       height: 264-24-24: 216
+     *       line: same as down triangle: y = 0.6x - 24
+     *       y intercept: 264/2: 132
+     *       width: 132 = 0.6(x) - 24: x = 260: 440-260: 180
+     *       location: 440-180 = 264: (264,24)
+     *    right triangle:
+     *       height: 264-24-24: 216
+     *       width: same as left triangle: 180
+     *       location: (0,24)
+     */
     public void drawAlabamaFlag()
     {
+        // Create window
         NsccWindow mainWindow = new NsccWindow(300,250,550,400);
 
-        NsccRectangle baseLayer = new NsccRectangle(50,50,450,270);
+        // Create the base layer that will be the size of the flag
+        NsccRectangle baseLayer = new NsccRectangle(40,40,440,264);
         baseLayer.setBackground(Color.RED);
         baseLayer.setFilled(true);
         mainWindow.add(baseLayer);
 
-        NsccDownTriangle topTriangle = new NsccDownTriangle(45,0,360,108);
+        // Create the top triangle and add it to the base layer
+        NsccDownTriangle topTriangle = new NsccDownTriangle(40,0,360,108);
         topTriangle.setBackground(Color.WHITE);
         topTriangle.setFilled(true);
         baseLayer.add(topTriangle);
 
-        NsccUpTriangle bottomTriangle = new NsccUpTriangle(45,162,360,108);
+        // Create the bottom triangle and add it to the base layer
+        NsccUpTriangle bottomTriangle = new NsccUpTriangle(40,156,360,108);
         bottomTriangle.setBackground(Color.WHITE);
         bottomTriangle.setFilled(true);
         baseLayer.add(bottomTriangle);
 
-        NsccRightTriangle leftTriangle = new NsccRightTriangle(0,27,180,216);
+        // Create the left triangle and add it to the base layer
+        NsccRightTriangle leftTriangle = new NsccRightTriangle(0,24,180,216);
         leftTriangle.setBackground(Color.WHITE);
         leftTriangle.setFilled(true);
         baseLayer.add(leftTriangle);
 
-        NsccLeftTriangle rightTriangle = new NsccLeftTriangle(270,27,180,216);
+        // Create the right triangle and add it to the base layer
+        NsccLeftTriangle rightTriangle = new NsccLeftTriangle(260,24,180,216);
         rightTriangle.setBackground(Color.WHITE);
         rightTriangle.setFilled(true);
         baseLayer.add(rightTriangle);
 
+        // Draw everything
         mainWindow.repaint();
     }
 }

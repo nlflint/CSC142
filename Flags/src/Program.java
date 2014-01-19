@@ -13,18 +13,18 @@ public class Program
     public static void main(String[] args)
     {
         Flags flags = new Flags();
-        flags.drawNigerFlag();
-        flags.drawSwedishFlag();
-        flags.drawNorwayFlag();
-        flags.drawSeychellesFlag();
-        flags.drawAlabamaFlag();
+        //flags.drawNigerFlag();
+        //flags.drawSwedishFlag();
+        //flags.drawNorwayFlag();
+        //flags.drawSeychellesFlag();
+        //flags.drawAlabamaFlag();
 
-        //Line2D.Double first = new Line2D.Double(10,0,100,54);
-        //Line2D.Double first = new Line2D.Double(0,6,90,60);
-        //Line2D.Double second = new Line2D.Double(0,54,90,0);
+        //Line2D.Double first = new Line2D.Double(40,0,440,240);
+        Line2D.Double first = new Line2D.Double(0,24,360+40,264);
+        Line2D.Double second = new Line2D.Double(0,240,400,0);
 
-        //Point2D.Double intersection = findIntersetion(first, second);
-        //System.out.println("Intersection point: (" + intersection.x + "," + intersection.y + ")");
+        Point2D.Double intersection = findIntersetion(first, second);
+        System.out.println("Intersection point: (" + intersection.x + "," + intersection.y + ")");
 
     }
 

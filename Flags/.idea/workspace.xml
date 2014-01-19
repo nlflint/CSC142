@@ -67,7 +67,7 @@
       <file leaf-file-name="Program.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Program.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="8" selection-start="239" selection-end="854" vertical-scroll-proportion="0.0" vertical-offset="72" max-vertical-offset="870">
+            <state line="22" column="63" selection-start="623" selection-end="623" vertical-scroll-proportion="0.0" vertical-offset="30" max-vertical-offset="870">
               <folding />
             </state>
           </provider>
@@ -85,7 +85,7 @@
       <file leaf-file-name="Flags.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Flags.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="54" selection-start="78" selection-end="78" vertical-scroll-proportion="0.10273973" vertical-offset="0" max-vertical-offset="5085">
+            <state line="340" column="29" selection-start="12567" selection-end="12567" vertical-scroll-proportion="-0.5753425" vertical-offset="5352" max-vertical-offset="5790">
               <folding />
             </state>
           </provider>
@@ -222,15 +222,16 @@
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
     <property name="dynamic.classpath" value="false" />
+    <property name="restartRequiresConfirmation" value="true" />
   </component>
-  <component name="RunManager" selected="Application.Program">
+  <component name="RunManager" selected="Application.Unnamed">
     <configuration default="false" name="Program" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="Program" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="VM_PARAMETERS" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ALTERNATIVE_JRE_PATH" value="" />
       <option name="ENABLE_SWING_INSPECTOR" value="false" />
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
@@ -373,8 +374,25 @@
       <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
       <method />
     </configuration>
-    <list size="1">
-      <item index="0" class="java.lang.String" itemvalue="Application.Program" />
+    <configuration default="false" name="Unnamed" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Flags" />
+      <option name="VM_PARAMETERS" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" value="" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="Flags" />
+      <envs />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <list size="2">
+      <item index="0" class="java.lang.String" itemvalue="Application.Unnamed" />
+      <item index="1" class="java.lang.String" itemvalue="Application.Program" />
     </list>
     <recent_temporary>
       <list size="1">
@@ -554,14 +572,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Program.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="8" selection-start="239" selection-end="854" vertical-scroll-proportion="0.0" vertical-offset="72" max-vertical-offset="870">
+        <state line="22" column="63" selection-start="623" selection-end="623" vertical-scroll-proportion="0.0" vertical-offset="30" max-vertical-offset="870">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Flags.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="54" selection-start="78" selection-end="78" vertical-scroll-proportion="0.10273973" vertical-offset="0" max-vertical-offset="5085">
+        <state line="340" column="29" selection-start="12567" selection-end="12567" vertical-scroll-proportion="-0.5753425" vertical-offset="5352" max-vertical-offset="5790">
           <folding />
         </state>
       </provider>
