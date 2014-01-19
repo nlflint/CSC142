@@ -1,0 +1,35 @@
+Nathan Flint
+Assignment2: Flags
+
+	I approached this assignment by first reading all the instructions. I had
+already finished the traffic light lab so I knew how to draw circles and
+rectangles. I attempted to formulate how I would draw each flag with the
+primitive shapes available in the NsccWindow class. Niger flag was straight
+forward. I would just use rectangles and a circle. The flags of Sweden and
+Norway took a bit longer to solve because I was trying to figure out how to
+draw crosses and thin "L" shapes. After some thought, it dawned
+on me that I could just draw rectangles in the corners of the flags to achieve
+the cross and "L" shapes.
+
+	The Seychelles flag was quite different because rectangles would not work at
+all. My first thought was to  draw lines and fill in space with color, but there
+were no classes for doing that. The other option was to use triangles. The
+NsccWindow class contained many triangles and their names didn't make sense. I
+did however recognize the right triangle, and decided to overlay right triangles
+on top of each other to create the Seychelles flag. While trying to create the
+flag, it became obvious that I did not understand how the right triangle worked
+because the drawing came out funny. After reviewing the documentation and
+experimenting with different constructor arguments, figured out that a right
+triangle is not a triangle with a single 90 degree angle, but it was a triangle
+with its point facing right.
+
+	After solving the Seychelles flag, I knew immediately how to solve the
+Alabama flag. The only problem calculating the 4 coordinates of the
+points around the center of the flag. I calculated the intersection points of a
+couple of lines and got the coordinates I needed.
+
+	Two days after finishing all the code, I  added all the comments, and this
+led me to fix several mistakes in the Alabama flag. It took several hours to
+reconstruct the comments and this is what I want to change next time. To save
+time, I should add comments while writing the source code, rather than going
+back to reconstruct comments after I've forgotten what I did.

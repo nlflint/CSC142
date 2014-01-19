@@ -18,7 +18,10 @@ public class Flags
      */
     public static void main(String[] args)
     {
+        // Instantiate the flags class
         Flags flags = new Flags();
+
+        // Draw each flag
         flags.drawNigerFlag();
         flags.drawSwedishFlag();
         flags.drawNorwayFlag();
