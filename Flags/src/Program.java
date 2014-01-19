@@ -19,8 +19,8 @@ public class Program
         //flags.drawSeychellesFlag();
         //flags.drawAlabamaFlag();
 
-        //Line2D.Double first = new Line2D.Double(40,0,440,240);
-        Line2D.Double first = new Line2D.Double(0,24,360+40,264);
+        Line2D.Double first = new Line2D.Double(40,0,440,240);
+        //Line2D.Double first = new Line2D.Double(0,24,360+40,264);
         Line2D.Double second = new Line2D.Double(0,240,400,0);
 
         Point2D.Double intersection = findIntersetion(first, second);
