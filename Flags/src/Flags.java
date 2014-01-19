@@ -1,7 +1,7 @@
 import java.awt.*;
 
 /**
- * This class contains methods that draw a flag within
+ * This class contains methods that draw several flags within
  * a created window.
  *
  * @author Nathan Flint
@@ -85,7 +85,7 @@ public class Flags
     /**
      * Draws the Swedish flag.
      *
-     Calculations:
+     * Calculations:
      *    fly:hoist::8:5::480:300
      *    blue:yellow:blue::4:2:4::120:60:120  along hoist
      *    blue:yellow:blue::5:2:9::150:60:270 along fly
@@ -230,8 +230,6 @@ public class Flags
 
     /**
      * Draws the Seychelles flag.
-     /**
-     * Draws the Norwegian flag.
      *
      * Calculations:
      *    fly:hoist::2:1::444:222
