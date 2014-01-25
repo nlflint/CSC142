@@ -16,10 +16,6 @@ public class TicTacToeBoards
     public static void main(String[] args)
     {
         TicTacToeBoards board = new TicTacToeBoards();
-        board.drawTicTacToeBoard(40,40);
-        board.drawTicTacToeBoard(40,170);
-        board.drawTicTacToeBoard(170,40);
-        board.drawTicTacToeBoard(170,170);
     }
 
     // This is the window where all the tic-tac-toe boards will be drawn
@@ -31,6 +27,10 @@ public class TicTacToeBoards
     public TicTacToeBoards()
     {
         mainWindow = new NsccWindow(10,10,300,330);
+        drawTicTacToeBoard(40,40);
+        drawTicTacToeBoard(40,170);
+        drawTicTacToeBoard(170,40);
+        drawTicTacToeBoard(170,170);
     }
 
     /**
@@ -43,7 +43,12 @@ public class TicTacToeBoards
      */
     public void drawTicTacToeBoard(int originX, int originY)
     {
-        // This is the side length of one of the boxes that make the tic tac toe board
+        /*
+         Defines side length of the boxes that make the tic tac toe board. There are 9
+         of these boxes in a tic tac toe board. Changing this will alter the overall
+         size of the entire board. Standard value is 30.
+          */
+        //
         int boxUnitWidth = 30;
 
         // This draws the left vertical line of a board based on the given origin coordinates.
