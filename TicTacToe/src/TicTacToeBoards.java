@@ -18,6 +18,7 @@ public class TicTacToeBoards
      */
     public static void main(String[] args)
     {
+        // Instantiate the class that creates a window and draws the tic tac toe boards.
         TicTacToeBoards board = new TicTacToeBoards();
     }
 
@@ -30,16 +31,26 @@ public class TicTacToeBoards
      */
     public TicTacToeBoards()
     {
+        // Creates a window
         mainWindow = new NsccWindow(10,10,300,330);
+
+        // Draws a regular tic tac toe board
         drawTicTacToeBoard(40, 40);
-        drawTicTacToeBoard(40, 170, 1);
+
+        // Draws a board with line thickness
+        drawTicTacToeBoard(40, 170, 6);
+
+        // Draws a board colored red
         drawTicTacToeBoard(170, 40, Color.RED);
-        drawTicTacToeBoard(170, 170);
+
+        // Draws a board rotated pi/8 radians
+        drawTicTacToeBoard(170, 170, Math.PI/8);
     }
 
     /**
-     * Draws colored tic tac toe board. Arguments supplied will indicate the (x, y) coordinates
+     * Draws a colored tic tac toe board. Arguments supplied will indicate the (x, y) coordinates
      * of the upper-left corner of the bounding box for the tic-tac-toe board, and the color of the lines.
+     * This method uses defaults the rotation to zero radians.
      *
      * @param originX X component of the upper left corner of the board.
      * @param originY Y component of the upper left corner of the board.
@@ -47,53 +58,8 @@ public class TicTacToeBoards
      */
     public void drawTicTacToeBoard(int originX, int originY, Color lineColor)
     {
-        /*
-         Defines side length of the boxes that make the tic tac toe board. There are 9
-         of these boxes in a tic tac toe board. Changing this will alter the overall
-         size of the entire board. Standard value is 30.
-          */
-        //
-        int boxUnitWidth = 30;
-
-        // Draws the left vertical line of a board based on the given origin coordinates.
-        NsccLine leftVerticleLine = new NsccLine(
-                originX + boxUnitWidth,
-                originY,
-                originX + boxUnitWidth,
-                originY + boxUnitWidth * 3);
-        leftVerticleLine.setForeground(lineColor);
-        mainWindow.add(leftVerticleLine);
-
-        // Draws the right vertical line of a board based on the given origin coordinates.
-        NsccLine rightVeritcleLine = new NsccLine(
-                originX + boxUnitWidth * 2,
-                originY,
-                originX + boxUnitWidth * 2,
-                originY + boxUnitWidth * 3);
-        rightVeritcleLine.setForeground(lineColor);
-        mainWindow.add(rightVeritcleLine);
-
-        // Draws the top  horizontal line of a board based on the given origin coordinates.
-        NsccLine topHorizontalLine = new NsccLine(
-                originX,
-                originY + boxUnitWidth,
-                originX + boxUnitWidth * 3,
-                originY + boxUnitWidth);
-        topHorizontalLine.setForeground(lineColor);
-        mainWindow.add(topHorizontalLine);
-
-        // Draws the top  horizontal line of a board based on the given origin coordinates.
-        NsccLine bottomHorizontalLine = new NsccLine(
-                originX,
-                originY + boxUnitWidth * 2,
-                originX + boxUnitWidth * 3,
-                originY + boxUnitWidth * 2);
-        bottomHorizontalLine.setForeground(lineColor);
-        mainWindow.add(bottomHorizontalLine);
-
-        // Signals the window to redraw itself so all the lines appear.
-        mainWindow.repaint();
-
+        // call private draw routine with zero rotation
+        drawTicTacToeBoard(originX, originY, lineColor, 0);
     }
 
     /**
@@ -105,6 +71,7 @@ public class TicTacToeBoards
      */
     public void drawTicTacToeBoard(int originX, int originY)
     {
+        // Calls the route that draws with color and sets color to black.
         drawTicTacToeBoard(originX,originY,Color.BLACK);
     }
 
@@ -172,6 +139,137 @@ public class TicTacToeBoards
         // Signals the window to redraw itself so all the lines appear.
         mainWindow.repaint();
 
+    }
+
+    /**
+     * Draws a black rotated tic tac toe board. Arguments supplied will indicate the (x, y) coordinates
+     * of the upper-left corner of the bounding box for the tic-tac-toe board, and the rotation in radians around
+     * the center of the board.
+     *
+     * @param originX X component of the upper left corner of the board.
+     * @param originY Y component of the upper left corner of the board.
+     * @param radiansRotation Radians to rotate the board.
+     */
+    public void drawTicTacToeBoard(int originX, int originY, double radiansRotation)
+    {
+        // Calls the private draw method and sets color to black.
+        drawTicTacToeBoard(originX,originY, Color.BLACK, radiansRotation);
+    }
+
+    // This private method allows setting location, color and radians rotation at the same time.
+    public void drawTicTacToeBoard(int originX, int originY, Color lineColor, double radiansRotation)
+    {
+        /*
+         Defines side length of the boxes that make the tic tac toe board. There are 9
+         of these boxes in a tic tac toe board. Changing this will alter the overall
+         size of the entire board. Standard value is 30.
+          */
+        //
+        int boxUnitWidth = 30;
+
+        // This point is the middle of the board. It will be used for rotating.
+        Point boardMidpoint = new Point(
+                originX + boxUnitWidth * 3 / 2,
+                originY + boxUnitWidth * 3 / 2);
+
+        // Draws the left vertical line of a board based on the given origin coordinates.
+        NsccLine leftVerticleLine = CreateRotatedLine(
+                originX + boxUnitWidth,
+                originY,
+                originX + boxUnitWidth,
+                originY + boxUnitWidth * 3,
+                radiansRotation,
+                boardMidpoint);
+        leftVerticleLine.setForeground(lineColor);
+        mainWindow.add(leftVerticleLine);
+
+        // Draws the right vertical line of a board based on the given origin coordinates.
+        NsccLine rightVerticleLine = CreateRotatedLine(
+                originX + boxUnitWidth * 2,
+                originY,
+                originX + boxUnitWidth * 2,
+                originY + boxUnitWidth * 3,
+                radiansRotation,
+                boardMidpoint);
+        rightVerticleLine.setForeground(lineColor);
+        mainWindow.add(rightVerticleLine);
+
+        // Draws the top  horizontal line of a board based on the given origin coordinates.
+        NsccLine topHorizontalLine = CreateRotatedLine(
+                originX,
+                originY + boxUnitWidth,
+                originX + boxUnitWidth * 3,
+                originY + boxUnitWidth,
+                radiansRotation,
+                boardMidpoint);
+        topHorizontalLine.setForeground(lineColor);
+        mainWindow.add(topHorizontalLine);
+
+        // Draws the top  horizontal line of a board based on the given origin coordinates.
+        NsccLine bottomHorizontalLine = CreateRotatedLine(
+                originX,
+                originY + boxUnitWidth * 2,
+                originX + boxUnitWidth * 3,
+                originY + boxUnitWidth * 2,
+                radiansRotation,
+                boardMidpoint);
+        bottomHorizontalLine.setForeground(lineColor);
+        mainWindow.add(bottomHorizontalLine);
+
+        // Signals the window to redraw itself so all the lines appear.
+        mainWindow.repaint();
+    }
+
+    /*
+    This method will create a line with the specified
+    end points, that is rotated around the midpoint
+    by the specified radians.
+     */
+    private NsccLine CreateRotatedLine(int x1, int y1, int x2, int y2, double radiansRotation, Point rotationPoint)
+    {
+        // Creates the first end point of line
+        Point firstRotatedPoint = RotatePoint(x1,y1,radiansRotation, rotationPoint);
+
+        // Creates th second end point of the line
+        Point secondRotatedPoint = RotatePoint(x2,y2,radiansRotation, rotationPoint);
+
+        // Returns a new rotated line
+        return new NsccLine(
+                (int)firstRotatedPoint.getX(),
+                (int)firstRotatedPoint.getY(),
+                (int)secondRotatedPoint.getX(),
+                (int)secondRotatedPoint.getY());
+    }
+
+    // Rotates a point around a given rotation point by specified radians.
+    private Point RotatePoint(int x, int y, double radians, Point rotationPoint)
+    {
+        // X component of the rotation point
+        double a = rotationPoint.getX();
+
+        // Y component of the rotation point
+        double b = rotationPoint.getY();
+
+        // Distance from given x,y to rotation-point. This will be radius used for rotation.
+        double radius = Math.sqrt(
+                ((x - a) * (x - a)) +
+                ((y - b) * (y - b)));
+
+        // Converts rectangular coordinates to polar coordinates
+        double omega = Math.atan2(y - rotationPoint.getY(), x - rotationPoint.getX());
+
+        // Rotates the x coordinate
+        double rotatedX = radius *
+                (Math.cos(radians) * Math.cos(omega) - Math.sin(radians) * Math.sin(omega))
+                + rotationPoint.getX();
+
+        // Rotates the y coordinate
+        double rotatedY = radius *
+                (Math.sin(radians) * Math.cos(omega) + Math.cos(radians) * Math.sin(omega))
+                + rotationPoint.getY();
+
+        // Returns the rotated point
+        return new Point((int)rotatedX, (int)rotatedY);
     }
 
 }
