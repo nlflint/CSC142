@@ -16,6 +16,12 @@ from the Nscc class can not be rotated. I could also have combined the code
 in a different way leaving out the rotated board on it's own, but I chose not
 to do that. I either choice was good.
 
+For the rotation code, I really wanted to create a regular NsccLine, and then
+rotate it after it has been created. This would have made the code more
+readable. This was very hard however, because the NsccLine class does not made
+end points available, so I could not easily manipulate the end points for
+rotation.
+
 Field vs local variable:
 The NsccWindow should be a field because it needs to be shared between the 
 different functions of the class. The NsccLine classes do not need to be private
