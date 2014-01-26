@@ -1,0 +1,24 @@
+Author: Nathan Flint
+Assignment 3: Tic Tac Toe
+
+I first studied the assignment and thought about how I could create a tic tac
+toe board with the limited selection of Nscc components. Lines were the 
+obvious choice. Lines could easily do the standard board, the colored board,
+and the rotated board. The only problem was how to do the thick lines. My first
+idea was to draw multiple lines, but you took away loops as an option. The my
+next idea was to use rectangles, which worked well.
+
+One thing I was proud of was reusing code. The code for all the boards had a
+similar layout, and I was able combine it all into a single helper
+function. The original board, colored board, and the rotated board are all the
+same code. I did not combine the thickness board with them because rectangles
+from the Nscc class can not be rotated. I could also have combined the code
+in a different way leaving out the rotated board on it's own, but I chose not
+to do that. I either choice was good.
+
+Field vs local variable:
+The NsccWindow should be a field because it needs to be shared between the 
+different functions of the class. The NsccLine classes do not need to be private
+because they are not shared between functions. If the NsccLines classes were
+made into fields, then some readers of the code might be confused as well. They
+might expect the variable to be shared, but it's not.

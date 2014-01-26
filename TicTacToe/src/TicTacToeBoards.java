@@ -48,22 +48,7 @@ public class TicTacToeBoards
     }
 
     /**
-     * Draws a colored tic tac toe board. Arguments supplied will indicate the (x, y) coordinates
-     * of the upper-left corner of the bounding box for the tic-tac-toe board, and the color of the lines.
-     * This method uses defaults the rotation to zero radians.
-     *
-     * @param originX X component of the upper left corner of the board.
-     * @param originY Y component of the upper left corner of the board.
-     * @param lineColor Color of the line
-     */
-    public void drawTicTacToeBoard(int originX, int originY, Color lineColor)
-    {
-        // call private draw routine with zero rotation
-        drawTicTacToeBoard(originX, originY, lineColor, 0);
-    }
-
-    /**
-     * Draws a black tic tac toe board. Arguments supplied will indicate the (x, y) coordinates
+     * Draws a tic tac toe board. Arguments supplied will indicate the (x, y) coordinates
      * of the upper-left corner of the bounding box for the tic-tac-toe board.
      *
      * @param originX X component of the upper left corner coordinates of the board.
@@ -71,8 +56,37 @@ public class TicTacToeBoards
      */
     public void drawTicTacToeBoard(int originX, int originY)
     {
-        // Calls the route that draws with color and sets color to black.
-        drawTicTacToeBoard(originX,originY,Color.BLACK);
+        // call private draw routine with specified location. Force with zero rotation and color black.
+        drawBoardWithLines(originX, originY, Color.BLACK, 0);
+    }
+
+    /**
+     * Draws a colored tic tac toe board. Arguments supplied will indicate the (x, y) coordinates
+     * of the upper-left corner of the bounding box for the tic-tac-toe board, and the color of the lines.
+     *
+     * @param originX X component of the upper left corner of the board.
+     * @param originY Y component of the upper left corner of the board.
+     * @param lineColor Color of the line
+     */
+    public void drawTicTacToeBoard(int originX, int originY, Color lineColor)
+    {
+        // call private draw routine with specified values and zero rotation
+        drawBoardWithLines(originX, originY, lineColor, 0);
+    }
+
+    /**
+     * Draws a black rotated tic tac toe board. Arguments supplied will indicate the (x, y) coordinates
+     * of the upper-left corner of the bounding box for the tic-tac-toe board before rotation, and the
+     * rotation in radians that the board will be rotation around its center.
+     *
+     * @param originX X component of the upper left corner of the board before rotation.
+     * @param originY Y component of the upper left corner of the board before rotation.
+     * @param radians Radians to rotate around the center of the board.
+     */
+    public void drawTicTacToeBoard(int originX, int originY, double radians)
+    {
+        // Calls the private draw method with specified values and color forced to black.
+        drawBoardWithLines(originX, originY, Color.BLACK, radians);
     }
 
     /**
@@ -96,7 +110,7 @@ public class TicTacToeBoards
         // This offset is used to center the rectangles on the tic tac toe grid lines.
         int thicknessOffset = lineThickness / 2;
 
-        // Draws the left vertical line of a board based on the given origin coordinates.
+        // Draws the left vertical line of a board based on the given origin coordinates and thickness.
         NsccRectangle leftVerticleLine = new NsccRectangle(
                 originX + boxUnitWidth - thicknessOffset,
                 originY,
@@ -106,7 +120,7 @@ public class TicTacToeBoards
         leftVerticleLine.setBackground(Color.BLACK);
         mainWindow.add(leftVerticleLine);
 
-        // Draws the right vertical line of a board based on the given origin coordinates.
+        // Draws the right vertical line of a board based on the given origin coordinates and thickness.
         NsccRectangle rightVeritcleLine = new NsccRectangle(
                 originX + boxUnitWidth * 2 - thicknessOffset,
                 originY,
@@ -116,7 +130,7 @@ public class TicTacToeBoards
         rightVeritcleLine.setBackground(Color.BLACK);
         mainWindow.add(rightVeritcleLine);
 
-        // Draws the top  horizontal line of a board based on the given origin coordinates.
+        // Draws the top  horizontal line of a board based on the given origin coordinates and thickness.
         NsccRectangle topHorizontalLine = new NsccRectangle(
                 originX,
                 originY + boxUnitWidth - thicknessOffset,
@@ -126,7 +140,7 @@ public class TicTacToeBoards
         topHorizontalLine.setBackground(Color.BLACK);
         mainWindow.add(topHorizontalLine);
 
-        // Draws the top  horizontal line of a board based on the given origin coordinates.
+        // Draws the top  horizontal line of a board based on the given origin coordinates and thickness.
         NsccRectangle bottomHorizontalLine = new NsccRectangle(
                 originX,
                 originY + boxUnitWidth * 2 - thicknessOffset,
@@ -141,23 +155,8 @@ public class TicTacToeBoards
 
     }
 
-    /**
-     * Draws a black rotated tic tac toe board. Arguments supplied will indicate the (x, y) coordinates
-     * of the upper-left corner of the bounding box for the tic-tac-toe board before rotation, and the
-     * rotation in radians that the board will be rotation around its center.
-     *
-     * @param originX X component of the upper left corner of the board before rotation.
-     * @param originY Y component of the upper left corner of the board before rotation.
-     * @param radiansRotation Radians to rotate around the center of the board.
-     */
-    public void drawTicTacToeBoard(int originX, int originY, double radiansRotation)
-    {
-        // Calls the private draw method and sets color to black.
-        drawTicTacToeBoard(originX,originY, Color.BLACK, radiansRotation);
-    }
-
     // This private method allows setting location, color and radians rotation at the same time.
-    public void drawTicTacToeBoard(int originX, int originY, Color lineColor, double radiansOfRotation)
+    private void drawBoardWithLines(int originX, int originY, Color lineColor, double radiansOfRotation)
     {
         /*
          Defines side length of the boxes that make the board. There are 9
