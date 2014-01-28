@@ -1,0 +1,24 @@
+Author: Nathan Flint
+Lab5: SnowmanIII
+
+1) When I replaced both constructors with the example code, the application 
+would not compile and gave the error: 
+"java: /Users/nate/git/CSC142/Lab5/src/SnowmanIII.java:38: recursive constructor
+invocation." This is because each constructor calls the other, in an endless
+loop.
+
+2) The hat disappears from the snowman
+
+3) There is an error: Exception in thread "main" java.lang.NullPointerException
+
+4) Two different hat appear. I cannot move them both, because there is only
+one reference and it points to the last hat created. The reference is the only
+way to manipulate the hats, so only the last hat can be moved around. The 
+reference to the first hat is lost, so it cannot be moved around.
+
+5) Only a NsccComponent can be passed to the AddHat method, so my hat must be
+of that type.
+
+6) If the underlying component is too small, then my hat will be partially
+clipped, or missing all together. I would see this and could correct it. If it's
+too big, then it will be harder to tell because my hat will look fine.
