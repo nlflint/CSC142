@@ -6,6 +6,7 @@ import java.awt.Color;
  * new object and then implementing it.
  *
  * @author Dan Jinguji
+ * @author Nathan Flint
  * @version Assignment 4: MyScene
  */
 public class MyHouse extends NsccComponent {
