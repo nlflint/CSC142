@@ -12,7 +12,12 @@ import java.awt.Color;
 public class MyScene extends NsccWindow {
 
     // instance variables
-    private MyHouse house;
+    private MyHouse firstHouse;
+    private MyHouse secondHouse;
+    private MyHouse thirdHouse;
+    private MyTree firstTree;
+    private MyTree secondTree;
+    private MyTree thirdTree;
 
     /**
      * Constructor for objects of class MyScene
@@ -20,11 +25,21 @@ public class MyScene extends NsccWindow {
     public MyScene() {
         // Specify the constructor for the superclass
         super(10, 10, 400, 300);
+
         // set characteristics for the object
         setTitle("My Scene");
 
         // Draw the sky
         getContentPane().setBackground(new Color(0x00, 0xCC, 0xFF));
+
+        InitializeScene();
+
+    }
+
+    private void InitializeScene()
+    {
+        // reset the scene
+        getContentPane().removeAll();
 
         // Draw some grass
         NsccRectangle grass = new NsccRectangle(0, 100, 400, 200);
@@ -32,17 +47,53 @@ public class MyScene extends NsccWindow {
         grass.setFilled(true);
         add(grass);
 
-        // Draw a house
-        house = new MyHouse(100, 50);
-        add(house);
+        // Draw the firstHouse
+        firstHouse = new MyHouse(100, 50);
+        add(firstHouse);
+
+        // Draw the second house
+        secondHouse = new MyHouse(50, 150, Color.BLACK);
+        add(secondHouse);
+
+        // Draw the third house
+        thirdHouse = new MyHouse(225, 110, Color.YELLOW);
+        add(thirdHouse);
+
+        // Draw the first tree
+        firstTree = new MyTree(200, 50);
+        add(firstTree);
+
+        // Draw the second tree
+        secondTree = new MyTree(150, 110, new Color(100,140,0));
+        add(secondTree);
+
+        // Draw the third tree
+        thirdTree = new MyTree(300, 100, new Color(0,80,0));
+        add(thirdTree);
     }
 
     /**
      * Alter the scene, by changing color
      */
     public void change1() {
-        // change the color of the house
-        house.setColor(Color.red);
+        // change the color of the firstHouse
+        firstHouse.setColor(Color.RED);
+
+        // change the color the second house
+        secondHouse.setColor(Color.ORANGE);
+
+        // change the color of the third house
+        thirdHouse.setColor(Color.WHITE);
+
+        // change the color of the first tree
+        firstTree.setColor(new Color(217, 152, 13));
+
+        //change the color of the second tree
+        secondTree.setColor(new Color(200, 73,0));
+
+        // change the color of the third tree
+        thirdTree.setColor(new Color(180,180,0));
+
         // request a rerendering of the window
         repaint();
     }
@@ -51,8 +102,7 @@ public class MyScene extends NsccWindow {
      * Alter the scene, by changing location
      */
     public void change2() {
-        // change the location of the house
-        house.setLocation(50, 125);
+
         // request a rerendering of the window
         repaint();
     }
@@ -61,8 +111,7 @@ public class MyScene extends NsccWindow {
      * Alter the scene, by changing size
      */
     public void change3() {
-        // change the size of the house
-        house.setSize(80, 60);
+
         // request a rerendering of the window
         repaint();
     }
@@ -71,11 +120,7 @@ public class MyScene extends NsccWindow {
      * Alter the scene, restoring original settings
      */
     public void reset() {
-        // reset the initial values for the house
-        house.setLocation(100, 50);
-        house.setColor(Color.blue);
-        house.setSize(120, 90);
-        // request a rerendering of the window
+        InitializeScene();
         repaint();
     }
 
