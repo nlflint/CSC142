@@ -86,4 +86,21 @@ public class MyHouse extends NsccComponent {
         return theWalls.getBackground();
     }
 
+    public void setSize(int width, int height)
+    {
+        super.setSize(width, height);
+
+        // Change size to scale with house.
+        // No change required for location.
+        theRoof.setSize(width, height*4/9);
+
+        // Scale the size and location of the walls.
+        theWalls.setSize(width*5/6, height*5/9);
+        theWalls.setLocation(width/12, height*4/9);
+
+        // Scale the size and location of the door.
+        theDoor.setSize(width/5, height*4/9);
+        theDoor.setLocation(width*2/5, height*5/9);
+    }
+
 }

@@ -1,0 +1,48 @@
+Author: Nathan Flint
+Assignment 4: Scene Creation
+
+I approached this assignment by first running the program. I watched as the
+houses appeared and changed in the screen, between messages boxes. Reading 
+through the code, it made sense what was going on. Then I read through the whole
+assignment, but couldn't keep it all in my head. There were a lot of
+requirements. I decided to work section by section, down the assignment, and 
+this worked well.
+
+For the MyTree constructor, I saw an opportunity to reuse constructor code by
+making one constructor reuse the other rather than two separate constructors
+with almost identical code. There was another opportunity to reuse code in 
+scene reset feature, and I refactored the scene constructor so that I could have
+one reusable function that setup an initial scene. The constructor and reset
+function both use this code.
+
+Setting up the tree component size and location was challenging. I ended up
+using a paper and pen to track the size and location of each component and that
+helped a lot.
+
+Q1: Explain why setLocation "works to expectations" for MyHouse and MyTree with
+no additional coding required.
+
+A1: The set location works well because the components within its bounding box
+are drawn relative to the initial location of the house or tree. So, even though
+the locations of the trunk and leaves are hard coded, they are hard coded to
+the upper right corner of the tree component, so change location changes all the
+internal components as expected.
+
+Q2: Explain why setSize does not "work to expectations" for MyHouse and MyTree
+as inherited from NsccComponent. This is shown in the behavior of change3.
+
+A2: The internal components (leaves, trees, doors, etc...) have a hard coded
+width and height. Changing the size of the MyTree instance changes its bounding
+box, however, each component must scale vertically and horizontally to match 
+the bounding box. In the standard version of house and tree do not scale, so
+the components get clipped, or do not fill the bounding box.
+
+Q3: Explain what specific changes must be made to the MyHouse and MyTree classes
+to get change3 to work "to specification". This includes a high-level outline
+or the implementations for any methods that must be modified or added to the
+classes.
+
+A3: Each internal component must scale to the size of their container's boudning
+box. This means, the width, location, x, and y coordinates need to be
+calculated from ratios. These ratios need to be calculated and implemented for
+the constructor and setSize method.
