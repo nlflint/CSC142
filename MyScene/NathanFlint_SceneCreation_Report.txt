@@ -17,7 +17,8 @@ function both use this code.
 
 Setting up the tree component size and location was challenging. I ended up
 using a paper and pen to track the size and location of each component and that
-helped a lot.
+helped a lot. I had to make the trunk, and three leaf section private members
+because they shared among the constructor, setSize, and setColor functions.
 
 Q1: Explain why setLocation "works to expectations" for MyHouse and MyTree with
 no additional coding required.
