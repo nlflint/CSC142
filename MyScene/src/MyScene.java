@@ -6,16 +6,20 @@ import java.awt.Color;
  * This program draws a simple scene using additional
  * classes that the student creates.
  *
+ * Grading Level: Challenge
+ *
  * @author Dan Jinguji
  * @author Nathan Flint
  * @version Assignment 4: MyScene
  */
 public class MyScene extends NsccWindow {
 
-    // instance variables
+    // instance variables for MyHouse
     private MyHouse firstHouse;
     private MyHouse secondHouse;
     private MyHouse thirdHouse;
+
+    // instance variables for MyTree
     private MyTree firstTree;
     private MyTree secondTree;
     private MyTree thirdTree;

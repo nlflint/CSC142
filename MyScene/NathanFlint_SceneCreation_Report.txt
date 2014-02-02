@@ -1,5 +1,5 @@
 Author: Nathan Flint
-Assignment 4: Scene Creation
+Assignment 4: MyScene
 
 I approached this assignment by first running the program. I watched as the
 houses appeared and changed in the screen, between messages boxes. Reading 

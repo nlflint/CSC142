@@ -5,6 +5,8 @@ import java.awt.Color;
  * the notes to highlight the process of designing a 
  * new object and then implementing it.
  *
+ * Grading Level: Challenge
+ *
  * @author Dan Jinguji
  * @author Nathan Flint
  * @version Assignment 4: MyScene

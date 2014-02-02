@@ -5,7 +5,7 @@ import java.awt.Color;
  * of the leaves can be customized.
  *
  * @author Nathan Flint
- * @version Assignment 4: Scene Creation
+ * @version Assignment 4: MyScene
  *
  * Grading Level: Challenge
  */
