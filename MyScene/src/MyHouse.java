@@ -1,3 +1,5 @@
+import java.awt.Color;
+
 /**
  * A new graphic component. This component is used in
  * the notes to highlight the process of designing a 
@@ -22,6 +24,20 @@ public class MyHouse extends NsccComponent {
      */
     public MyHouse(int x, int y)
     {
+        this(x,y,Color.BLUE);
+    }
+
+    /**
+     * Constructor for objects of class MyHouse.
+     * This creates a MyHouse object at the specified
+     * location and with the specified wall color.
+     *
+     * @param x the x-coordinate for the object
+     * @param y the y-coordinate for the object
+     * @param wallColor color of the outer walls
+     */
+    public MyHouse(int x, int y, Color wallColor)
+    {
         // Specify the constructor for the superclass
         super(x, y, 120, 90);
 
@@ -37,7 +53,7 @@ public class MyHouse extends NsccComponent {
         theWalls = new NsccRectangle(10, 40, 100, 50);
         // Set the characteristics of the walls
         theWalls.setFilled(true);
-        theWalls.setBackground(java.awt.Color.blue);
+        theWalls.setBackground(wallColor);
         // Place the walls in the MyHouse object
         add(theWalls);
 
