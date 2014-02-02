@@ -89,4 +89,32 @@ public class MyTree extends NsccComponent
         middleLeaves.setBackground(leafColor);
         topLeaves.setBackground(leafColor);
     }
+
+    /**
+     * Alters the size the tree, to scale.
+     *
+     * @param width new width of the tree
+     * @param height new height of the tree
+     */
+    public void setSize(int width, int height)
+    {
+        // Must call the super class set size method to change the bounding box.
+        super.setSize(width, height);
+
+        // Change trunk location and size to scale with new tree size
+        trunk.setLocation(width * 13 / 40, height * 11 / 16);
+        trunk.setSize(width * 7 / 20, height * 5 / 16);
+
+        // change bottom leaves location and size to scale with new tree size
+        bottomLeaves.setLocation(0, height * 3 / 8);
+        bottomLeaves.setSize(width, height * 3 / 8);
+
+        // change middle leaves location and size to scale with new tree size
+        middleLeaves.setLocation(0, height / 8);
+        middleLeaves.setSize(width, height * 3 / 8);
+
+        // change top leaves location and size to scale with new tree size
+        topLeaves.setLocation(0, 0);
+        topLeaves.setSize(width, height / 4);
+    }
 }

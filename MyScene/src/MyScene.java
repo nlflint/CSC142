@@ -102,6 +102,15 @@ public class MyScene extends NsccWindow {
         // change the size of the third house
         thirdHouse.setSize(200, 60);
 
+        // change the size of the first tree
+        firstTree.setSize(10, 100);
+
+        // change the size the second tree
+        secondTree.setSize(50, 200);
+
+        // change the size of the third tree
+        thirdTree.setSize(60, 150);
+
 
         // request a rerendering of the window
         repaint();
