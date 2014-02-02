@@ -2,6 +2,7 @@
  * This is a test harness for simple graphic classes.
  *
  * @author Dan Jinguji
+ * @author Nathan Flint
  * @version 0.2
  */
 public class TestComponent {
@@ -46,6 +47,9 @@ public class TestComponent {
 
     public static void main(String[] args)
     {
-        new TestComponent(new MyTree(0,0));
+        MyTree testTree = new MyTree(0,0);
+        testTree.setSize(50,200);
+        new TestComponent(testTree);
+
     }
 }
