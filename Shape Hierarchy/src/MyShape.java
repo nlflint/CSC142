@@ -58,4 +58,13 @@ public class MyShape {
     public String getName() {
         return "shape";
     }
+
+    /**
+     * Place holder method to get perimeter.
+     *
+     * @return the perimeter of the shape
+     */
+    public double getPerimeter( ) {
+        return 0;
+    }
 }

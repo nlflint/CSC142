@@ -31,7 +31,7 @@ public class MyTriangle extends MyShape {
     }
 
     /**
-     * Override method from MyShape. Calculates
+     * Overrides method from MyShape. Calculates
      * the area of a triangle.
      *
      * @return area of the triangle
@@ -40,5 +40,17 @@ public class MyTriangle extends MyShape {
     {
         // Calculates the area of the triangle: 1/2 * base * height
         return .5 * width * height;
+    }
+
+    /**
+     * Overrides method from MyShape.
+     * Calculates the perimeter of a triangle.
+     *
+     * @return perimeter of the triangle
+     */
+    public double getPerimeter()
+    {
+        // calculates the area of a right triangle: width + height + hypotenuse
+        return width + height + Math.sqrt(width * width + height * height);
     }
 }

@@ -59,13 +59,16 @@ public class TestShapes {
         // unrecognized menu option
         shape = null;
       }
-      if(shape != null) {
-        // output shape information
-        System.out.println("You created a " + shape.getName() + 
-          ", that is " + shape.getWidth() + " by " + 
-          shape.getHeight() + ".");
-        System.out.println("  Its area is " + shape.getArea() + ".");
-      } else {
+        if(shape != null) {
+            // output shape information
+            System.out.println("You created a " +
+                    shape.getName() + " that is " +
+                    shape.getWidth() + " by " +
+                    shape.getHeight() + ".");
+            System.out.println(" Its area is " +
+                    shape.getArea() + "; its perimeter is " +
+                    shape.getPerimeter() + ".");
+        } else {
         // report the error
         System.out.println("Error in menu selection.");
       }

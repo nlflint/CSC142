@@ -4,6 +4,7 @@
  * discussion.
  * 
  * @author Dan Jinguji
+ * @author Nathan Flint
  * @version 0.2
  */
 public class MySquare extends MyRectangle {
@@ -26,4 +27,15 @@ public class MySquare extends MyRectangle {
     return "square";
   }
 
+    /**
+     * Overrides method from MyShape.
+     * Calculates the perimeter of a square.
+     *
+     * @return perimeter of the square
+     */
+    public double getPerimeter()
+    {
+        // calculates the area of a square: side * 4
+        return width * 4;
+    }
 }
