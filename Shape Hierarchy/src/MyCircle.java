@@ -20,15 +20,4 @@ public class MyCircle extends MyEllipse
         super(diameter,diameter);
 
     }
-
-    /**
-     * Overrides the getArea method of MyEllipse.
-     * Implements getting the area of a circle.
-     *
-     * @return the area of the circle
-     */
-    public double getArea()
-    {
-        return 0.25 * Math.PI * width * width;
-    }
 }

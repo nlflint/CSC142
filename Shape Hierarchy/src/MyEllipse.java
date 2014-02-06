@@ -20,4 +20,15 @@ public class MyEllipse extends MyShape
         super(width, height);
 
     }
+
+    /**
+     * Overrides the getArea method of MyShape.
+     * Implements getting the area of an ellipse.
+     *
+     * @return the area of the ellipse
+     */
+    public double getArea()
+    {
+        return 0.25 * Math.PI * width * height;
+    }
 }
