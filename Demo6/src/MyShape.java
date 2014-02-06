@@ -1,7 +1,7 @@
 public class MyShape {
 
-    private int height;
-    private int width;
+    protected int height;
+    protected int width;
 
     public MyShape(int h, int w) {
         height = h;
@@ -17,6 +17,11 @@ public class MyShape {
 
     public String getName() {
         return "shape";
+    }
+
+    public double getArea()
+    {
+        return 0;
     }
 
 }
