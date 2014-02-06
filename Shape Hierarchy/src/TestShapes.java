@@ -41,6 +41,20 @@ public class TestShapes {
         // create a MySquare
         height = getInt("Enter the side: ");
         shape = new MySquare(height);
+      } else if(input == 3) {
+          // create a MyEllipse
+          height = getInt("Enter the height: ");
+          width = getInt("Enter the width: ");
+          shape = new MyEllipse(height, width);
+      } else if(input == 4) {
+          // create a MyCircle
+          width = getInt("Enter the diameter: ");
+          shape = new MyCircle(width);
+      } else if(input == 5) {
+          // create a MyTriangle
+          width = getInt("Enter the base: ");
+          height = getInt("Enter the height: ");
+          shape = new MyTriangle(height, width);
       } else {
         // unrecognized menu option
         shape = null;
@@ -74,9 +88,9 @@ public class TestShapes {
     System.out.println("Select from the following options:");
     System.out.println("   1. Create a MyRectangle");
     System.out.println("   2. Create a MySquare");
-//    System.out.println("   3. Create a MyEllipse");
-//    System.out.println("   4. Create a MyCircle");
-//    System.out.println("   5. Create a MyTriangle");
+    System.out.println("   3. Create a MyEllipse");
+    System.out.println("   4. Create a MyCircle");
+    System.out.println("   5. Create a MyTriangle");
 //    System.out.println("   6. Create a MyRightTriangle");
 //    System.out.println("   7. Create a MyIsoscelesTriangle");
 //    System.out.println("   8. Create a MyRhombus");

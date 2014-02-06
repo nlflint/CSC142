@@ -22,6 +22,15 @@ public class MyEllipse extends MyShape
     }
 
     /**
+     * Get the name of the shape type. This is a
+     * method that "replaces" the inherited one.
+     * The term for this is "override".
+     */
+    public String getName() {
+        return "ellipse";
+    }
+
+    /**
      * Overrides the getArea method of MyShape.
      * Implements getting the area of an ellipse.
      *
@@ -29,6 +38,7 @@ public class MyEllipse extends MyShape
      */
     public double getArea()
     {
+        // Calculates the area of the ellipse: 1/4 * pi * width * height
         return 0.25 * Math.PI * width * height;
     }
 }

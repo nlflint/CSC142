@@ -11,7 +11,7 @@ public class MyCircle extends MyEllipse
     /**
      * Constructor for MyCircle. Calls super class to initialize class.
      *
-     * @param diameter
+     * @param diameter diameter of the circle
      */
     public MyCircle(int diameter)
     {
@@ -19,5 +19,14 @@ public class MyCircle extends MyEllipse
         // height as the diameter
         super(diameter,diameter);
 
+    }
+
+    /**
+     * Get the name of the shape type. This is a
+     * method that "replaces" the inherited one.
+     * The term for this is "override".
+     */
+    public String getName() {
+        return "circle";
     }
 }
