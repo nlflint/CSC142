@@ -26,7 +26,8 @@ public class MyCircle extends MyEllipse
      * method that "replaces" the inherited one.
      * The term for this is "override".
      */
-    public String getName() {
+    public String getName()
+    {
         return "circle";
     }
 }

@@ -3,9 +3,13 @@
  * Inheritance discussion.
  *
  * @author Dan Jinguji
+ * @author Nathan Flint
  * @version 0.2
+ *
+ * Grading level: Challenge
  */
-public class MyShape {
+public class MyShape
+{
 
     // dimensions
     protected int height;
@@ -17,7 +21,8 @@ public class MyShape {
      * @param h The height of the shape
      * @param w The width of the shape
      */
-    public MyShape(int h, int w) {
+    public MyShape(int h, int w)
+    {
         // initialise instance variables
         height = h;
         width = w;
@@ -28,7 +33,8 @@ public class MyShape {
      *
      * @return The height of the shape
      */
-    public int getHeight() {
+    public int getHeight()
+    {
         return height;
     }
     /**
@@ -36,7 +42,8 @@ public class MyShape {
      *
      * @return The width of the shape
      */
-    public int getWidth() {
+    public int getWidth()
+    {
         return width;
     }
 
@@ -55,7 +62,8 @@ public class MyShape {
      *
      * @return The type for the shape
      */
-    public String getName() {
+    public String getName()
+    {
         return "shape";
     }
 
@@ -64,7 +72,9 @@ public class MyShape {
      *
      * @return the perimeter of the shape
      */
-    public double getPerimeter( ) {
+    public double getPerimeter( )
+    {
+        // place holder, not intended to be used for instances of this class.
         return 0;
     }
 }

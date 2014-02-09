@@ -3,9 +3,13 @@
  * MyShape hierarchy.
  * 
  * @author Dan Jinguji
+ * @author Nathan Flint
  * @version 0.1
+ *
+ * Grading level: Challenge
  */
-public class TestShapes {
+public class TestShapes
+{
 
   // This is a Scanner object to handle input  
   private java.util.Scanner scan;
@@ -13,7 +17,8 @@ public class TestShapes {
   /**
    * This constructs the TestShapes object.
    */
-  public TestShapes() {
+  public TestShapes()
+  {
     // Instantiate the scanner field.
     scan = new java.util.Scanner(System.in);
   }
@@ -23,43 +28,71 @@ public class TestShapes {
    * user for information to create instances and run
    * use the getArea method.
    */
-  public void test() {
+  public void test()
+  {
     // The user's menu input
     int input;
     // The shape
     MyShape shape;
     // prompt for input
-    for(input = showMenu(); input != 0; input = showMenu()) {
+    for(input = showMenu(); input != 0; input = showMenu())
+    {
       // declare some variables for input
       int height, width;
-      if(input == 1) {
+      if(input == 1)
+      {
         // create a MyRectangle
         height = getInt("Enter the height: ");
         width = getInt("Enter the width: ");
         shape = new MyRectangle(height, width);
-      } else if(input == 2) {
+      }
+      else if(input == 2)
+      {
         // create a MySquare
         height = getInt("Enter the side: ");
         shape = new MySquare(height);
-      } else if(input == 3) {
+      }
+      else if(input == 3)
+      {
           // create a MyEllipse
           height = getInt("Enter the height: ");
           width = getInt("Enter the width: ");
           shape = new MyEllipse(height, width);
-      } else if(input == 4) {
+      }
+      else if(input == 4)
+      {
           // create a MyCircle
           width = getInt("Enter the diameter: ");
           shape = new MyCircle(width);
-      } else if(input == 5) {
-          // create a MyTriangle
+      }
+      else if(input == 5)
+      {
+          // create a MyRightTriangle
           width = getInt("Enter the base: ");
           height = getInt("Enter the height: ");
-          shape = new MyTriangle(height, width);
-      } else {
+          shape = new MyRightTriangle(height, width);
+      }
+      else if(input == 6)
+      {
+          // create a MyIsoscelesTriangle
+          width = getInt("Enter the base: ");
+          height = getInt("Enter the height: ");
+          shape = new MyIsoscelesTriangle(height, width);
+      }
+      else if(input == 7)
+      {
+          // create a MyRhombus
+          width = getInt("Enter the base: ");
+          height = getInt("Enter the height: ");
+          shape = new MyRhombus(height, width);
+      }
+      else
+      {
         // unrecognized menu option
         shape = null;
       }
-        if(shape != null) {
+      if(shape != null)
+      {
             // output shape information
             System.out.println("You created a " +
                     shape.getName() + " that is " +
@@ -68,7 +101,9 @@ public class TestShapes {
             System.out.println(" Its area is " +
                     shape.getArea() + "; its perimeter is " +
                     shape.getPerimeter() + ".");
-        } else {
+      }
+      else
+      {
         // report the error
         System.out.println("Error in menu selection.");
       }
@@ -84,7 +119,8 @@ public class TestShapes {
   // method. JavaDoc will not create documentation for 
   // the method since no one can call it outside of this
   // class.
-  private int showMenu() {
+  private int showMenu()
+  {
     
     // output a blank line as a separator and print menu
     System.out.println();
@@ -93,10 +129,9 @@ public class TestShapes {
     System.out.println("   2. Create a MySquare");
     System.out.println("   3. Create a MyEllipse");
     System.out.println("   4. Create a MyCircle");
-    System.out.println("   5. Create a MyTriangle");
-//    System.out.println("   6. Create a MyRightTriangle");
-//    System.out.println("   7. Create a MyIsoscelesTriangle");
-//    System.out.println("   8. Create a MyRhombus");
+    System.out.println("   5. Create a MyRightTriangle");
+    System.out.println("   6. Create a MyIsoscelesTriangle");
+    System.out.println("   7. Create a MyRhombus");
     System.out.println("   0. Exit TestShapes");
 
     // get the input
@@ -106,10 +141,12 @@ public class TestShapes {
   // This helper method uses the java.util.Scanner class to
   // read an int value. It will continue to prompt until an
   // appropriate value is entered. 
-  private int getInt(String prompt) {
+  private int getInt(String prompt)
+  {
     // prompt for input
     System.out.print(prompt);
-    while( ! scan.hasNextInt()) {
+    while( ! scan.hasNextInt())
+    {
       scan.next();
       System.out.print("Invalid input. " + prompt);
     }
@@ -122,7 +159,8 @@ public class TestShapes {
    *
    * @param args The command-line arguments
    */
-  public static void main(String[] args) {
+  public static void main(String[] args)
+  {
     new TestShapes().test();
   }
   

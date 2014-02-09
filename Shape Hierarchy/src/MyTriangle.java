@@ -1,19 +1,21 @@
 /**
  * This class represents a triangle and
- * inherits from MyShape.
+ * inherits from MyShape. This class should
+ * not be used directly, because there
  *
  * @author Nathan Flint
  * @version Assignment 5: Shape Hierarchy
  *
  * Grading level: Challenge
  */
-public class MyTriangle extends MyShape {
+public class MyTriangle extends MyShape
+{
 
     /**
      * Constructor for MyTriangle.
      *
-     * @param base
-     * @param height
+     * @param base base of the bounding box
+     * @param height height of the bounding box
      */
     public MyTriangle(int base, int height)
     {
@@ -26,7 +28,8 @@ public class MyTriangle extends MyShape {
      * method that "replaces" the inherited one.
      * The term for this is "override".
      */
-    public String getName() {
+    public String getName()
+    {
         return "triangle";
     }
 
