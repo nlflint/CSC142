@@ -12,12 +12,12 @@ public class MyRightTriangle extends MyTriangle
      * Constructor. Sets the bounding box of the right triangle.
      *
      * @param height height of the bounding box around the right triangle.
-     * @param width width of the bounding box around the right triangle.
+     * @param base width of the bounding box around the right triangle.
      */
-    public MyRightTriangle(int height, int width)
+    public MyRightTriangle(int height, int base)
     {
         // Call the MyTriangle constructor.
-        super(height, width);
+        super(height, base);
 
     }
 

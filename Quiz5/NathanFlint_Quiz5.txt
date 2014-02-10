@@ -1,0 +1,36 @@
+Author: Nathan Flint
+Quiz 5: Rounding
+
+Q1: What is the value where the round-off error is first apparent?
+A1: 3.0000001E10
+
+Q2: Which iteration is the round-off error first apparent?
+A2: The 10th iteration
+
+Q3: What is the significance of the letter 'f' in the assignment of the initial
+value of the variable number?
+A3: Appending an "f" to the number, forces the type to be a float.
+
+Q4: What happens if the 'f' is omitted in the initial value?
+A4: the program fails to compile with an error.
+
+Q5: What is the value where the round-off error is first apparent?
+A5: 2.9999999999999997E28
+
+Q6: Which iteration is the round-off error first apparent?
+A6: The 28th iteration
+
+Q7: Does this behavior change if the initial value is specified as 3.0f or 3.0?
+A7: No
+
+Q8: Does this behavior change if the initial value is specified as 3 (int)?
+A8: No
+
+Q9: Briefly the reason for the answers to questions 7 and 8.
+A9: In 7 and 8, the literal numbers are narrower than double and widened double
+during the assignment. The variable is essentially converted to double.
+
+Q10: Something "odd" happens in the printed values for iterations 30-33,
+inclusive. What is it? Try to explain the phenomenon.
+A10: The precision is close enough that when rounded it looks like the values
+come out correct. There is error, but it's not apparent.

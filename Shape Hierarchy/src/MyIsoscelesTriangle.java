@@ -15,12 +15,12 @@ public class MyIsoscelesTriangle extends MyTriangle
      * box are the other two points on the triangle.
      *
      * @param height height of the bounding box
-     * @param width width of the bounding box
+     * @param base width of the bounding box
      */
-    public MyIsoscelesTriangle(int height, int width)
+    public MyIsoscelesTriangle(int height, int base)
     {
         // Calls the MyTriangle constructor
-        super(height, width);
+        super(height, base);
     }
 
     /**

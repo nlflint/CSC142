@@ -11,13 +11,13 @@ public class MyEllipse extends MyShape
     /**
      * Constructor for MyEllipse
      *
-     * @param height height of the bounding box of the ellipse
-     * @param width width of the bounding box of the ellipse
+     * @param majorAxis height of the bounding box of the ellipse
+     * @param minorAxis width of the bounding box of the ellipse
      */
-    public MyEllipse(int height, int width)
+    public MyEllipse(int majorAxis, int minorAxis)
     {
         //Calls the super class constructor
-        super(width, height);
+        super(minorAxis, majorAxis);
 
     }
 
@@ -26,8 +26,7 @@ public class MyEllipse extends MyShape
      * method that "replaces" the inherited one.
      * The term for this is "override".
      */
-    public String getName()
-    {
+    public String getName(){
         return "ellipse";
     }
 

@@ -55,8 +55,8 @@ public class TestShapes
       else if(input == 3)
       {
           // create a MyEllipse
-          height = getInt("Enter the height: ");
-          width = getInt("Enter the width: ");
+          height = getInt("Enter the major axis: ");
+          width = getInt("Enter the minor axis: ");
           shape = new MyEllipse(height, width);
       }
       else if(input == 4)
