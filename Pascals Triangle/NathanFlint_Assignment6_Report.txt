@@ -1,0 +1,36 @@
+Author: Nathan Flint
+Assignment 6: Pascal's Triangle, Implementation
+
+After reading the assignment instructions, I decided to start with the challenge
+option from the get go. The challenge was getting the data in a form where the
+factors could be canceled. I originally was going to just cancel the n! and k!
+and ignore the (n-k)!, but I did some preliminary tests and discovered that
+wasn't going to work. The (n-k)! would still over load INT. Then it dawned on me
+that k! * (n-k)! is just a bunch of factors being multiplied together, which 
+is all that a factorial is too. Then I decided to represent the numerator as an
+array of ints and the denominator as an array of ints. The only tricky part was
+how to combine two arrays into one, because I would calculate the k! and 
+(n-k)! separately. a Google search showed me a copyArray function that I could
+use to concatenate the arrays.
+
+The test cases helped a lot. I used them to check values after completing the
+nChooseK method, and they also helped me design the algorithm for calculating
+the padding required before each row.
+
+A problem that surprised me was formatting. I decided to pad each row with
+spaces inside the PrintOne method. My first shot at calculating the padding
+was a disaster. I was stuck on the idea that the padding should be calculated by
+sets of 6 spaces, but that created problems because each row is staggered by 3
+spaces. After toying with the equation for 30 minutes I stepped away and went
+back to the test cases. This is where the tests cases helped a lot. Studying the
+testcases help me come up with the idea to use sets of 3 instead of 6, and then
+a solution emerged. The IF statement in PrintOne makes it a little inelegant,
+but it's needed because the last row needs 0 padding and printf wouldn't accept
+0 length for the %s formatter.
+
+Lastly, the most important thing I learned is that since I will always try the
+challenge option, I should think the challenge option before I get started, and
+sometimes just do the challenge option from the start. In the past assignments I
+have worked from the top of the assignment down, and I sometimes find myself
+rewriting code from the standard or minimum option, while doing the challenge
+option.

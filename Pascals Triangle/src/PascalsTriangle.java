@@ -74,10 +74,10 @@ public class PascalsTriangle extends PascalsTriangleBase
         if (row != lastRow)
         {
             // Calculates amount of padding needed
-            int prefixPadding = (height - row) * 3 ;
+            int paddingAmount = (height - row) * 3 ;
 
             // print padding
-            System.out.printf("%" + prefixPadding + "s", "");
+            System.out.printf("%" + paddingAmount + "s", "");
         }
 
         // print first number for the row, a one.
