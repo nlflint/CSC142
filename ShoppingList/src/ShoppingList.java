@@ -40,13 +40,15 @@ public class ShoppingList {
     public void printList() {
         System.out.println("Your shopping list:");
 
+        // Check if list is empty
         if (shoppingItemsCount == 0)
         {
+            // Print text for empty list.
             System.out.println("  * No items on the list.");
             return;
         }
 
-        // print the list
+        // print contents of the list
         for (int i = 0; i < shoppingItemsCount; i++)
             System.out.printf("  %d. %s\n", i + 1, shoppingItems[i]);
 
@@ -61,20 +63,24 @@ public class ShoppingList {
         //Check if list is at its limit
         if (shoppingItemsCount == 10)
         {
+            // Print text for list being to full
             System.out.printf("List is full. Item %s not added to list.\n", item);
             return;
         }
 
+        // Check for duplicate
         if (ShoppingListContains(item))
         {
+           // Duplicate found, print error.
            System.out.printf("Duplicate item %s not added to list.\n", item);
             return;
         }
 
-        if (item.trim().equals(""))
+        // Do nothing if input is blank
+        if (item.equals(""))
             return;
 
-        // add item to the list
+        // add item to the list and increment counter.
         shoppingItems[shoppingItemsCount++] = item;
     }
 
@@ -95,8 +101,9 @@ public class ShoppingList {
      * Removes all items from the shopping list
      */
     public void emptyList() {
-        // empty the list
+        // intialize a new list
         shoppingItems = new String[10];
+        // reset counter
         shoppingItemsCount = 0;
     }
 
@@ -106,7 +113,10 @@ public class ShoppingList {
      * @return Text from the keyboard.
      */
     public String getInput() {
+        // Prompt user for input.
         System.out.print("Enter your item or command: ");
+
+        // trim and return keyboard input.
         return scan.next().trim();
     }
 
@@ -141,35 +151,53 @@ public class ShoppingList {
      * and getting using input.
      */
     public void go() {
+        // contains commaind input
         String input;
 
+        // Show a welcome message
         printWelcome();
+        // Show help text
         printHelp();
+        // Wait for input
         input = getInput();
+        // Being main program loop
         while( ! input.equals("-x")) {
+            // check input against static commands
             switch(input) {
+                // Users asks for help
                 case "-h":
                     printHelp();
                     break;
+                // Print all items in the shopping list
                 case "-p":
                     printList();
                     break;
+                // Exit program, not used here.
                 case "-x":
                     break;
+                // Remove all items from the list
                 case "-e":
                     emptyList();
                     break;
+                // All other cases, including remove command
                 default:
+                    // Check for -r command
                     if (input.startsWith("-r "))
+                        // remove an item from the list
                         removeFromList(input);
+                    // Check if input beings with "-"
                     else if (isUnknownCommand(input))
+                        // Input appears to be an invalid command
                         printUnknownCommand(input);
                     else
+                        // Finally, input is an item to add to the list.
                         addToList(input);
 
             }
+            // Wait for input again
             input = getInput();
         }
+        // Print exit message
         printThankYou();
     }
 
