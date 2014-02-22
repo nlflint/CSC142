@@ -1,5 +1,14 @@
+/**
+ * Implements a shopping list where items can be added and removed via command line interface.
+ *
+ * @author Nathan Flint
+ * @version Assignment 7: Shopping List
+ *
+ * Grading Level: Challenge
+ */
 public class ShoppingList {
 
+    // gets command line input
     private java.util.Scanner scan;
 
     // items currently in the shopping list
@@ -8,6 +17,10 @@ public class ShoppingList {
     // keeps a count of items in the shopping list
     private int shoppingItemsCount;
 
+    /**
+     * This is the constructor. It initialized the counter and shopping list array.
+     *
+     */
     public ShoppingList() {
         scan = new java.util.Scanner(System.in);
 
@@ -21,6 +34,9 @@ public class ShoppingList {
         scan.useDelimiter("\n");
     }
 
+    /**
+     * Prints a list of the items on the shopping list.
+     */
     public void printList() {
         System.out.println("Your shopping list:");
 
@@ -36,6 +52,11 @@ public class ShoppingList {
 
     }
 
+    /**
+     * Add an item to the shopping list.
+     *
+     * @param item Item to add to the shopping list.
+     */
     public void addToList(String item) {
         //Check if list is at its limit
         if (shoppingItemsCount == 10)
@@ -50,11 +71,14 @@ public class ShoppingList {
             return;
         }
 
+        if (item.trim().equals(""))
+            return;
+
         // add item to the list
         shoppingItems[shoppingItemsCount++] = item;
     }
 
-
+    // Checks if the list to see if it contains the given item. Is case sensitive.
     private boolean ShoppingListContains(String item) {
         // Loop through all items in the shopping list
         for (int i = 0; i < shoppingItemsCount; i++)
@@ -67,25 +91,42 @@ public class ShoppingList {
         return false;
     }
 
+    /**
+     * Removes all items from the shopping list
+     */
     public void emptyList() {
         // empty the list
         shoppingItems = new String[10];
         shoppingItemsCount = 0;
     }
 
+    /**
+     * Gets and/or waits for input from the keyboard.
+     *
+     * @return Text from the keyboard.
+     */
     public String getInput() {
         System.out.print("Enter your item or command: ");
         return scan.next().trim();
     }
 
+    /**
+     * Prints the welcome message
+     */
     public void printWelcome() {
         System.out.println("Welcome to Nate's fantastic Shopping List Program.");
     }
 
+    /**
+     * Prints the good buy message
+     */
     public void printThankYou() {
         System.out.println("Thank you for using Nate's fantastic Shopping List Program.");
     }
 
+    /**
+     * Prints a list of of commands
+     */
     public void printHelp() {
         System.out.println("Here are the list of commands:");
         System.out.println("  -p   : Print the list");
@@ -95,6 +136,10 @@ public class ShoppingList {
         System.out.println("  -h   : Print this command list");
     }
 
+    /**
+     * Runs the shopping list program by implementing a menu
+     * and getting using input.
+     */
     public void go() {
         String input;
 
@@ -128,6 +173,7 @@ public class ShoppingList {
         printThankYou();
     }
 
+    // Removes an item from the list.
     private void removeFromList(String input)
     {
         // Check if there are any items available to remove
@@ -147,14 +193,18 @@ public class ShoppingList {
         // remove "-r " from the input
         String trimmedInput = input.substring(3);
 
-        // Parse the string into an int
+        // Declare value that will hold the parsed int
         int itemToRemove;
+
+        // Attempt to parse the integer
         try
         {
+            // Parse integer
             itemToRemove = Integer.parseInt(trimmedInput);
         }
         catch (NumberFormatException nfe)
         {
+            // There was a problem parsing the integer so show an error and exit method
             System.out.printf("\"%s\" is not a valid integer.\n",trimmedInput);
             return;
         }
@@ -162,6 +212,7 @@ public class ShoppingList {
         // check if number is within range
         if (itemToRemove < 1 || itemToRemove > shoppingItemsCount)
         {
+            // Not within range, so print error
             System.out.printf("Invalid item number. Must be between 1 and %d.\n", shoppingItemsCount);
             return;
         }
@@ -172,6 +223,8 @@ public class ShoppingList {
             // If it's not the last item, then adjustment is required
             for (int i = itemToRemove; i < shoppingItemsCount; i++ )
             {
+                // Overwrites the previous item in the array.
+                // Happens multiple times to "shift" items up
                 shoppingItems[i - 1] = shoppingItems[i];
             }
         }
@@ -198,8 +251,14 @@ public class ShoppingList {
         printHelp();
     }
 
+    /**
+     * The application method
+     *
+     * @param args Command line arguments
+     */
     public static void main(String[] args) {
 
+        // Start taking user input and run the program.
         new ShoppingList().go();
     }
 
