@@ -1,0 +1,48 @@
+Nathan Flint
+Assignment 7: Shopping List
+
+Before starting this assignment, I felt I had a pretty good understanding of
+what I needed to do because we discussed in class it earlier in the week. I
+worked the assignment, top to bottom, and completed the work moving down the
+page.
+
+This assignment as pretty straight forward and the only problem I encountered
+was parsing the int from the remove command. I initially wanted to use the 
+".hasNextInt()" from the scanner class, but that would not work since the
+scanner was setup to return entire lines of input. So doing .hasNextInt() on a
+command like "-r 3" would not work. I searched google and found a java clas for
+parsing and int from a string. I used this class, but I would crash my program
+if I entered an invalid number like "-r abc".  In the past, I've learned about
+try/catch and we started to talk about that this week, put a try catch around
+the parsing code and that worked great for validating the input.
+
+The most difficult decision was where to put the unknown command validation, and
+where to put the new -r command. I wanted to validate the unknown command in the
+getInt() function, but that wasn't possible, because I'd have to recreate the 
+switch statement from the go() method. I decided to put both new feature in an
+if/else statement in the default case. I could catch everything not matched by
+the switch statement and deal with it in the default.
+
+I didn't actually write the testcase code in my main function, but I executed
+them manually though the command line of my program. They we helpful in making
+sure the functions worked.
+
+I didn't encounter anything surprising in this assignment, but I wish I could
+have structured the program a little differently. For example, I've been
+learning about a principle called separation of concerns. I wanted to apply
+this to the ShoppingList by separating concerns into separated functions. For
+example, separating validation from work. I have a function called addToList()
+and but it does more than add items to a list. It also validates the current
+size of the list, and validates for duplicates. This principal also applied to
+my removeFromList() function, and to the Go() function. These functions do quite
+a bit of stuff and it could be separated into other class and functions. I'd
+have to significantly restructure the program to do this do I decided not to. I
+think the separation of concerns principal is for a more advanced class.
+
+I learned most about the Integer function when trying to parse a string. I
+originally used it incorrectly and had to debug my program line-by-line to see
+that I misunderstood the documentation. I eventually figured how to use it to
+parse an integer.
+
+I can't say there is anything I would do differently next time. I was able to
+complete this assignment fairly quickly and without any surprises.
