@@ -22,13 +22,36 @@ public class Flags
         Flags flags = new Flags();
 
         // Draw each flag
-        flags.drawNigerFlag();
-        flags.drawSwedishFlag();
-        flags.drawNorwayFlag();
-        flags.drawSeychellesFlag();
-        flags.drawAlabamaFlag();
+        //flags.drawNigerFlag();
+        //flags.drawSwedishFlag();
+        //flags.drawNorwayFlag();
+        //flags.drawSeychellesFlag();
+        //flags.drawAlabamaFlag();
+        flags.trasparentTest();
     }
 
+    public void trasparentTest()
+    {
+        NsccWindow mainWindow = new NsccWindow(100,100,200,200);
+
+        // Create two custom colors
+        Color red = new Color(255,0,0,200);
+        Color greenish = new Color(0,255,0,200);
+
+        // Creates a dark orange base layer that is the full dimension of the flag.
+        // This will also be the top stripe.
+        NsccRectangle baseLayer = new NsccRectangle(25,25,100,100);
+        baseLayer.setBackground(red);
+        baseLayer.setFilled(true);
+        mainWindow.add(baseLayer);
+
+        // Creates a white stripe across the middle of the flag
+        // and adds it to the base layer.
+        NsccRectangle middleStripe = new NsccRectangle(50,50,100,100);
+        middleStripe.setBackground(greenish);
+        middleStripe.setFilled(true);
+        mainWindow.add(middleStripe);
+    }
     /**
      * Draws the flag of Niger. This will create a window
      * and then draw the flag if Niger within the window.
