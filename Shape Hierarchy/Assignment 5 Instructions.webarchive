@@ -1,0 +1,423 @@
+bplist00Ò_WebMainResource_WebSubresourcesÕ	
+_WebResourceData_WebResourceMIMEType_WebResourceTextEncodingName_WebResourceFrameName^WebResourceURLO4†<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>CSC 142 Assignment</title>
+<base target="_self">
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+
+<h1>Assignment 5: Shape Hierarchy</h1>
+
+<h2>Objectives</h2>
+
+<ul>
+  <li>Expand a class hierarchy.</li>
+	<li>Overload methods.</li>
+  <li>Perform arithmetic calculations.</li>
+</ul>
+
+<h2>Instructions</h2>
+
+<p>
+<img border="0" src="images/shape1.gif" width="115" height="256" align="right">In 
+discussing polymorphism and method overloading, we saw the simple class 
+hierarchy of MyShape, MyRectangle, and MySquare.</p>
+<p>The Is-A relationship established by inheritance allows base class references to refer to instances of the derived class.</p>
+<blockquote>
+	<p class="code">MyShape shape;<br>
+	shape = new MySquare(25);</p>
+</blockquote>
+<p>Using the reference <b>shape</b>, we can call any of the methods of the 
+reference variable type, 
+the superclass, <b>MyShape</b>.</p>
+<blockquote>
+	<p class="code">double area;<br>
+	area = shape.getArea();</p>
+</blockquote>
+<p>Recall that the subclass can override the inherited method. This replaces the 
+inherited method with a new implementation. The header (first line) of the 
+override must conform to that of the inherited method. In essence, the two 
+method header should be virtually identical: same method name; same return type; 
+same parameter types, number, and order; compatible modifiers. </p>
+<blockquote>
+	<p class="code">MyShape shape;<br>
+	shape = new MySquare(25);<br>
+	double area;<br>
+	area = shape.getArea();</p>
+</blockquote>
+<p>In this case, the instance type for shape is MySquare. This will call the 
+getArea method of the MySquare class. This is inherited from MyRectangle. Since 
+MyRectangle overrides the getArea method. This calls the inherited method that 
+was defined in MyRectangle.</p>
+<h3>Start the Project</h3>
+<p>Open a new project for this assignment. Into 
+	this project, copy the existing class hierarchy:
+	<a href="code/MyShape.java">MyShape.java</a>,
+	<a href="code/MyRectangle.java">MyRectangle.java</a>, and
+	<a href="code/MySquare.java">MySquare.java</a>. These have the return type 
+of <b>getArea</b> as <b>double</b>. For the demo, you could have implemented <b>
+getArea</b> with an <b>int</b> return type. However, for the assignment, the 
+return type of <b>getArea</b> must be <b>double</b>.</p>
+<p>Also, download the test program,
+	<a href="code/TestShapes.java">TestShapes.java</a> into the same project.</p>
+<p>Run this program to familiarize yourself with what it does. This 
+code uses the java.util.Scanner class in the getInt method. We'll be looking at 
+Scanner next week. For the moment, it is enough to know that getInt gets an int 
+value from the user. You should be able to 
+recognize and understand everything else in the file. (This includes the if-then-else statement of Java. Folks frequently call 
+this statement 'if-then-else' even though there is no 'then' keyword in Java. 
+We'll officially cover this statement later, but the concept is familiar from 
+110 and the syntax is pretty straight forward.) </p>
+<p>The core code is summarized below.</p>
+<blockquote>
+	<p class="code">// prompt for input<br>input = showMenu();<br><br>// declare some variables for input<br>int height, width;<br>
+	<br>
+	if(input == 1) {<br>
+	&nbsp; // create a MyRectangle<br>&nbsp; height = getInt("Enter the height: ");<br>&nbsp; width = getInt("Enter the width: ");<br>&nbsp; shape = new MyRectangle(height, width);<br>
+	} else if(input == 2) {<br>
+	&nbsp; // create a MySquare<br>&nbsp; height = getInt("Enter the side: ");<br>&nbsp; shape = new MySquare(height);<br>
+	} else {<br>
+	&nbsp; // unrecognized menu option<br>&nbsp; shape = null; 
+		<br>}<br>
+	<br>if(shape != null) {<br>&nbsp; // output shape information<br>&nbsp; System.out.println("You created a " +
+	<br>&nbsp;&nbsp;&nbsp; shape.getName() + " that is " + <br>&nbsp;&nbsp;&nbsp; shape.getWidth() + " by " +
+	<br>&nbsp;&nbsp;&nbsp; shape.getHeight() + ".");<br>&nbsp; System.out.println(" Its area is " +
+	<br>&nbsp;&nbsp;&nbsp; shape.getArea() + ".");<br>} else {<br>&nbsp; // report the error<br>&nbsp; System.out.println("Error in menu selection.");
+	<br>}</p>
+</blockquote>
+<p>The variable <b>input</b> gets a user input integer value. That value is used in 
+	an if-then-else statement to create either a MyRectangle or a MySquare instance, 
+	based on the user input. Note that the <b>getInt</b> method is called once or twice in order 
+	to get the values needed to create the shape. (The <b>getInt</b> method is 
+defined within this class.) If the user input value is not from the 
+	menu, then <b>shape</b> is set to null. If <b>shape</b> is null, an error 
+message is printed out; otherwise, the methods of MyShape are used to print out 
+some information about the object that was just created.</p>
+<p>As an additional note: the <b>showMenu</b> method displays the choices and calls
+<b>getInt</b> to get an input value from the user.</p>
+<p>Compile and run TestShapes to verify that it works.</p>
+<h2><b>Important notes</b></h2>
+<p><span style="background-color: #FFFF00">None of the classes you create for 
+this assignment shall declare any new fields</span>.</p>
+<p>We do not know how to control the number of digits that will be displayed in 
+the output. So, you don't have to worry about it. </p>
+<h2>Minimal Version</h2>
+<h3>Expand the Hierarchy</h3>
+<p>Create additional subclasses of MyShape to complete 
+	the class hierarchy as indicated.</p>
+<blockquote>
+	<p><img border="0" src="images/shape2.gif" width="299" height="250"></p>
+</blockquote>
+<p>These new classes will inherit all the methods of MyShape. However, 
+	remember that constructors are not inherited.</p>
+<p>MyEllipse and MyTriangle should each have a constructor with two 
+	parameters, just like MyRectangle. MyCircle should have a constructor with 
+	one parameter, just like MySquare.</p>
+<h3>Override getArea </h3>
+<p>Here are some formulae ... just in case you need them.</p>
+<p>For a circle, the basic measure is the diameter, <i>d</i>. <br>area = Â¼ Ï€ 
+	<i>d</i><sup>2</sup>. This is the same as the familiar Ï€ <i>r</i><sup>2</sup>, 
+	since <i>d</i> = 2<i>r</i>.</p>
+<p>The code you write shall ask the user for the <i><u>diameter</u></i> of the 
+circle, not the <i><u>radius</u></i>.</p>
+<blockquote>
+	<p><img border="0" src="images/circle.gif" width="224" height="211"></p>
+</blockquote>
+<p>For an ellipse, the basic measures are major axis, <i>a</i>, and minor axis,
+<i>b</i>.<br>area = Â¼ Ï€ <i>ab</i>. <br>
+(Technically, the major axis is the longest chord through the ellipse and the 
+minor axis is the shortest chord that passes through the center of the ellipse. 
+However, they are used symmetrically in this problem, so we don't have to be 
+concerned about which is bigger, the width or the height.)</p>
+<blockquote>
+	<p><img border="0" src="images/ellipse.gif" width="343" height="224"></p>
+</blockquote>
+<p>For a triangle, the basic measures are the base, <i>b</i>, and the height, 
+	<i>h</i>.<br>area = Â½ <i>bh</i>.<br>For this assignment, assume that none of the triangles is obtuse.</p>
+<blockquote>
+	<p><img border="0" src="images/triangle.gif"></p>
+</blockquote>
+<p>For the value Ï€, use Math.PI. This is a double value.</p>
+<h3>Update TestShapes</h3>
+<p>Now that there are more shapes, the TestShapes 
+	driver class should be updated to reflect this.</p>
+<p>Update the menu is showMenu to include the new classes, namely: MyEllipse, 
+	MyCircle, and MyTriangle.</p>
+<p>Update the if statement in test to include the new classes, namely: MyEllipse, MyCircle, and MyTriangle.</p>
+<p>Test your classes and verify the results.</p>
+<h2>Standard Option</h2>
+<p>For the standard option, update the hierarchy to include a getPerimeter method. </p>
+<p>This method 
+	will need to have a "dummy" implementation in MyShape:</p>
+<blockquote>
+	<p class="code">public double getPerimeter( ) {<br>&nbsp; return 0;<br>}</p>
+</blockquote>
+<p>Update the output to print out both the area and the perimeter.</p>
+<blockquote>
+	<p class="code">if(shape != null) {<br>&nbsp; // output shape information<br>&nbsp; System.out.println("You created a " +
+	<br>&nbsp;&nbsp;&nbsp; shape.getName() + " that is " + <br>&nbsp;&nbsp;&nbsp; shape.getWidth() + " by " +
+	<br>&nbsp;&nbsp;&nbsp; shape.getHeight() + ".");<br>&nbsp; System.out.println(" Its area is " +
+	<br>&nbsp;&nbsp;&nbsp; shape.getArea() + "; its perimeter is " +<br>&nbsp;&nbsp;&nbsp; shape.getPerimeter() + ".");<br>} else {</p>
+</blockquote>
+<p>Here are formulae for perimeter:</p>
+<ul>
+	<li>Rectangle: 2 ( w + h)</li>
+	<li>Square: 4 s</li>
+	<li>Circle: 2 Ï€ r</li>
+</ul>
+<p>There are some issues with the perimeter for the ellipse and the 
+	triangle. </p>
+<p>There is no simple, exact formula for the circumference of an ellipse. 
+	What is provided below is Euler's approximation. </p>
+<blockquote>
+	<p>P â‰ˆ Ï€ âˆš<span style="text-decoration: overline">Â½ (aÂ² + bÂ²)</span></p>
+</blockquote>
+<p>A slightly more complicated, but much more accurate approximation to the 
+	circumference of an ellipse was created by Ramanujan.</p>
+<blockquote>
+	<p>P â‰ˆ Â½Ï€ [ 3(a + b) âˆ’ âˆš<span style="text-decoration: overline">(3a + b)(a + 3b)</span> ]</p>
+</blockquote>
+<p>For the standard option, use the Ramanujan approximation of the circumference 
+of the ellipse.</p>
+<p>For the triangle, the issue is the type of triangle will change the 
+	perimeter. For this option, you can assume that the triangle is a right 
+	triangle.</p>
+<blockquote>
+	<p><img border="0" src="images/rightTriangle.gif" width="376" height="261"></p>
+</blockquote>
+<p>So you can use the Pythagorean theorem: a<sup>2</sup> + b<sup>2</sup> = c<sup>2</sup></p>
+<p>The <b>Math.sqrt</b> method takes a double value for its argument. It returns 
+the square root of the argument as a double value. Needless to say, it is not 
+happy with negative argument values.</p>
+<h2>Challenge Option</h2>
+<p>For the challenge option, add three new shapes to the hierarchy: </p>
+<ul>
+	<li>MyRhombus</li>
+	<li>MyRightTriangle</li>
+	<li>MyIsoscelesTriangle</li>
+</ul>
+<p>Update the menu to support these shapes.</p>
+<p>The rhombus is an equilateral quadrilateral. For the purposes of this 
+assignment, we will consider the rhombus the shape that results from joining the 
+midpoints of the sides of the bounding rectangle.</p>
+<blockquote>
+	<p><img border="0" src="images/rhombus.gif" width="343" height="224"></p>
+</blockquote>
+<p>For this assignment, the right triangle is the formed by connecting opposite 
+corners of the bounding rectangle. Notice that this is the configuration we used 
+to calculate the perimeter of MyTriangle in the Standard version.</p>
+<blockquote>
+	<p><img border="0" src="images/rightTriangle.gif" width="376" height="261"></p>
+</blockquote>
+<p>For this assignment, consider the base of the isosceles triangle to be the 
+"non-leg" side of the triangle.</p>
+<blockquote>
+	<p>
+	<img border="0" src="images/isoscelesTriangle.gif" width="343" height="224"></p>
+</blockquote>
+<p>There are a few interesting issues for the challenge option. </p>
+<ul>
+	<li>The first is that it is up to you to determine the appropriate place in 
+	the hierarchy to include these classes. Remember, appropriate inheritance is 
+	based on the Is-A relationship. </li>
+<li>Another is that you cannot calculate the perimeter 
+	for a nonspecific type of triangle. (In the Standard option, 
+the <i>assumption</i> is made that the triangle is a right triangle. Now that 
+there is an explicit right triangle type, as well as the isosceles triangle, this assumption is no longer 
+reasonable.) So, you will have to deal with this 
+	issue. </li>
+<li>Third, the formulae for area and perimeter for the new shapes are left as an 
+exercise for the student. <br>
+	Hint: The Pythagorean theorem will be your friend.</li>
+</ul>
+<h2>Report</h2>
+<p>In addition to the Java source code, the assignment includes a brief written 
+report that answers the following questions:</p>
+
+<ul>
+
+	<li>How did you approach (get started with) this assignment?</li>
+	<li>What design decisions were made? </li>
+
+	<li>What works and what doesn't work? </li>
+	<li>What problems did you encounter as you worked on this assignment? </li>
+
+	<li>What did you learn from this assignment? What would you do differently 
+	next time?</li>
+
+</ul>
+
+<h2>Submission</h2>
+<p>For this assignment, please submit the complete set of files for the 
+assignment:</p>
+<ul>
+	<li>MyShape (possibly modified)</li>
+	<li>MyRectangle (possibly modified)</li>
+	<li>MySquare (possibly modified)</li>
+	<li>TestShapes (modified)</li>
+	<li>MyEllipse</li>
+	<li>MyCircle</li>
+	<li>MyTriangle</li>
+	<li>MyRhombus (challenge option)</li>
+	<li>MyRightTriangle (challenge option)</li>
+	<li>MyIsoscelesTriangle (challenge option)</li>
+	<li>text file for the report</li>
+</ul>
+<h2>Grading Rubric</h2>
+<p>15 points for the Standard Version:<br>
+Functionality: 7 points<br>
+4/ Minimal Version (MyEllipse, MyCircle, MyTriangle classes, updates to 
+TestShapes)<br>
+7/ Minimal + Standard Version (addition of getPerimeter)<br>
+9/ Minimal, Standard, and Challenge Version (plus MyRightTriangle, 
+MyIsoscelesTriangle, MyRhombus)<br>
+Report: 4 points<br>
+4/ proper format, addresses questions<br>
+Style: 4 points<br>
+4/ conforms to the current <a href="00-guidelines.html">style guidelines</a></p>
+
+<p><a href="javascript: history.go(-1)">Back</a></p>
+
+
+</body></html>Ytext/htmlUUTF-8P_Dhttp://facweb.northseattle.edu/cl_djinguji/csc142-w14/a5-shapes.html©"&*.2Ô_WebResourceResponseOÜ.code
+{
+   FONT-FAMILY: Lucida Console, Courier;
+}
+
+dt {
+	float: left;
+	margin-left: 2em;
+}
+
+dd {
+	margin-bottom: 6pt;
+}
+
+.narrow dd {
+	margin-left: 7em;
+}
+
+.wide dd {
+	margin-left: 10em;
+}
+
+.verywide dd {
+	margin-left: 13em;
+}
+
+.right dd {
+	width: 3em;
+	text-align: right;
+}
+
+h1, h2, h3 {
+	font-family: "Arial Unicode MS", Tahoma, Helvetica, sans-serif; 
+}
+
+p, li, dt, dd, td {
+	font-family: "Times New Roman", Garamond, Bookman, serif;
+}Xtext/css_?http://facweb.northseattle.edu/cl_djinguji/csc142-w14/style.cssObplist00ÔbcX$versionX$objectsY$archiverT$top † ¯"()012HIJKLMNOPQRSTUVWX[\]U$nullÝ	
+ !R$6S$10R$2R$7R$3S$11R$8V$classR$4R$9R$0R$5R$1€€€ €€€€€Ó#$%&'WNS.base[NS.relative€ €€_?http://facweb.northseattle.edu/cl_djinguji/csc142-w14/style.cssÒ*+,-Z$classnameX$classesUNSURL¢./UNSURLXNSObject#A¸¤ÁÆÈÓ345>GWNS.keysZNS.objects¨6789:;<=€	€
+€€€€€€¨?@ABCDEF€€€€€€€€€VServer\Content-TypeTEtag]Last-ModifiedTDate]Accept-Ranges^Content-LengthZConnection_Apache/2.2.15 (CentOS)Xtext/css_"18e020f-1dc-4ef292e295180"_Sat, 04 Jan 2014 18:27:34 GMT_Thu, 06 Feb 2014 19:48:30 GMTUbytesS476UcloseÒ*+YZ\NSDictionary¢Y/ÜXtext/cssÒ*+^__NSHTTPURLResponse£`a/_NSHTTPURLResponse]NSURLResponse_NSKeyedArchiverÑde_WebResourceResponse€    # - 2 7 W ] x {  ‚ … ˆ Œ  – ™ œ Ÿ ¢ ¥ § © « ­ ¯ ± ³ µ · ¹ » ½ Ä Ì Ø Ú Ü Þ %09?BHQZ\ckvƒ…‡‰‹˜šœž ¢¤¦¨ª±¾ÃÑÖäóþ >^~„ˆŽ“ £¦¯´ÈÌàî              f              ÔOÛGIF89as  ¢  ÿÿÿÿÿ™ÿÌ™ÌÌÌ™™™fff333   !ù  ,    s   ÿºÜþ0ÊI«½8ëÍ»ÿ`(Ždižhª®l»p,Ïtmßx®Çê!üÀ pH,È¤àÐS:ŸÐh™òI¯ØìaPÍz¿Ê-÷d›Ï?1ªŒnkcÛÖ‰³ôÜ=T“Ã0v}eƒ|E~r€†yz‡‚K…w‚IŠ%{xu4–w’K‘>ƒ—G™$›„£¦¯¢’”V‡2±•±apk€®¢¸°·°§¯¶Nª#¬BÄÂSÂ¸ÒÏPÉ"ËÐ²Ã´“ÃÞ¥ÞÈ»˜´z¡ÁÜç²•µ ºqš`¨Wôõã‹ZöRûQÖ!;
+H>yˆ>ù›Â‡i®‚H1‘De3N¹xMÿ£G†zlÒƒÈ‘gJv8‰rG€-)ªäÀ2æ›xm*œ¹¡¦N~/þLÈSƒÏ¡ƒ†DÊ§h†£L1)5•äÔ•UÑ8Å 5«Eœ½ºÛQì—­ºšÝHæÚ›¼ÞbAkA­\ºì¾ÅKAïZ¾üš,A°XÂ{EAqVÆ
+JžL9ÆÕ2kÞÌ¹³çÏ C‹}ùœÓ¨S«^Íºµë×°K›ŽM»¶íÛ²]èÞÍ»Bz1`Ë–áÈ;  €€äÐ1@ýxôë  Àsìà0Àúòðè,/ßü{úëÎÙ›'ðþúzùÎëC/¾~äÿ[ôG]qÿ	ç€ÜiWànÅ€à€Ö-ÈÂR—™„,7P[®@E‡×}"t"Ž ‰Ñ•ˆbo*®¸[‹.º cŒ,ÌHc7²˜#o6î(‡ºõ¤2C¶ d‘!é¡’82¹ˆ•E)å”5Ô%×GV^™Ñ‘8¦%öeE*y9æW}	Q™åL²‰'Õœ¥›`ºóf7ÈøÕT¾Ð¦1 ³›€sŽ;¿p³'3W‰dœì¢N1·HêŒ6Ó$Õ§ŽšâÊ¥pRz	$Njj8ð¤Y§/íD£(8Ùêê7€.jG£å`
+j7£ÎAi¢²kk¸®
+ë,’,­ÿÂ¶ºNªå:Ê6Ï&j'žyüêl¤šªªOKxžUl=Ã""¨¸›vIåºìJ6®šæ¾¯tÎÛ”¼ö¦„o¾cyË¯¾éšÉo½ÿšApÁèú‹°/<×¾ûqÄÝFK1\_|OÀ?ÌqÇ@}r5ŒfÆ&C+fÊâˆÌ2˜%¿|«Ë2Ÿ¼rÍtÄ\sÃ8³¥pÏ>£tÐ7MtbFp»L7ƒl£E-õÔTW-Zn¸e­õÖ[gÀõ×`‡š“dOð[peg\ºiW°^~m{0]ulÇvÜyg÷ã±wÞÞÜÇÜ€WÀŸßôNàå®8‡Ë÷÷ã‘9( ÿ”;@!‚
+f¾@ƒ6è¹›?x¡ç
+Twá\Žþ‚ë\Áž–ìuÑž—í}á˜î…ñž˜ï™ð´»ñ®#?ºòž3Ÿ¹ó”Cÿ¸ôŠSÏ:ñX¸ö{so·÷qƒß¶øi“_¶ùÂ9­þ@M\Œ>§¿ßeü«Eý\ÝÅŸŠ‰8¸r“?: °ÕBIÿ²÷¿fêÉÒÖ,Š1¬2 ¥¤¬õd­ÃVô“Yu)v¨cY×ÊÅ¯`†¿´ü„Ë2”¨N¸-ž$„ð!8€áÁLÍ0$ka–¨+t ªüáoH@ŽpZü¯NeÂ\p‹OûãGM ÊÕ/røƒ‹\LÖGÆ4qˆÃáüÜwÆ¼èÏ‹ilãÏ¦F!¥ŽoÌÿä(´…á‘Bt# ³è°?î1s,˜!ãˆÈ>Ò‘E+$$‘6H8J²‘‘ôã$“G„’šÄ$%?iÉP‚ò‘¢äd%õÈÈS*r“‘édNH)‡2Ú²°Œ€ÕvÉË^æ2b¦ØZ Ìbv{ÈL¦2—ÉL$  ;Yimage/gif_Ghttp://facweb.northseattle.edu/cl_djinguji/csc142-w14/images/shape1.gifObplist00ÔabX$versionX$objectsY$archiverT$top † ¯"()012HIJKLMNOPQRSTUVWX[\U$nullÝ	
+ !R$6S$10R$2R$7R$3S$11R$8V$classR$4R$9R$0R$5R$1€€€ €€€€€Ó#$%&'WNS.base[NS.relative€ €€_Ghttp://facweb.northseattle.edu/cl_djinguji/csc142-w14/images/shape1.gifÒ*+,-Z$classnameX$classesUNSURL¢./UNSURLXNSObject#A¸£Ðƒ~sÈÓ345>GWNS.keysZNS.objects¨6789:;<=€	€
+€€€€€€¨?ABCDEF€€€€€€€€€VServer\Content-TypeTEtag]Last-ModifiedTDate]Accept-Ranges^Content-LengthZConnection_Apache/2.2.15 (CentOS)Yimage/gif_"19a8066-5db-4f168a5e53f40"_Sun, 02 Feb 2014 09:01:09 GMT_Thu, 06 Feb 2014 14:15:26 GMTUbytesT1499UcloseÒ*+YZ\NSDictionary¢Y/ÛÒ*+]^_NSHTTPURLResponse£_`/_NSHTTPURLResponse]NSURLResponse_NSKeyedArchiverÑcd_WebResourceResponse€    # - 2 7 V \ w z ~  „ ‡ ‹ Ž • ˜ › ž ¡ ¤ ¦ ¨ ª ¬ ® ° ² ´ ¶ ¸ º ¼ Ã Ë × Ù Û Ý',7@FIOXacjr}†ˆŠŒŽ’”–Ÿ¡£¥§©«­¯±¸ÅÊØÝëú(Ff†Œ‘—œ©¬¯´ÈÌàî              e              ÔO¶GIF89a+ú ³  ÿÿÿÿÿ™ÿÌ™ÌÌÌÀÀÀ™™™€€€fff333                     !ù  ,    +ú  ÿ0ÈI«½8ëÍ»ÿ`(Ždižhª®lë¾p,Ït%x®ï|ïÿÀ 0g+HQBÀl:ŸÐ¨tJ­Z‰¤vË5.¯à°xÜÌvÏèôéKn»Ý	‚zN¯_Øï¼žØÿ€gx{„…}ˆ‰Eƒ…o‡Š‘’-ŒQ9e8R;L™ŽU“¡¢#•P—œO©™©žš~£²³¥ª—<˜­¨Xl:¼«§` ´ÅÆ¶N¿¹¨¿º½X˜½K¬_»|°ÆÙÅÈÑÓÏÔÌâ¾¸ÕÓæaÄÚë’ÜÀÐà­ÊèßçÀ›ÃØìû‘îõöàn=«w¯ uüÖñGÍž4^6$8ð
+B…Ñ0¬Q¾qáÿ ’³v-VÆ“÷<èÏ¢>”0·´Ô´’¥¡—1szÂ³§ÏŸ;pê:c¦«£e„]êÂ(Ò£™JEáô©§¨S³’²Êµ¤Ö¯kºŠ5¥¬ÙUÇêÁz¶­…´j•uK—Ü¸mØÖu{ï½{Ïöõ›nn`¾„»>üupb+‹guüØ«äÀ”+¿2y™nfÍd9wnût2Ã£'›v9õÐÒ«± vÍöêÖ´cÚ6;7ÊÝ {ûÎ\³ðá
+‹W>ŽœŸòÇÌ›³{ž8ºtmÔ	[¿~,¶£íÜie÷>¼¬ñxË›…>®úõ“Ú«}¿Ðûøóã˜]_áÿ (àÿ€hà&È_	ààƒF(á„Vhá…ŠÆ`Ltèá‡ †(âˆ$–hâ‰¦¨"r` $€À `ã`Â	PÂŒ/Êx@®Ó 8 ` ‘76y#r€ä”$pÀ-£’Q	S	àä˜ €€	Jð¢”™å–té¥B/’é¤>’@@7ÆA”vÞH€89§6Zj#”?Öhãš#ä¨¨HphF3*jÆ´Ù$–ŠÐé¤f†z)Fi’YÀ™àäª$„¨™:žšQ©dÒX¥§N‚:Â*i+J„0f˜­ªÊjVÚ9ãÿ°'I¨˜‚.BÎÖŸÇZ-?«úí£Únk¬{Ž h“Z&`ê·ì„;A¢‹ÊùÁ¸ÙŠ€'»gîY.¼Æ¼(Z¦HŽ0%©È‚`&ŽÄR)ÀÙhY¤’VþÊ«¢ÿ‰Ð0 òN@+Ä´h™™îŠ€¤O†f@#˜~²(0nî
+›ž°§Ÿ¸ür$Ïr2)4ÛkAÏ;¢³+ü<AÌEÿq4ÒGÝ´OC}„ÈS§Q*5uÖ\t*ô]{í-ØF¬:6Ù\ŒönÒEÜoÓ@we#ÑqÝ1H¬FÞz'Ì·_§¸ÞŒÎÓsŽÄžk+®qžt8þxÉ’—`&ÿå•Ó!væû‡åIlú¦n’ÿžŽAêª¯.ºë|Žé\ÌN;Å*‚{îœï~w ¿¿»Ã¯ˆÔ î»" $z:ãíD}›™3ßÏ$Ò®ýö“$?õ÷à‡ß0ÚUÇ7ŠøÃ>Jñtìýr§ïž7äÓé§ÿþüóAÿ àÿHÀáÞ1Îÿhˆ2Ð*€“ÏËàÀ	>¢‚¼Ê2˜žµIP,8{Y3¶Nð"&ä
+
+Gx¥¤+dá_ÊòBí¸P† ¤!ÅÃ®å†ŸF%–‘Žµô¥‡SðIrê 1‰B´>’qÄ#‘Q49Ò1˜šÿ¸¤HîPâ‚Ñ"Y”"R¼™+B±!bÜ¢4FrŽq€$iF>ÎD8
+‘Œ"¡Èua”'ÒÄrüã@šQÆ&†ƒ‡n<dãØtÜ‘#÷d99Cj‘„H™ÇNê2åÐ#H òJjÒ‘i£†ÂèWÎq•edå /YU~A„A@éÈKâÁ—²f0kIÊŠàñ‘¼&=~YZ
+³˜ô`" +ÉÉn‚rÊ„â5mIEiväDL¦Q9NA>Ó›‘ˆHô¨N»°s“°¤.»YJxÆ²0|ÄâC°)JRÊ#— §8ñégn1šòÔgB«yOyN3ÿ¢µ¤FOSt¡Ý'6ÚÑ‰R´¢=¦ûÉK†îÓ2ö&489ÍÐ1·ä',éYÏ˜
+t¦v‰-II“úô§Ù<(NiQsÒ¨èâWšOò0-l¬ê)«
+ªÊe–ÈêSxúU…^.b…ÃVó’V8ã‡³4 \çªÒõ®A°+^÷ê“Hú°…ýk×*Øƒøµ°„°*b9AØÅ‚ó¤Ž½I`#ËØÉR¦¨¡w»XÎ^V‡ýì-YÏŠ¶²ë<­ZIëXÓž!škÿ:ÛÏÂVµeM­hk{ÙÛâ6/¥,o…Úß~"¸¥E®q}k\H²¶³Êÿý-s›ûXÈî6º¸.u{šÙìbWµÚÝ.f»Þï¾¶¸âís;Üä‚5½Üªw×[Þ÷Âw¼ò­¯Y©Þûªw¿îðrÑëßö²ÐÀÐµ¯-a^Ú6Ø¶¾/‚98áÂöwÁ¨Õ-„é{^cø4vpˆ7¬ágØº$.1#ß
+[ÐÅ"Vñ‡aü@ïðÂ¶qu,C/˜Ç²}poYœ^ ßFÈÄõ°‰e3â#9À(^²‘yóäÖº¯XÖŸ^³Ì×-sùËuMY‚ÆLæ2›ùÌBš×Ìæ6«¹ÍpŽ³›†¡:ÛùÎxÎó…”¦ç>ûùÏ|þ³ èœèÐˆN´ÿ¢m"Ÿ1úÑ†´£#MéJKúx˜ö ‚Ç”MgSSB­´Oo M’
+ªÏfjì©O‘CÉ«mÂV UjbuLpj[w`TŸª_L€ý$aû z•®O’ì&ÁêØX™|¥i‰ÚÐF¶«Æôìœ4[ÙÙÆ ¾zÕ:ŒŒûSåÎv53˜¬]ð;Þ¹É“y£;Ü“•¢¨t+}ÏJÔÐ¦×¤2–cŒÓ¶>YOJ=…ó„á¾Ž7qð½-³H<ÜOÅAñ„tüØßGÈm=òu”ÜÔ'ÏFÊ3½òmlü-ÏË=óYÔœv7ßÌÑbñs çìñy-zÿ.ôÿ½èw8:Ò«©ô¥g¶éN ÐC1õÌU½zo3_I¡u¼'¶¬Ù
+x¿ž]±¿–ìåU‚w}vÀnk¾¹iûwtÔ»FîèÞ%w,ŽD’5Ôû0ÒøÉšŠ®}£3´¸TBœ¼¨ü»ÿ)S­>ž4~Ÿ¤"ßTF¢ó­ø­Åà¿ùÔrz— §æÝ3K:*u“­4?{y©^ó7-(Nwêúè¬€I?‘›>S¬‚Gc;óÉM‘–Ô¹‰§ÉòºËúóÈ§;ä—)|§šÞ«¤¯nj€_Gï7£Ö§<íß®|—"ÔÛlkh¢¯FØ¿—£ôç9UOóÿÁs”»×L-exñuäÇ	çäzç—R¹DV›Á~ìTæ RÑôHLeXµgqaÅEó¡}ùeD›å‚ÁV…„ÉVxç{9Ñux%‚,xW"¨úÅqpG{—X.Xƒ«7ƒ0§ƒãçƒh„qƒ*‘ƒ<øƒG„I8„B(zKh€M¨Dˆx6…dwHØax]Shy[ˆ…£ñ…¹ÕƒO(d¸Za8d]ØV¸AgÈi\µ7‡Hbøsoˆ{(cVÖ†Za‡£µ†I†‡lHˆP¶ƒZHƒqx‚}Œ¸ˆŠÈ…ˆø‡†Xˆ‘H‰UØˆ–`—˜ˆýÇ‰{ñˆP¥‡¢Xc¤(~J(‰Y¨‰fÈŠcØ‡Q†‰“˜‡N‹LxŠuwˆ6ø‚så‚¾(W1ØrVŒÆ Ã Ç¸Œq–ŒgAhÐˆÒXƒˆgaiÚ¸bÜø•uâ8ŽäXŽæ¸  ;_Ghttp://facweb.northseattle.edu/cl_djinguji/csc142-w14/images/shape2.gifObplist00ÔabX$versionX$objectsY$archiverT$top † ¯"()012HIJKLMNOPQRSTUVWX[\U$nullÝ	
+ !R$6S$10R$2R$7R$3S$11R$8V$classR$4R$9R$0R$5R$1€€€ €€€€€Ó#$%&'WNS.base[NS.relative€ €€_Ghttp://facweb.northseattle.edu/cl_djinguji/csc142-w14/images/shape2.gifÒ*+,-Z$classnameX$classesUNSURL¢./UNSURLXNSObject#A¸£Ðƒ~ âÈÓ345>GWNS.keysZNS.objects¨6789:;<=€	€
+€€€€€€¨?ABCDEF€€€€€€€€€VServer\Content-TypeTEtag]Last-ModifiedTDate]Accept-Ranges^Content-LengthZConnection_Apache/2.2.15 (CentOS)Yimage/gif_"19a8065-bb6-4f168a5d5fd00"_Sun, 02 Feb 2014 09:01:08 GMT_Thu, 06 Feb 2014 14:15:26 GMTUbytesT2998UcloseÒ*+YZ\NSDictionary¢Y/¶Ò*+]^_NSHTTPURLResponse£_`/_NSHTTPURLResponse]NSURLResponse_NSKeyedArchiverÑcd_WebResourceResponse€    # - 2 7 V \ w z ~  „ ‡ ‹ Ž • ˜ › ž ¡ ¤ ¦ ¨ ª ¬ ® ° ² ´ ¶ ¸ º ¼ Ã Ë × Ù Û Ý',7@FIOXacjr}†ˆŠŒŽ’”–Ÿ¡£¥§©«­¯±¸ÅÊØÝëú(Ff†Œ‘—œ©¬¯´ÈÌàî              e              Ô !OàGIF89aà Ó ‘  ÿÿÿÿÿ™      !ù  ,    à Ó  ÿŒ©Ëí£œ´Ú‹³Þ¼û†âH–æ‰¦êÊ¶îÇòL×öçúÎ÷þ
+‡Ä¢±%H*—Ì¦ó	J§ÔªõŠÍj¡Aí	‹ÇÏïÊÛC¿–ã¶ûMVÆÔ¨dÚ¥„ë÷o9Rå·Cw’Çgx(X¨ˆ3H’„(9	`·˜²ÄóIé‰hY²9’)(*ð™**2ÊÉdÚŠªJêªqûÑ«;[û{ÈÚ…¹›“KÑ	¬|<ÑÌá¤óá»lm8ýQfÜu<LØ}³½P®Þ}v~†›¾>‡ë~ÇM¯¯÷nÐ!ÌQ¾}Ýôûg! 9€¶y‡°‚Bçä9,Xñž&‰ÿ;&’¨‘W‹1")ÍYÉ••œ¡ô6’%Ëg‘ÕSæÌ‘/RÓ¹“ZÏ…Ú€Ê<vSÂD3Hu˜+éH©­š>z‹ª6­ \9½zÑëPŠ¾‚m(–>fÏ¢eÀµl\£Úº%Xw,ÓvïâE§—Æ¦¾~õ<ãáÂ†Ù"–¡˜1VÇj7"X,™Þ ¹è8·»œyòåÇs@‡í4:˜O¯c­zÍÖ®_ÏŽgvmÔžùö¶ço·N5¿gç\øðÔ•cÑVÍñ K'‡¾R:î?Ï±_ó2½zbêÞRßÎ|ùÓ¨__üRÝá+?`}û¿ðçÿ—¸´ø÷Ÿ3
+˜
+N…`G
+võ`6HI„tYhB2âÕžqnµ!ZR‡¡(!BµF‰œø*’Â¢IäøÑHb1þ•á.5Bvã>žMáHA¢,æ©Ù)Ší8’óÌµc)9i}u½Ø
+•ê@9“«M¨e"\^9¢\aZƒ¥\d:æ™iÂÕå›½œ¹ŒœlEigm†™§oKö¹†tÈ™”$z™â À z™l*Ú_oÑ šÛžNÊ7£%”r©*˜.ØŽ¥H~
+ª=¢
+Ij©È‘×i…Ì©št­ºz¬±^7«8µÚ
+n¹bs¯½âú+Ä	;,«Åÿò,1k)»ìC£5—’¯ÑJÛ¬„ÏB{ífèÁcÚµaxK-LáF«Ø·€°%nK|©‹	:ÝV®O|ÍK™³–±[l^õÅï¯þê+Ò½¹¦Epµò\¼—À5kVR¤QMœáOƒ"…1NóÉÓ¿d}¬e3á•2É£*Õ1$*]ê’È{åÔc6'o«rˆÛÜ¼ïË'f$³u	ýœ¬¶=#³áA-“kƒÿð\0€ö½µÂM—WSÕæââÝM’rao Ð%õu9#ëY›¿™}ö…™õ¹v4[Ïy£qö+`1újŽ†L$V’ówÛ§dWÜq…î·ˆá1Â÷gé	ú]äÿŽ²6s©åš=ž`NìÁöjKË²Eêª¯Îzë®¿v Èš>ûIµÿq;Ë¹ƒ»ûç½?ü;\Á?ü»Å{|¼ñÉWµü´Íwõ|¶ÑKþ|æ¼Zøô²O=¬ÝÏ¬=pÑ_*ù¡‡¿ýøèSß¼ùº_ÚúâW/ÿüí×+÷ø¯ªþþ	i¿ÿP6þ‰þ
+h»þ!Pw
+\ PèÀ60‚—› éeÁ*~óÙTz ˜òŽƒGáº hÆ…EP!ñ–7À©˜/†¸‚‘\H1jBGž3`7˜¢(äFx:lTæe¤É¦ˆxâzøDaÐðƒFL¢‹ƒCh±àmŠà‚ëŒ'Öx»ªÞ¿è¡0VñŒU  UÆÎˆñ@ââ	õ¥5!a‹ \c/¤G%J±~ú£žbÈX!’r„L@—C’°‚Aœ#cöC6	1{0Â¤.ÉÀIúà† L™(5ÄN¢’ˆ™D¥W¸Ê|2–e¼-S™¼W
+A—‘¼eßléË_ª2˜µ$¦1‰Ìd*s™Ìl¦3Ÿ	ÍhJsšÔ¬¦5¯Éƒ  ;_Ghttp://facweb.northseattle.edu/cl_djinguji/csc142-w14/images/circle.gifObplist00ÔabX$versionX$objectsY$archiverT$top † ¯"()012HIJKLMNOPQRSTUVWX[\U$nullÝ	
+ !R$6S$10R$2R$7R$3S$11R$8V$classR$4R$9R$0R$5R$1€€€ €€€€€Ó#$%&'WNS.base[NS.relative€ €€_Ghttp://facweb.northseattle.edu/cl_djinguji/csc142-w14/images/circle.gifÒ*+,-Z$classnameX$classesUNSURL¢./UNSURLXNSObject#A¸£Ô«ç«ëÈÓ345>GWNS.keysZNS.objects¨6789:;<=€	€
+€€€€€€¨?ABCDEF€€€€€€€€€VServer\Content-TypeTEtag]Last-ModifiedTDate]Accept-Ranges^Content-LengthZConnection_Apache/2.2.15 (CentOS)Yimage/gif_"19a805e-5e0-4f168a5d5fd00"_Sun, 02 Feb 2014 09:01:08 GMT_Thu, 06 Feb 2014 14:33:15 GMTUbytesT1504UcloseÒ*+YZ\NSDictionary¢Y/àÒ*+]^_NSHTTPURLResponse£_`/_NSHTTPURLResponse]NSURLResponse_NSKeyedArchiverÑcd_WebResourceResponse€    # - 2 7 V \ w z ~  „ ‡ ‹ Ž • ˜ › ž ¡ ¤ ¦ ¨ ª ¬ ® ° ² ´ ¶ ¸ º ¼ Ã Ë × Ù Û Ý',7@FIOXacjr}†ˆŠŒŽ’”–Ÿ¡£¥§©«­¯±¸ÅÊØÝëú(Ff†Œ‘—œ©¬¯´ÈÌàî              e              Ô#$%OâGIF89aWà ‘  ÿÿÿÿÿ™      !ù  ,    Wà  ÿŒ©Ëí£œ´Ú‹³Þ¼û†âH–æ‰¦êÊ¶îÇòL×öçúÎ÷þ
+‡Ä¢ñˆL*—Ì¦ó	J§ÔªõŠÍj·Ü®÷‹Çä²ùŒN7ì¶ûËçôºýŽÏë÷ü¾ÿ(h7"¦¨¸È¸¨w¸b8$™×x‰™©¹	·E‰Â6Ye¹YjzZÚIõiÒ&êDŠ*;K{©ÚÄZâ&”KôV,Ìø¦Ô[ètüÓ6ìüüœ\´²«<Ù­½l}ZDm“Ím~^+Ý3îqëÃã†>OOëÏ'ŽÏVÿp–ºù6ìcFÎ_À…MŒQ0ƒ~36¼ˆ1S¨Šÿà®ƒh1£È‘ŠFŠ‘£‹$[¶ÜØ"¥˜Qº¼‰ Í2%öŒg3§P—;[¡|ÕŠåÐ¥"MV;Ê+)Ó©9‹‚øyÁ*¬PýZ•«±´î »@)ØµMAýöA-Û¹Íb@+Á.¾«tûÞÄk pWÁ'ðÊõ‹˜¡Þ	„Ç6ÖÕÁkâÉ$Ñ>f°ø†ØÃ”;Ì<ömMœ=›þ:­h„YO»ùórZÙ"zJ~û¢íÕïHçþ­›4ïŒo?þ9"í©i4Ž<:jÆÃ·æ•Ž=`¾åš«| =»øsð¸ð.ƒ]øñì·©¯~|ûùèÆ™|?òXúüÍQÿËDkôG {kÀ§Ã2ëÈ @ª Pi5H¡0Ç ˜Ÿ>VÈa:ªA˜¡A
+,Øa‰šä‚!Rç™Èâ)("¸Ww-Î˜
+s0âð	‰4î¨Sw7j&#Bã#ˆHé8äŒ”¤U`I>™È’?’ã$”PJâ+HZi"–jÀ–\væ—eŠ9f‡†dšiV¸¦™k¾™dœ$8%Ž›tRax2£çžö9›‘*(„‚·(H‰
+Ùè‘¾€è£ýÉöç;–BªËFá0³)˜†âÑ:¡î8* žªd§êÜ“ «­ÞùP¦ÉÚbª½Ø
+®,¦ŠÙ¤…øJ&­
+[±%ÿ;›¡~VªìqÈ2§¯ñ@íoÓvWí¶qa›-nÞâ·«µ”‚®kã†Yëºú¡›ngv"óª¹”†/óÖVBðæ›Ø¾ÕêŽuÿì—ÀWy
+«uø",ž—_b	qÄ`N¼bÅÑI‰q•K{žœA~œ[Ž"gL²¸EªÁÊÁ)ÿecÇ#¿LÙ‹2£Lód6óä¬p#æ¬ó‡<«83Ðl]8%A}ôƒC7¹!Ó`)˜´sûIMÕU‡ÖLÙ·uz]y-Ô{FB}5Ù/ù¶€~ª]Y^mKø6ÜuQw6\ÏÚ½PsLê}ßõÈô÷hŒ	>Ïny~8âÜÄ6÷½w¹,xŸ…ÿ³æ“ãÝlùJ‘in~‹cnå@OzyoqÎÉUÇ40ëL›:q±ËÞcm¯³€)ëãÖî0­ˆ»||…•F²½wí~ˆL»óÓ€ƒC3ô#2á¹[/48DóŽü©Ê»>ºêé™N#÷à?‘ù…?æøw²_ªñšÁ©úx'U°ýýà¯&ùñ¤#Ÿ²Ý: ¨(ýI„€K6˜„Êq)Æ…gŒ~ÁNÏX=+Ëbá™þ%á>"ÄÑ(@¸ÂD\ PX™^¡x"ì‘H”ï€ƒ(¢ˆÄ$*q‰Llbug¦(nðfR¬âò¨hÅ,ÿî/%Ôâ*NæÅ0vŒb,c÷ÐÐE3Î‹j4cý×F5¾±‡qlã=XG7’1b¼£ù¨G6ÒŠ~Ò û¸ÇC2‘Š”b!©ÔH->Ri‘Ìâ$­VÉE
+2“hd$';¹ÉO–á’\%=iJ2Rl©d*[)DWÂ”²œ¥Vé6[Žò•ºä.éÖK1üRrÁ&/‹‰…az™±<¥eèÈc²LU^T¦«Ù¯jJók!-š[vËšÄÌ++ØtNÁ$älµ¼©JxúVíÌ· )Ì9pñõ,§ÿ™DFQó< -(Ë41ƒ*TŽQÅ@
+Q†&4³¢}b³ÊÕ²Šjô•e6G9Î}~ªŸ x§ó‰Q’’°eŒÄg:ë%OOXE¥F‘MöÑ[:œ;ç>ÔéËmŠT@½¡P™)…›Î©_Pª[˜ê§BªA%U×yÔ«2AªOÑªQ­êÕf5¬+Y/hÖ³ú"­jE[[ß
+×¸Êu®t­«]ïŠ×¼êu¯|í«_ÿ
+ØÀ
+v°„-¬a‹ØÄ*v±Œm¬cÙÈJÖ®  ;_Hhttp://facweb.northseattle.edu/cl_djinguji/csc142-w14/images/ellipse.gifObplist00ÔabX$versionX$objectsY$archiverT$top † ¯"()012HIJKLMNOPQRSTUVWX[\U$nullÝ	
+ !R$6S$10R$2R$7R$3S$11R$8V$classR$4R$9R$0R$5R$1€€€ €€€€€Ó#$%&'WNS.base[NS.relative€ €€_Hhttp://facweb.northseattle.edu/cl_djinguji/csc142-w14/images/ellipse.gifÒ*+,-Z$classnameX$classesUNSURL¢./UNSURLXNSObject#A¸£Ô«êÙ¾ÈÓ345>GWNS.keysZNS.objects¨6789:;<=€	€
+€€€€€€¨?ABCDEF€€€€€€€€€VServer\Content-TypeTEtag]Last-ModifiedTDate]Accept-Ranges^Content-LengthZConnection_Apache/2.2.15 (CentOS)Yimage/gif_"19a805d-6e2-4f168a5d5fd00"_Sun, 02 Feb 2014 09:01:08 GMT_Thu, 06 Feb 2014 14:33:15 GMTUbytesT1762UcloseÒ*+YZ\NSDictionary¢Y/âÒ*+]^_NSHTTPURLResponse£_`/_NSHTTPURLResponse]NSURLResponse_NSKeyedArchiverÑcd_WebResourceResponse€    # - 2 7 V \ w z ~  „ ‡ ‹ Ž • ˜ › ž ¡ ¤ ¦ ¨ ª ¬ ® ° ² ´ ¶ ¸ º ¼ Ã Ë × Ù Û Ý(-8AGJPYbdks~‡‰‹‘“•— ¢¤¦¨ª¬®°²¹ÆËÙÞìû)Gg‡’˜ª­°µÉÍáï             e              Ô'()O¬GIF89aWà ‘  ÿÿÿÿÿ™      !ù  ,    Wà  ÿŒ©Ëí£œ´Ú‹³Þ¼û†âH–æ‰¦êÊ¶îÇòL×öçúÎ÷þ
+‡Ä¢ñˆL*—Ì¦ó	J§ÔªõŠÍj·Ü®÷‹Çä²ùŒN7ì¶ûËçôºýŽÏë÷ü¾ÿ(h7"@Æ¦–b¨²(Ô&  ð˜X¸‚è()9YYBù‰ÊµÉ)êùAZØ–	É	Û™ªÊØ:ú»:k±âæÚeš{ÊËá«úvë5L,‰lü Ý·\êL<½ ½ÔíÔŒ]¼]žñýƒ¾4N^n.ÁÞ«î3äþ~zŸÊ?1·nK>}ðâ­¹ä¯EÂ!	4¨`á?‰Œ²4tøâŠÿP¼rcF!x´R$Æ’aX:8ÙÃeŽ*GÆ“É &œ6hÖÜ§Ñ ÏˆCUñùSWÐ¢tî`
+iR¥¡
+µJŠÔ©6gauª+‹­\»zú*Ö›²eÍ&BË0
+Û¶nÓÀÖd.ÝºgîZË»·,Ø¾ãŠL7í¿à#Nìµ0Þ$zçRL„ñÇv–cžlb0ŽÏ *w¾\I3J%¦O£V£:&k×–IË®ex1íÎ¢KIþ[¤õng¶gþn¬{øéâ7bïL®|yçONŽ9êaƒc®]wã™¿ƒ×t|ó(óÊÃ¿?š!ûè½×¦_nþw÷—îßÿÎ¯vü)âßs ( o¸‚ìZÕÙãà|’pa
+U¡~––…ZøaVoÅ4"‚%ªuâS):¸b:!6ø"ŒZ…#7.Öh£}Ö×ÝL<v˜#<ÙbC)ŽøŒ¶dŠEvääbÍEù"êý¢e|=aYã”ý(æF_‚&GvÙœ†hYfk.¢râ½¹dœf’@=ÿE…g”zö‰#@øhžO’‰
+0ºp]¢Ò%É(Q’©¤Ë‰9')H	©¦oN9gNlö÷ž¨£æ&Â§MZQ¨ª®
+\i:¹êåX³c©ÜÀJ ®»òjg«·‹‚X™ÿÛÞ–¶®‚k›—0+é¥UZúhhÔjŠl„|þº¡UËn› ¨ÆBÛ­·'ŒKn¹¹Ú¥H»³8èºÉÊ»+õª‹!¾Ãº·ï'ÚúûoO3B0µésp«	o[\Àöû0Äâ5¬JÅíb*¡¹°«±ŠQuL^i!Ë‹|Òf|2Ê’üî1-û›–Ê<3ÁËóÊÞäü°¸=ß,3Ð	Ce³†Ô]1SIoW4ÓAÛ»`­çHòPOÏàÈXóxäÐJ§óõÉ8m}1^—¶KhÇpÏÚlÃiTÕÅþ37Ð%½=r/yëM‹ÝÎšô·ÑñýÞÕ…n¢"E†#÷âX.„øËòÿHŽuB•+„7æR»ùX—{þuÜbCM8éeÏ:ª/©>7;­Çú:ìl£3{°kØž7ä§s];ï±ÿó{ÚÜ_xo¹'›ò’CSƒ÷éüóÒ¬kh¶ÔWoý˜¡ùi`SÜ{¾‹ÓàO¸Ñø¤C›ìùæF®~Á9î¨zðÇŸïüí×ßýøçûqEkBþûŸüE¿¢€”Ÿ wÆ<60ËÃÞ‘A“<nì ?ÂŠp„$Ôƒ%‚‚BÂ&…(”Ø	YXŒÁp.lÕcØ¢š£†uÓ!eèÃ~ 1ˆC<£ÁC‘IÜ…˜Ã'qM”¢WhÅ)ÿ¢'‹QDC¹È°.‚q:Z#3ÊhFa1d#!Æ7bá‹a”ã×hG8º1‰#§@GýñŒ{$HühÈ'R‹LF#EWH»dÐˆ‘ôâ$©ˆHM\òŽð2Æ I’É–l²%¡„&ê„C<öîód)¿@ƒ<òÐ›ÿøçEïuÒT³”®>IE˜ôòà¦@¢eLSºj˜F’S+…q,fÊ£B™Q	¯	Bpñ²˜Øì&U(IoŠ3Ú,§3Ç‰N@¤&ì4!¶ÌùªvÊ“ÒäYŸ¤wˆh¾…šàÌe<Q©IO%–¸¬'•,5Ð9þr”jæ
+’[BT}ºôçKl‰Ï›¼’¬ä§F+Ù—Sâr‡Mä¢TiÒC‚4¥Š,)K3ãÒ—2¨2µ‚AMRS•¢4§P¸éõxz£•ÕJBjpŒŠÔ¤*u©LmªSŸ
+Õ¨JuªT­ªU¯ŠÕ¬ju«\íªW¿
+Ö°Šu¬d-«YÏŠÖ´ªu­=(  ;_Ihttp://facweb.northseattle.edu/cl_djinguji/csc142-w14/images/triangle.gifObplist00ÔabX$versionX$objectsY$archiverT$top † ¯"()012HIJKLMNOPQRSTUVWX[\U$nullÝ	
+ !R$6S$10R$2R$7R$3S$11R$8V$classR$4R$9R$0R$5R$1€€€ €€€€€Ó#$%&'WNS.base[NS.relative€ €€_Ihttp://facweb.northseattle.edu/cl_djinguji/csc142-w14/images/triangle.gifÒ*+,-Z$classnameX$classesUNSURL¢./UNSURLXNSObject#A¸£Ô«ê®KÈÓ345>GWNS.keysZNS.objects¨6789:;<=€	€
+€€€€€€¨?ABCDEF€€€€€€€€€VServer\Content-TypeTEtag]Last-ModifiedTDate]Accept-Ranges^Content-LengthZConnection_Apache/2.2.15 (CentOS)Yimage/gif_"19a805c-6ac-4f168a5d5fd00"_Sun, 02 Feb 2014 09:01:08 GMT_Thu, 06 Feb 2014 14:33:15 GMTUbytesT1708UcloseÒ*+YZ\NSDictionary¢Y/¬Ò*+]^_NSHTTPURLResponse£_`/_NSHTTPURLResponse]NSURLResponse_NSKeyedArchiverÑcd_WebResourceResponse€    # - 2 7 V \ w z ~  „ ‡ ‹ Ž • ˜ › ž ¡ ¤ ¦ ¨ ª ¬ ® ° ² ´ ¶ ¸ º ¼ Ã Ë × Ù Û Ý).9BHKQZceltˆŠŒŽ’”–˜¡£¥§©«­¯±³ºÇÌÚßíü *HhˆŽ“™ž«®±¶ÊÎâð             e              Ô+,-O¦GIF89ax‘  ÿÿÿÿÿ™      !ù  ,    x ÿŒ©Ëí£œ´Ú‹³Þ¼û†âH–æ‰¦êÊ¶îÇòL×öçúÎ÷þ.ø	‡Ä¢q<*—Ìæ*éŒJ§T	´ŠÍj•×­÷¶uÃä²™4>«×lJºÃßòº=L¿ë÷Ò<ÿXäHXˆ3h˜¨ø‚¸èøˆ)9™ÒHy‰a™ÉÙ‰°éz	*Z
+IjšjˆªÚÊ& +ëZ[8‹Ëj»û•K Ë+Œå›<Œåû™Ü|¶Ìì,íU<v<}ƒü›p“kÐ­ðŽŽ2þIwžþ.²mþào¯!QÏ?‘Ÿ±¯Ÿ@$ÿ <8¢à†€ù)äÀ°á»‡"JÌ¶.ÒÅÿ2š°ÈqÅ„!Kr“å¤ÉT#O¨\ÊcJ˜[ªxI“’M8s:ÚÙ¢§ÏU@gu&óÐÑfEe]Z§éŒ§PÛH­Aµª™¤B²jÃ•ˆ×¯Z®êK–ŠYhÓ6YÛ£­Û#aÈ;nW¼·fááûG¯‘»€Å¦[-±âÅŒxñ“Ç‡ü> @(,Ê4"Æ óÍÍœÅYÞ
+:´èJåJ³>M–êÙ=Qºm»ŒìÙ´q&ëYljÞªq¿M0wìáÄ‹¿n¼CÝ,»›7~ùtbÌ­÷V—Ýuø¸Ý½ÿ¸=:„ñqÍ»YL½>ØxÊ»?^>†ôjíßÿÇïÒo%±„ÿˆž~nÐ×‹"Xi
+ÒÃ 5>!N£üõq!†&´!Sa}¨Lˆ"ŽO‰ÈT“œ„`©¸"‹!È˜rž¤5ÚŽ|AGd?þ¨™‹¼@GŽõyd’”19”PJù•kTgeX¦%j]ZùeŽNŠ9&™O(¹K˜¦9f™Cžéæ\ÂyåšœYçgxÂ)çœ2îø–Þ¨ Ð¤xèŸ‰Båd|Œ6ê¨žiQI O†Rzà£>UX§”z
+S¦Úl*j§–…"w¦Š'©!™Šª°>(ëE´vfë­¸®ºÒ®Sõêë¯£•*l¯ÿÛh®ý´Ê±Ìbèì=Éš6m±ÕNjÙ2»m8×2"í·+†‹´t™›-ºÒŒ›R¹ìž¬µÝN±ì¼°²i"¡Uä«ï¾ÚÁ«iÀìò»$Ák</Â¶(<Ãú:Ü
+Ä¬I0Å¦XÆ[Ô§0ê
+ç1Ã Ÿ™ÌÈyÉ[rš'k\Ÿ¿ø¶ŒñËéÞ;)Í&GˆòÃ8ÛÅ²Î€ò3w?»´ÐCkhŒÌžpŒžÒ-Û¬r"Pó,5Í/KÓÑv&u¥L²ÕW“¶Ð[›ÓsJVíÀiï<vr‚¸í5bsKm³Ýbêt¡{gÝ7ÛEÃkàHváÞ´í¶SgÇÃxÚŽÿ³s8âä*þuå–í!ä‘•·ŸžÎtŒ\¬Éy´§ï½öã™“ó\Ù‚€ýú­[_ÑúYè•Nrîƒï÷TDÛ¼ðÃƒ^|g-ö~»òž÷<AVßîÒƒ;Št“ ÷ö„w¿öqk/þ´³k³^èÐ‹•¾ðë‹A¡áÈ¯¿ü™äÑMóxç¯¼ùÑÏ}Að_e (=Pv‹òX/|Ùï{AßA	bÎ|ä¹`úÜ•—rð,ô`Ã2¨AÈ„ùa“3~…øRÌâd@®†\ÀáuÂ•Ð‡£¡WHÄñˆ7L¢Á9Ñƒ@ü›Þ¦hÂ*ÿ1yX¤âÕ‚¿.ÊP‹[dËÅ8µ/‚±@h$"Ëh˜6&ñpœŠHÇ½ÔêŽxTã¿†ÅÇ)æQä
+$IÈ…ò~ü£"ÉH(ª;D#"‰¶JZ²‘ÄÐ&åxILzï“w¥(!CJ>šòß_*ç êf!¯4¤JTøTÖ2ð1 ],àÊ]ö1–#|Ë‚„ÙFY’ˆ‚<ÑÄ‘9·î`ç}ìÈ3¡ÍëÔN	6U©ÍçD…mßäe8Á#º¿4©œ¶<'1íPÀk²“qÒä$Xæ	ÉzJ2*é§?ÿ	Ð€
+t -¨AŠÐ„*ó”ŠRªŽ‡Bôÿ#¨FRfÑU4£7Ú(GÁçÑJ'¤"]IKj¦ ¤*]éH[êR“Â4¦)Å(MñqÒ›Z!§:mßL{êžµÜtÕP)Ô£Îã§J¥GR›z€¢Ú	ª;e*U‘ðTªJuuWuªU»›‚ÕCY…êV9V²~5­gLZÕ*Ö·†õEr]j\ëª¹»š­˜qhëÝÁÃS”U6”„_­Ø~
+‰š³„+]‰šÎ½á~=JÃaëxÊ^æ²égYÉ@ÆV6²“ÌÇgãÖ$…ªvµÛÁ¥YÛØ)²­­j!ëÚ¨Úv·«¥-o+PÚ†IÀ-î@óúØÀÎ¸¤wÝlnN—ÐjVˆ“m.jZ]¶ÄÈºÔ‰ÔtgdYž~·†d­:±ºÖ¨Â³°È®õŸñ¾b°ŠíwûJß£º×wxUozÁºßÑõ¹"0íþÛÕ +ÅÀ
+fƒó;Ô/°¿ÆŠ	|ákxÃî°‡?b¼  ;_Nhttp://facweb.northseattle.edu/cl_djinguji/csc142-w14/images/rightTriangle.gifObplist00ÔabX$versionX$objectsY$archiverT$top † ¯"()012HIJKLMNOPQRSTUVWX[\U$nullÝ	
+ !R$6S$10R$2R$7R$3S$11R$8V$classR$4R$9R$0R$5R$1€€€ €€€€€Ó#$%&'WNS.base[NS.relative€ €€_Nhttp://facweb.northseattle.edu/cl_djinguji/csc142-w14/images/rightTriangle.gifÒ*+,-Z$classnameX$classesUNSURL¢./UNSURLXNSObject#A¸£Ô«ëc²ÈÓ345>GWNS.keysZNS.objects¨6789:;<=€	€
+€€€€€€¨?ABCDEF€€€€€€€€€VServer\Content-TypeTEtag]Last-ModifiedTDate]Accept-Ranges^Content-LengthZConnection_Apache/2.2.15 (CentOS)Yimage/gif_"19a805b-7a6-4f168a5d5fd00"_Sun, 02 Feb 2014 09:01:08 GMT_Thu, 06 Feb 2014 14:33:15 GMTUbytesT1958UcloseÒ*+YZ\NSDictionary¢Y/¦Ò*+]^_NSHTTPURLResponse£_`/_NSHTTPURLResponse]NSURLResponse_NSKeyedArchiverÑcd_WebResourceResponse€    # - 2 7 V \ w z ~  „ ‡ ‹ Ž • ˜ › ž ¡ ¤ ¦ ¨ ª ¬ ® ° ² ´ ¶ ¸ º ¼ Ã Ë × Ù Û Ý.3>GMPV_hjqy„‘“•—™›¦¨ª¬®°²´¶¸¿ÌÑßäò%/Mm“˜ž£°³¶»ÏÓçõ
+              e              "Ô/01OÅGIF89aWà ‘  ÿÿÿÿÿ™      !ù  ,    Wà  ÿŒ©Ëí£œ´Ú‹³Þ¼û†âH–æ‰¦êÊ¶îÇòL×öçúÎ÷þ
+‡Ä¢ñˆL*—Ì¦ó	J§ÔªõŠÍj·Ü®÷‹Çä²ùŒN7ì¶ûËçôºýŽÏë÷ü¾ÿ(h7" &ÁÀva¨â(É¸`©(9™i²©©Py9ê	zÀIÒ6„z(:úŠijÀ*âö	ê
+«[:IbäK–«[Ûû¨ÌHlìÌ‹&ì·œÖìŒ}B$Íu-=öÍçm.Î®]ÎÝícnµÞnOî5Ÿ!—.&`0›¾)/ÌùQðI½€ñiIˆÁáˆK2¼(‘ÞŠŒÿ9("±x1¤»,+pÄQ’H‘,O*Ü˜r#É,k¶sÉ$&"Ü®¬´	t¤žpÖ Ú‘fÐ¥ìŒAêÀé¨G•2½:Ž*­”¸ÖŠò«X©ýà­RhU¬Ú¦^[´E@6Æ[xkë6œ‹o€¸0ô¦Jk7pÖŠ0Ï&,8±@%zù¾ð"¬bÅŽ§¾¥ñäÍØ*÷½\-’fÎ¤ŸAÞÐøô>Ñ¥[ßÅœWuDo£]Û6æ¹g2Ã<$ßþ»è²IÇ(»èp„:|.tëry(kC¿nåôÉ7YÇww¸Û{oý>}±à¨ËOœª>>FË»a»E/?ÿ+öÝ7ÿŒŸ~’¢Zj¼%3`‚¯±` }¨`„—ð§\}¡=(a†žÐà……@¨aˆ–PH‰•àœˆ!’Hž…Ä}¢Š*²¸—‰ÚE¢Œ:î‡T‡/jãŽBòç#sçä(d’°7w¨!©d”<¶×
+R^Y“GD±t¢APb	æˆm)R—f˜d‘’™|™fœêÃæEnF§œzŠ‰\Þˆçž‚f)MÝéÝ Š•Ÿˆè,y.Jit5~À#¤€ž2i¥ž’chí¸‰¦§¦òyŠ£sjzƒ#¥ž
+ë1¡®”T§±ÞŠÉ¬¬Ú`+®¾‚@¦£V×«¯¦*ó€9Âÿæ**,]¾jì¢ž|ã’°s¼Bj±ÑÆÉK¡Õ>êŠØn*é¶æ¢Ú"ž'e
+˜¸—Dº—¶çêè·ë>ºž+ð–;ï±¾Ø+Í²KêKnWýJ[h²o< pÃû&z°œ8	ãûnÁQEœ&
+/ÜÀÅ«Žò°ÁG)Å+ ²˜V•Ì ´'×¿è„ŒñÀ/k¼ÓÌ+RdóÍ´œ+É<O ³Ï”•Dí7D7k	Ìo*“oFð4Á­Â(/ÕKy5Yï¼5Ž^?GbÓXçìðÑ@v}6@4ª-v™n£wi\ÑÍ°Ýeÿ•÷ÒÂå´ß¼Æx]4nvßmÞÍuâW-Jãÿüù7]’3*ák?ž9‚›3Dù–GÔ$Ò}ÁÝoéPÓéÔÉÅz´®'k@ìž;èBÒ¶7éÈˆÏŒœ±ÂÊPû©©_*<nÍ+R<žÇ#Ÿ<Âe?¿ô¤D½»‡ç%~»I¹Cõ„Ú›€ìN6W½šË3;&èc¿}úÝÿØjû(¿_yüi)…¥¨Ï<òÐ½øW"ÿíg~à{hs®ðc|ÿcàù¸g<ÞõÆ€
+’`‚wAíUp\ôB8X5Vˆ~4±
+bøŸ§(ï ! ‹C©M…Øñà/(¸ÀóÅƒÒÓ köäÃ¯Äo=âÈ!ä Ø1Z „†[ƒcæßÿ]'‰(_cvÅf‘‡‰áâàJ¸0ö
+Zl9äÄûi(dœœG4Î‘ u´É‘Ç"š,	ºãiÅéñ1…$A$I…6å½sdW YIŠ„’±d(™ª|ôq`_à[1‰M¦D*gÂNJŒü@ÚAfWÊò(V¬åN|IÀ2¨r—‡ë%ÈÎ$´õu dºŽiË•=0Ú"¦Û€ùKhÓ²fÉ¤™Moš®_ç7µMdá’œrk&òW`à¯è1ç6i©%u®Óá°§2ù6®QüšAÓ%ÈSÿèù¤Ubÿ¢­¨E/ŠÑŒjt£z(ÄAÅøÑPªÁÓé,˜aR„š”¤ÎLéI]z©‘Â4¦)eiç\jÓ'–r¦²	
+}d
+ÓžÞ„xDìd•‚Z¡ÜãyÌË8ŠSu`©#„*rª›¨~RžŽÍ«}bÕ©H…K21uAÒ}V•çXáXVŽ‘©óàªäŠŽ·ž±¦x«ëº$põœÂäé`ß°½†¦5ˆw=ì"ôÚÅ¸ÒaªæSìëg4Å²©à©w»ÆªÕ‚Eý‹XQZÖÏêÓ¢Å¬f¬
+Òm¤¶+Tim]áPZbñ¨Z}RÒÄwò¶¦0ð©p¡JÜÙÊv¦Êÿ]&s=;Üç†”³º•îJQkÝéb7»¥®¹ÛÝíŽA,šðîÍ@^dDWé¯sÑ‹•òº7k™oaáÛ^kØ÷õ]¯:ÎÐ_ä.—:ÛE3Êg?¿·nðÅöûÜeÁÁl#jn·@óFFª¦0³þGàCÃ0¢íj©``#Á	.%Wi:àx6
+ù`" Æâ‹ò˜$ž†¤d;Ôxd8>pœ/ÉL–Ã]V4(ë¬ÉT>ë’«\eñ4T¢Êñ‡±Le%ÿWÆØ¬‚–£\4/‹˜Çâ-3Š‡\ä-¿6Úìñ!·zâ)˜fÅîÒÅšc»`ÚjaÏ¹@,–éüTýJ1rm ì ï9ÅÎ€4¢ñûd¢]x–ÞB€­`úª¥Ó;EC~chÇ×¿÷•ôUH4œ:Õ´ïªCÝjðÊÂÎÔ5AyM%_óÖÂŽt±ìd+{ÙÌn¶³ŸíhK{ÚÔ®¶µ¯ílk{ÛÜî¶·¿îp‹{Üä.·¹Ïît«{Ýìn·»ßop  ;_Hhttp://facweb.northseattle.edu/cl_djinguji/csc142-w14/images/rhombus.gifObplist00ÔabX$versionX$objectsY$archiverT$top † ¯"()012HIJKLMNOPQRSTUVWX[\U$nullÝ	
+ !R$6S$10R$2R$7R$3S$11R$8V$classR$4R$9R$0R$5R$1€€€ €€€€€Ó#$%&'WNS.base[NS.relative€ €€_Hhttp://facweb.northseattle.edu/cl_djinguji/csc142-w14/images/rhombus.gifÒ*+,-Z$classnameX$classesUNSURL¢./UNSURLXNSObject#A¸£Ô¬mÈÓ345>GWNS.keysZNS.objects¨6789:;<=€	€
+€€€€€€¨?ABCDEF€€€€€€€€€VServer\Content-TypeTEtag]Last-ModifiedTDate]Accept-Ranges^Content-LengthZConnection_Apache/2.2.15 (CentOS)Yimage/gif_"19a805a-8c5-4f168a5c6bac0"_Sun, 02 Feb 2014 09:01:07 GMT_Thu, 06 Feb 2014 14:33:15 GMTUbytesT2245UcloseÒ*+YZ\NSDictionary¢Y/ÅÒ*+]^_NSHTTPURLResponse£_`/_NSHTTPURLResponse]NSURLResponse_NSKeyedArchiverÑcd_WebResourceResponse€    # - 2 7 V \ w z ~  „ ‡ ‹ Ž • ˜ › ž ¡ ¤ ¦ ¨ ª ¬ ® ° ² ´ ¶ ¸ º ¼ Ã Ë × Ù Û Ý(-8AGJPYbdks~‡‰‹‘“•— ¢¤¦¨ª¬®°²¹ÆËÙÞìû)Gg‡’˜ª­°µÉÍáï             e              Ô345O3GIF89aWà ‘  ÿÿÿÿÿ™      !ù  ,    Wà  ÿŒ©Ëí£œ´Ú‹³Þ¼û†âH–æ‰¦êÊ¶îÇòL×öçúÎ÷þ
+‡Ä¢ñˆL*—Ì¦ó	J§ÔªõŠÍj·Ü®÷‹Çä²9+8«9‚¶ûËçôºýŽÏë÷ü¾ÿ(8x7’¶Fqˆ(¡ˆÒô¸Øà&YÒ6tY‰  à¹ÉiB)DZéù	ð)Ê€úñvêª ºÊ
+‹˜Û!´{f{‹KÛ©ÒI<ÊºÜšü«çû¼Ì\=L!LÛŒ{íª!×-úîŒžbþCî•®¾ßeŸøîƒ¯5O_ßîxœüý˜jE¦Y©ÖU3Èn¿
+§I‚(ÌaÄ5ÿóiº¨ñaHfvT(q¤5•ÍœdôÒ.–CÆ|róAÅs.iÖ´ÉÑäG`>&”aŒá˜^Ë©ê$©$¨qú´(É¥I-ŽÁšU«81Vk•-ElX±-åuåùEíZ¶gášØI0ŒÜ¹tÉ¾Í—-ß¾`êÀ»¯°àÁ„Ý3ìrŽ½õ?û7ñ=ËŒK¾!qÏ5(;4pKhÒÑ¸ ®Ìù²êÌ£UÇnz[6Ú<XÃx}:·î+«‡Þ9¶oÅ•V®úi,Í½R‘ùð)ÕíBÁž]ûC+ÝsŸ<÷rc¼w¬w„>½úçíu¼¿_þ|îõ'ŸÿÏ/€[EQžfß	 ‚m-Q`m*hT|÷‰Ð`oB˜‘‚‚P¡{8a¸ˆFÖ#²bˆ":Ñ¡}M€WŒ>ØšDLÈ8cŠã1XRT:&ø#	š?ªdT=£VMÆ˜‘6HiÉ‘úiˆ„U¦\Å¤•WbÉeU¢YwŠ—_‚I„–cz·™g¢é\)kš‰›oÂÉ&/sX§@úIåjªS™~þ	hœîé <‡Þ‰!¡‡aÂ¨…Ž>Šè¡’0è(Çðé¦®ê¢ièÓh¨¢fª)¦Tª‰«²ÚjªrnÉ)®.ö6+­µz(&bºú§j¯>Jå —ÿ[¤}ÆúŠ,°†ŒÉì”Î>‹¤±Dv*h¥¿M†-´˜
+É­YÒø¤„áîhm°¯xûÂ‰éª»î€4”›@µ¥MY¯¸«Žˆo'ð2WZ¿þþ»¯»Ýž{¯Á#<CÀ‡ÜÂ}ó
+x1€Sº‰¾÷Ê±ÆoWñ’Ì<ê¸1lúm¼(§¬r¼&+ô2Ì1—lcÅ5Û|3J9Ó¼óÃá’Æ²Ì@íÎŸM°1Hó±L?ô4ÔQTb³TW-t¿†µH,~\wíµ#Y·‹ÉØV÷zØ&n­ö±A·}vÂUÅM¶Áe¹­5…xç­7&ulÈß€nÈànxÒqKÅ7Ú±4~¸ÃPÿEnwd”Wn9ZÇËæœw‹â O.ºã†Ç„9á(¦®úê$~®è°ŽòI­/¾AÈÿÞÎî6¦¯Ü;ð¸¿<Ñî§ocüñÈ×èÓøøÎvóÁS4|ËP_½õö&’½Ñyï¼ÒC†ßt"ä—o>ö´“	÷ÏÊ¯­ûÑƒÿúkWòÄ3¢¿ýñoþÓžN(ÀZ}8; Ù§ÀB½/O‡y`¹‹Šï¼ %x¿Úu¢ƒü Ú+[å‹„%4á+’BK	Š…-ta-*®†±C`ÇpÈXÑ[sàáõFD8ØeˆDÄ¿Ç©è}ÊVLl¢ÿöˆ¯ÿ)‘'U´bñÖÈL±Q]ôbI¨1zìmœzâ7Ê8²C¨‘bÄƒ£åFÃS1mxbMìG2‡„,¤!‰ÈD*r‘ŒÜCâ’ÉN-’”¼á$+‰É(^2“”dZ9‰IOò”œ¥ÏHYIS²•©œ+³áÊWŽ#–²,-kyË¯àò¹Ü¥T)5_DÂœå&‹ùË^"S—Ç\&WšéLf3šÓ¬&5‘Íkb&›Ú¼‡2»9n‚³ß'uÊiNò 3×Y';¥ L³yƒŽ¶çRè™{¦Ÿîç8ø©OoÎ3žÒ
+Ê@eIÐ»dc![le@É’‰òòÿ¡z±ƒC­ùÂ}âjŒ.™D.×Øa´0¢I¨àÌ5Rê0+¥÷˜¢I«’/‰Æ…Z }N_úÈFê‘{×²v
+ÔCjRA-ê zŠÔ˜u©¸SŸêHsùtaP­ªEqJ!OÅ°¢«éun:³9Üó§^åŽKcDˆ
+«¬f]ÖGÙÊ Oqô™‚R&V£aÑNö“¤§J+$ïÊ¡…Êq®ÞØë;YdØÃÞ(±ŠUE»ØÇBÖ±,qkÙ" ¶t™Ýd;«YÌ‚~­:M‹ÚÔªvµ¬m­k_ÛØÊv¶´­­mo‹ÛÜêv·¼í­oÜà
+w¸Ä-®q‹Üä*w¹Ì…@  ;_Rhttp://facweb.northseattle.edu/cl_djinguji/csc142-w14/images/isoscelesTriangle.gifObplist00ÔabX$versionX$objectsY$archiverT$top † ¯"()012HIJKLMNOPQRSTUVWX[\U$nullÝ	
+ !R$6S$10R$2R$7R$3S$11R$8V$classR$4R$9R$0R$5R$1€€€ €€€€€Ó#$%&'WNS.base[NS.relative€ €€_Rhttp://facweb.northseattle.edu/cl_djinguji/csc142-w14/images/isoscelesTriangle.gifÒ*+,-Z$classnameX$classesUNSURL¢./UNSURLXNSObject#A¸£Ô¬/ §ÈÓ345>GWNS.keysZNS.objects¨6789:;<=€	€
+€€€€€€¨?ABCDEF€€€€€€€€€VServer\Content-TypeTEtag]Last-ModifiedTDate]Accept-Ranges^Content-LengthZConnection_Apache/2.2.15 (CentOS)Yimage/gif_"19a8055-733-4f168a5c6bac0"_Sun, 02 Feb 2014 09:01:07 GMT_Thu, 06 Feb 2014 14:33:16 GMTUbytesT1843UcloseÒ*+YZ\NSDictionary¢Y/3Ò*+]^_NSHTTPURLResponse£_`/_NSHTTPURLResponse]NSURLResponse_NSKeyedArchiverÑcd_WebResourceResponse€    # - 2 7 V \ w z ~  „ ‡ ‹ Ž • ˜ › ž ¡ ¤ ¦ ¨ ª ¬ ® ° ² ´ ¶ ¸ º ¼ Ã Ë × Ù Û Ý27BKQTZclnu}ˆ‘“•—™›Ÿ¡ª¬®°²´¶¸º¼ÃÐÕãèö)3Qq‘—œ¢§´·º¿Ó×ëù$             e              &    1 < N d ‚ ™ ¨525<5B5C5Š5”55³7“7œ7Þ;é;òAÑAÛB%F.F7QñR;VDVM\1\{`„`gsg¾kÈkÑrrÍvØvá~‹~Ü‚ì‚õ‹¾Œ	—S—¨             6              ›¼

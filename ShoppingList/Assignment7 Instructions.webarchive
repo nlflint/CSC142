@@ -1,0 +1,349 @@
+bplist00Ò_WebMainResource_WebSubresourcesÕ	
+_WebResourceData_WebResourceMIMEType_WebResourceTextEncodingName_WebResourceFrameName^WebResourceURLO3<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>CSC 142 Assignment</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+
+<h1>Assignment 7: 
+Shopping List</h1>
+
+<h2>Objectives</h2>
+
+<ul>
+	<li>Use a partially-filled array to implement a simple list.</li>
+</ul>
+<h2>Minimal Version</h2>
+<p>Download the starting point for this assignment:
+<a href="code/ShoppingList.java">ShoppingList.java</a></p>
+<p>This is a simple shopping list application. This application will allow the 
+user to add items to a shopping list, review the contents of the list, and 
+remove all items from the list. This shopping list will 
+not persist between runs of the application. </p>
+<p>The current implementation in incomplete. It does not include any mechanism 
+to store the shopping list items. Your task for this assignment 
+is to implement storage for this application using a partially-filled array.</p>
+<p>A sample run of this program is shown below. (User input is shown in <b>bold</b>.)</p>
+<blockquote>
+	<p class="code">Welcome to the XYZ Shopping List Program.<br>
+	Here are the list of commands:<br>
+	&nbsp; -p : Print the List<br>
+	&nbsp; -e : Empty the List<br>
+	&nbsp; -x : Exit<br>
+	&nbsp; -h : Print this command list<br>
+	Enter your item or command: <b>pizza</b><br>
+	Enter your item or command: <b>milk</b><br>
+	Enter your item or command: <b>bread</b><br>
+	Enter your item or command: <b>-p</b><br>
+	Your shopping list:<br>
+	&nbsp; * pizza<br>
+	&nbsp; * milk<br>
+	&nbsp; * bread<br>
+	Enter your item or command: <b>-h</b><br>
+	Here are the list of commands:<br>
+	&nbsp; -p : Print the List<br>
+	&nbsp; -e : Empty the List<br>
+	&nbsp; -x : Exit<br>
+	&nbsp; -h : Print this command list<br>
+	Enter your item or command: <b>-e</b><br>
+	All items removed from list.<br>
+	Enter your item or command: <b>apples</b><br>
+	Enter your item or command: <b>-p</b><br>
+	Your shopping list:<br>
+	&nbsp; * apples<br>
+	Enter your item or command: <b>-x</b><br>
+	Thank you for using the XYZ Shopping List Program.</p>
+</blockquote>
+<p>Entries that are not recognized as commands are understood to be new items to be added 
+to the list. </p>
+
+<h2>Implement a simple list using an array</h2>
+<p>Modify the ShoppingList class to use a partially-filled array. You will 
+	need to declare an array of strings and an integer. 
+	These two pieces form the basis of the shopping list, that is, the 
+partially-filled array. The array will store the 
+	values, the entries in the shopping list. However, the array cannot easily 
+	indicate how many items are currently in the list. That's what the integer 
+	variable does. In the rest of this write-up, we will refer to this integer 
+	as "the counter". Similarly, we will refer to the array as "the 
+values". Obviously, these are not the names for the fields, since they have 
+spaces in them. You can choose identifiers for these fields.</p>
+<p>In the constructor, 
+	instantiate the array to hold 10 strings, set the counter to 
+	zero. </p>
+<p>Needless to say, you need to update methods of ShoppingList to use the 
+partially-filled array. To help you test your work, in 
+the constructor, "manually" add a couple of items to the shopping list. This 
+will allow you to test the printList and emptyList methods before you need to 
+implement the addToList. </p>
+<p>You need to set the value of the counter as well the contents of the array. 
+So, if your array is named 
+	<b>list</b>, and the counter is named <b>counter</b>, this set-up code would 
+look like the following:</p>
+<blockquote>
+	<p class="code">private void testList() {<br>
+&nbsp;&nbsp; list[0] = "pizza";<br>&nbsp;&nbsp; list[1] = "milk";<br>&nbsp;&nbsp; list[2] = 
+	"bread";<br>&nbsp;&nbsp; counter = 3;<br>
+	}</p>
+</blockquote>
+<p>Start by completing the <b>printList</b> method. Notice that the method 
+already prints out a "header line". Following this, the method should print out 
+the items in the list, one per line, prefixed with "space-space-star-space". If 
+the list is empty, print the textual message: "No items in list." </p>
+<p>You can test your implementation by modifying main as follow:</p>
+<blockquote>
+	<p class="code">public static void main(String[] args) {<br>
+&nbsp;&nbsp; ShoppingList list;<br>
+	<br>
+&nbsp;&nbsp; list = new ShoppingList();<br>
+&nbsp;&nbsp; list.printList();<br>
+&nbsp;&nbsp; list.testList();<br>
+&nbsp;&nbsp; list.printList();<br>
+	}</p>
+</blockquote>
+<p>This should generate:</p>
+<blockquote>
+	<p class="code">Your shopping list:<br>
+&nbsp; * No items on list.<br>
+	<br>
+	Your shopping list:<br>
+&nbsp; * pizza<br>
+&nbsp; * milk<br>
+&nbsp; * bread</p>
+</blockquote>
+<p>Next, implement emptyList. You can test your implementation by making a minor 
+change to main.</p>
+<blockquote>
+	<p class="code">public static void main(String[] args) {<br>
+&nbsp;&nbsp; ShoppingList list;<br>
+	<br>
+&nbsp;&nbsp; list = new ShoppingList();<br>
+&nbsp;&nbsp; list.testList();<br>
+&nbsp;&nbsp; list.printList();<br>
+&nbsp;&nbsp; list.emptyList();<br>
+&nbsp;&nbsp; list.printList();<br>
+	}</p>
+</blockquote>
+<p>This should generate:</p>
+<blockquote>
+	<p class="code">Your shopping list:<br>
+&nbsp; * pizza<br>
+&nbsp; * milk<br>
+&nbsp; * bread<br>
+	<br>
+	Your shopping list:<br>
+&nbsp; * No items on list.</p>
+</blockquote>
+<p>Finally, implement addToList. For the Minimal version, there is no need to 
+check to make sure that there is still room in the list for the new item.</p>
+<p>Since this completes the implementation. You can test the application by 
+restoring main to call the driver function <b>go</b>.: This is called a "driver" 
+function because it manages (drives) the application.</p>
+<blockquote>
+	<p class="code">public static void main(String[] args) {<br>
+&nbsp;&nbsp; ShoppingList list;<br>
+	<br>
+&nbsp;&nbsp; list = new ShoppingList();<br>
+&nbsp;&nbsp; list.go();<br>
+	}</p>
+</blockquote>
+<p>The application should work, as long as the list isn't over-filled. Trying to 
+add an eleventh item to the list will cause the Minimal version to crash.</p>
+<h2>Standard Version</h2>
+<p>This application should be designed to be user-tolerant. That is, user input 
+errors need to be handled. For the Standard Version, you need to enhance the 
+shopping list application to make it more robust. Currently, there are several 
+kinds of errors that the application does not handle:</p>
+<ul>
+	<li>Overfilling the list</li>
+	<li>Duplicate items</li>
+	<li>Numbered list</li>
+</ul>
+<h3>Overfilling the List</h3>
+<p>The application needs to be fault-tolerant. Update the driver method to check 
+for space. Before calling the method that 
+	adds an item to the list, check to make sure that there is still room in the 
+	list. If there isn't room in the list, print out an error message, rather 
+than trying to add the item to the full list. </p>
+<blockquote>
+	<p class="code">Enter your item or command: <b>one</b><br>
+	Enter your item or command: <b>two</b><br>
+	Enter your item or command: <b>three</b><br>
+	Enter your item or command: <b>four</b><br>
+	Enter your item or command: <b>five</b><br>
+	Enter your item or command: <b>six</b><br>
+	Enter your item or command: <b>seven</b><br>
+	Enter your item or command: <b>eight</b><br>
+	Enter your item or command: <b>nine</b><br>
+	Enter your item or command: <b>ten</b><br>
+	Enter your item or command: <b>oops</b><br>
+	List is full. Item oops not added to list.</p>
+</blockquote>
+<p>Test your application by trying to add an eleventh item to the list.</p>
+<h3>No Duplicates</h3>
+<p>Create a method that will search the list for a given value. This method can
+	return a Boolean value (Java type <b>boolean</b>).
+	Update the driver method to check for duplicates before adding an item to
+	the list. If the new item already exists in the list, report the duplicate and
+	do not add it to the list. If it does not exist in the list, add it.
+        </p>
+<blockquote>
+	<p class="code">Enter your item or command: <b>apple</b><br>
+	Enter your item or command: <b>apple</b><br>
+	Duplicate item apple not added to list.</p>
+</blockquote>
+<h3>Numbered List </h3>
+<p>Update the printList method to create a number list rather than a 
+	bulleted list. Notice this list is numbered the way people number lists, not 
+	the way computers do. (That is, it starts at one, rather than zero.)</p>
+<blockquote>
+	<p class="code">Your shopping list:<br>&nbsp; 1. pizza<br>&nbsp; 2. milk<br>&nbsp; 3. bread</p>
+</blockquote>
+<h2>Challenge version</h2>
+<p>For the Challenge option, implement the following enhancements:</p>
+<ul>
+	<li>Multiple-word items</li>
+	<li>Input validation</li>
+	<li>Single item removal</li>
+</ul>
+<p>The two extra-credit points for the Challenge version are allocated as 
+follows:</p>
+<ul>
+	<li>one for multiple-word items, checking for blank input, checking for 
+	unrecognized commands</li>
+	<li>one for single-item removal</li>
+</ul>
+<h3>Multiple-Word Items </h3>
+<p>Update this application to accept multi-word shopping list items. This 
+		will require you to update the delimiter used by the Scanner object. The 
+		useDelimiter method will allow you to change the delimiter character. 
+		You can use the newline character as the new delimiter:</p>
+<blockquote>
+	<p class="code">scan.useDelimiter("\n");</p>
+</blockquote>
+<p>Notice that this enhancement adds additional input validation. You will need to check the input. If 
+	input isn't blank, process it as either a command or an item for the list. 
+	If the input is blank, report the error. For example: </p>
+<blockquote>
+	<p class="code">Enter your item or command: <b>peanut butter</b><br>
+	Enter your item or command: <br>
+		Shopping list items cannot be blank.</p>
+</blockquote>
+<h3>Invalid Commands</h3>
+<p>In the scheme that we are using, all commands start out with a 
+hyphen. However, it is possible for the user to type an unrecognized command, 
+for example -w. The given implementation will treat this as an item for the 
+list, rather than as an unrecognized command. Update the driver so that, if the user types in something beginning with a hyphen that 
+is not one of the recognized commands, print out an error message, print out the 
+list of commands. </p>
+<blockquote>
+	<p class="code">Enter your item or command: -w<br>
+	Unrecognized command: -w<br>
+	Here are the list of commands:<br>
+	&nbsp; -p : Print the List<br>
+	&nbsp; -e : Empty the List<br>
+	&nbsp; -x : Exit<br>
+	&nbsp; -h : Print this command list<br>
+	Enter your item or command: </p>
+</blockquote>
+<h3>Remove a single item </h3>
+<p>Add a command to the menu that removes a single item from the list. This command 
+	shall be <b>-r n</b>, where <b>n</b> is the number of the item to be removed 
+	from the list.</p>
+<blockquote>
+	<p class="code">Enter your item or command: <b>-p</b><br>Your shopping list:<br>&nbsp; 1. pizza<br>&nbsp; 2. milk<br>&nbsp; 3. bread<br>Enter your item or command: 
+	<b>-r 1</b><br>Enter your item or command: <b>-p</b><br>Your shopping list:<br>&nbsp; 1. milk<br>&nbsp; 2. bread</p>
+</blockquote>
+<p>Create a method that will remove a single item from the list. This method 
+	will take an int as its parameter, the index value of the item to be removed. Any 
+	items in the list following the one removed will need to up "slid up" within 
+	the list to close the empty place.</p>
+<p>Notice that this command consists of two tokens. The numerical value will need to be verified 
+	to be an integer. It will need to be checked to insure that it is in the 
+	correct range of values. If the additional token does not pass input 
+validation, print out an error message and leave the list unchanged. Also note, 
+as shown in the Standard option, the user list starts at one (1), not 
+	zero (0). </p>
+<p>Update the list of commands in printHelp to reflect the added command. You 
+may want to add some spaces after the colon in the menu items so that the colons 
+continue to align vertically.</p>
+<h2>Report</h2>
+<p>One of the ways to improve is to reflect on past performance. Write a report that answers the following questions:</p>
+<ul>
+	<li>how did you go about starting this project?</li>
+      <li>what works and what doesnâ€™t?</li>
+	<li>what design decisions did you make?</li>
+	<li>did these test cases help you verify the correctness of your results?</li>
+      <li>the surprises or problems you encountered while
+        implementing this application</li>
+      <li>the most important thing(s) you learned from
+        this assignment</li>
+	<li>what you would do differently next time?</li>
+</ul>
+
+<h2>Submission</h2>
+<p>Two files:</p>
+<ul>
+	<li>Java source code file</li>
+	<li>ASCII report file</li>
+</ul>
+<h2>Grading Rubric</h2>
+<p>15 points for the Standard Version:<br>
+Functionality: 7 points<br>
+4/ Minimal Version (correctly handles the list)<br>
+7/ Minimal + Standard Version (plus, check for duplicate 
+items and more than 10 items; 
+numbered list)<br>
+9/ Minimal, Standard, and Challenge Version (plus, multi-word entries, blank 
+input, unrecognized commands, delete 
+single item)<br>
+Report: 4 points<br>
+4/ addresses questions<br>
+Style: 4 points<br>
+4/ conforms to the current <a href="00-guidelines.html">style guidelines</a></p>
+
+<p><a href="javascript: history.go(-1)">Back</a></p>
+
+
+</body></html>Ytext/htmlUUTF-8P_Fhttp://facweb.northseattle.edu/cl_djinguji/csc142-w14/a7-shopping.html¡Ô_WebResourceResponseOÜ.code
+{
+   FONT-FAMILY: Lucida Console, Courier;
+}
+
+dt {
+	float: left;
+	margin-left: 2em;
+}
+
+dd {
+	margin-bottom: 6pt;
+}
+
+.narrow dd {
+	margin-left: 7em;
+}
+
+.wide dd {
+	margin-left: 10em;
+}
+
+.verywide dd {
+	margin-left: 13em;
+}
+
+.right dd {
+	width: 3em;
+	text-align: right;
+}
+
+h1, h2, h3 {
+	font-family: "Arial Unicode MS", Tahoma, Helvetica, sans-serif; 
+}
+
+p, li, dt, dd, td {
+	font-family: "Times New Roman", Garamond, Bookman, serif;
+}Xtext/css_?http://facweb.northseattle.edu/cl_djinguji/csc142-w14/style.cssObplist00ÔbcX$versionX$objectsY$archiverT$top † ¯"()012HIJKLMNOPQRSTUVWX[\]U$nullÝ	
+ !R$6S$10R$2R$7R$3S$11R$8V$classR$4R$9R$0R$5R$1€€€ €€€€€Ó#$%&'WNS.base[NS.relative€ €€_?http://facweb.northseattle.edu/cl_djinguji/csc142-w14/style.cssÒ*+,-Z$classnameX$classesUNSURL¢./UNSURLXNSObject#A¸·¢{‰aÈÓ345>GWNS.keysZNS.objects¨6789:;<=€	€
+€€€€€€¨?@ABCDEF€€€€€€€€€VServer\Content-TypeTEtag]Last-ModifiedTDate]Accept-Ranges^Content-LengthZConnection_Apache/2.2.15 (CentOS)Xtext/css_"18e020f-1dc-4ef292e295180"_Sat, 04 Jan 2014 18:27:34 GMT_Fri, 21 Feb 2014 04:37:55 GMTUbytesS476UcloseÒ*+YZ\NSDictionary¢Y/ÜXtext/cssÒ*+^__NSHTTPURLResponse£`a/_NSHTTPURLResponse]NSURLResponse_NSKeyedArchiverÑde_WebResourceResponse€    # - 2 7 W ] x {  ‚ … ˆ Œ  – ™ œ Ÿ ¢ ¥ § © « ­ ¯ ± ³ µ · ¹ » ½ Ä Ì Ø Ú Ü Þ %09?BHQZ\ckvƒ…‡‰‹˜šœž ¢¤¦¨ª±¾ÃÑÖäóþ >^~„ˆŽ“ £¦¯´ÈÌàî              f                  1 < N d ‚ ™ ¨494C4I4J4“4•4ž4´6”66ß                           :ê

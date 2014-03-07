@@ -1,0 +1,53 @@
+Nathan Flint
+Lab9: Properties
+
+Get/Set Properties:
+===================
+Package			Class			PropertyName	PropertyType
+-------			-----			------------	------------
+java.awt		Button			Label			String
+java.awt		CardLayout		Hgap			int
+java.awt		CardLayout		Vgap			int
+java.awt		Checkbox		CheckboxGroup	CheckboxGroup
+java.awt		Checkbox		State			boolean
+java.awt		Component		Size			Dimension
+javax.swing		Spring			Value			int
+javax.swing		Timer			InitialDelay	int
+javax.swing		Timer			LogTimers		boolean
+javax.swing		SizeSequence	Sizes			int[]
+
+
+Multi-valued Properties:
+========================
+java.awt.Point
+	public void setLocation(int x, int y)
+	public int getX()
+	public int getY()
+	
+java.awt.Rectangle
+	public void setSize(int width, int height)
+	public void resize(int width, int height)
+	public double getHeight()
+	public double getWidth()
+	public Dimension getSize()
+
+
+Read-Only Properties:
+=====================
+Package			Class			PropertyName	PropertyType
+-------			-----			------------	------------
+java.awt		List			SelectedIndex	int
+java.awt		Menu			ItemCount		int
+
+
+Boolean Properties:
+===================
+java.awt.FileDialog
+	public boolean isMultipleMode()
+	public void setMultipleMode(boolean enable)
+
+java.awt.SplashScreen
+	public void close()
+	public boolean isVisible()
+	
+

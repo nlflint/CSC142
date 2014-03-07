@@ -1,0 +1,34 @@
+Author: Nathan Flint
+Assignment 5: Shape Hierarchy
+
+I approached this assignment by first reading the minimum requirements from
+instructions, and then reading the program source code. I saw some sort of
+menu and became curious about it, so I ran the program to see what it looked
+like. I was disappointed because I thought it would be a menu bar with graphics
+but it was just a terminal/text style menu. Then I proceeded to complete the 
+assignment from the top down.
+
+The biggest decision was how to handle the MyTriangle class after creating the
+MyRightTriangle class for the challenge option. I agonized over this, but
+decided to make MyTriangle an incomplete class similar to MyShape and let the
+two new triangles inherit from it. MyShape isn't very useful alone and isn't
+even included in the menu. I did the same with MyTriangle by removing it from
+the menu. This was risky, because I wasn't sure if I'd lose credit for not
+having MyTriangle in the menu for the standard version. I also gave MyTriangle a
+complete getArea() method. This method is not overridden by either triangle
+subclasses because they used the same equation for their area.
+
+One thing I wanted to do, but wouldn't work, was generalize MyTriangle. I was
+hoping there would be some nice way to do it, but, as was stated in the
+assignment, this isn't possible within the scope of the assignment.
+
+I didn't have any major problems while doing the assignment, but I did miss some
+info that would have helped me. I didn't see the question in MySquare before
+asking a related question on the forum. Next time I should read the entire
+source code and assignment, looking for questions.
+
+Q1: MySquare class: no getArea ... why?
+A1: 2. it was inherited from the superclass. The superclass (MyRectangle)
+already has a getArea implementation for finding the area (base * height), and
+that same equation works for squares too.
+

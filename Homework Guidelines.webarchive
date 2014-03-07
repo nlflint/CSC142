@@ -1,0 +1,242 @@
+bplist00Ò_WebMainResource_WebSubresourcesÕ	
+_WebResourceData_WebResourceMIMEType_WebResourceTextEncodingName_WebResourceFrameName^WebResourceURLO"-<html><head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Homework Guidelines</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+
+<h1>Homework Guidelines</h1>
+<p>Guidelines for homework submissions. Note: "shall" indicates requirements; "should" indicates goals. That is, "shall" appears in guidelines that need to be followed for full credit. Whereas, "should" appears in guidelines that are "nice to have"s.</p>
+<h2>Java Source Code Files</h2>
+<p>Programs submitted shall be Java source code files, unless explicitly 
+specified otherwise.</p>
+<h3>General Considerations</h3>
+<ul>
+	<li>The Java source code file shall compile as submitted.<ul>
+	<li>The name of the Java source code file shall end with the .java extension.</li>
+	<li>There is a compiler requirement that public classes appear in files with 
+	the same name.</li>
+</ul>
+	</li>
+	<li>The main class within the file shall be a public class.</li>
+	<li>The source code shall be written for Java SE, version 5 or later.</li>
+	<li>The compiled file shall run as a Java application which demonstrates all 
+	functionality for grading. </li>
+	<li>Submission of other files types shall be ignored. For example, compiled 
+	bytecode (.class files), .back-up files from the IDE (.java~), archive files 
+	(.zip, .rar, etc.) </li>
+</ul>
+<h3>Header Comment Block</h3>
+<ul>
+	<li>The source code file shall have an initial comment block.&nbsp; This 
+	initial comment block may be a JavaDoc comment for the main class in the file. </li>
+	<li>The 
+	initial comment block shall include:
+	<ul>
+		<li>your name (first and last) </li>
+		<li>the 
+	number and name of the assignment (for example: Assignment 1: Class Tools). 
+		</li>
+		<li>the level at which you want the 
+	assignment graded
+		<ul>
+			<li>for Assignment: Minimal, Standard, or Challenge</li>
+			<li>for Labs: Minus, Check, 
+			or Plus</li>
+			<li>Submissions without 
+			level indications in the initial comment block shall be graded at 
+			the lowest level.</li>
+			<li>Claiming a higher level 
+			than is evident in the work submitted shall result in a style 
+			penalty.</li>
+		</ul></li>
+		<li>optionally, a short description of the purpose of 
+	the program.</li>
+	</ul>
+	</li>
+	<li>There shall be a blank line following the header comment. </li>
+</ul>
+<h3>Commenting</h3>
+<ul>
+	<li>All comments shall precede the associate Java code.</li>
+	<li>All comments shall align vertically with the associated Java code.</li>
+	<li> The goal of comments in the code is to explain why something is 
+	happening or to explain the actions of a group of statements set apart by 
+	blank lines. </li>
+	<li>[week 2] Each class shall have an 
+	associated JavaDoc comment. </li>
+	<li>[week 2] Class JavaDoc comments shall 
+	include @author tag with the student's name if the student has written the 
+	class or made any changes to the code within the class.</li>
+	<li>[week 3] Every method shall have an 
+	associated comment. </li>
+	<li>[week 2] Each public method shall have an 
+	associated JavaDoc comment.</li>
+	<li>[week 2] Method JavaDoc comments shall 
+	include @param and @return tags, as appropriate.</li>
+	<li>[week 4] Each field shall have an 
+	associated comment.</li>
+	<li>[week 4] Every public field shall have an 
+	associated JavaDoc comment.</li>
+	<li>[week 3] Every constructor shall have an 
+	associated comment.</li>
+	<li>[week 3] Each public constructor shall 
+	have an associated JavaDoc comment.</li>
+	<li>[week 3] Constructor JavaDoc comments 
+	shall include @param tags, as appropriate. </li>
+	<li>[week 2] The JavaDoc comments shall 
+	appear immediately above the related resource: class or method. </li>
+	<li>[week 2] There shall 
+	be no blank line between the comment and the associated resource.</li>
+	<li>[week 2] The JavaDoc tool shall not generate any warnings or errors when applied 
+	to the submitted code. </li>
+</ul>
+<h3>Fields</h3>
+<ul>
+	<li>[week 4] The norm for variables is to 
+	make them local. The creation of a field shall be justified in the written 
+	report.</li>
+	<li>[week 4] The default access modifier for 
+	fields in <b>private</b>.</li>
+	<li>[week 4] All non-static fields shall be 
+	initialized in the constructors.</li>
+	<li>[week 4] No non-static field declarations shall include explicit initialization 
+	code.</li>
+</ul>
+<h3>Code Alignment</h3>
+<ul>
+	<li>Indentation shall reflected the 
+	nesting structure of the code.</li>
+	<li>[week 3] Each block is introduced by a 
+	line "defining" the block, For example, the method header or class header. 
+	The opening curly brace shall appear at the end of the line defining the 
+	block or at the beginning of the following line.</li>
+	<li>[week 3] The closing curly brace shall 
+	appear as the first "printing" character on the line and align vertically 
+	with the beginning of the defining line for the block.</li>
+	<li>[week 3] The code within the block shall 
+	be indented by a uniform amount.</li>
+	<li>[week 3] Indentation for each level of 
+	nesting shall be uniform within the source code file.</li>
+	<li>[week 3] The indentation for blocks shall 
+	be uniform, between 2 and 5 spaces. The default for many IDE editors is 4 
+	spaces.</li>
+	<li>[week 2] Blank lines shall separate the 
+	methods within a class.</li>
+</ul>
+<h3>User Interface</h3>
+<ul>
+	<li>[week 
+	2] When specific user input value options are given in the write-up, the 
+	code shall be written for exactly those options. Also, the order of 
+	queries for user input shall not vary from what is given in the write-up. 
+	Changed in the user interface will result in a style or functionality 
+	deduction.</li>
+	<li>[week 
+	2] When numeric output has a specified precision, the values shall not be <i>rounded</i> to 
+	the required precision. The output values shall be <i>formatted</i> to 
+	the required precision. Calculated numeric values shall remain numeric until 
+	they are output. The output values shall not be handled as strings <i>internally</i> to 
+	the program.</li>
+</ul>
+<h3>Other Considerations</h3>
+<ul>
+	<li>There is a lot of code available from many sources, most notably, 
+	the Internet. You are welcome to search for solutions to the programming 
+	problems, with the following caveats:<ul>
+		<li>The solution must conform to the algorithm specified in the write-up.</li>
+		<li>You must understand the techniques which are used within the solution. 
+		This includes being able to explain the code that was submitted or being 
+		able to write similar code to solve related programming problems.</li>
+		<li>The code will still be submitted to MOSS for similarity checking. 
+		Therefore, it is wise to take a "Gilligan's Island" approach to using 
+		code from any source outside of your own head.</li>
+		<li>Noncompliance will result in a score of zero for the associated homework 
+		activity.</li>
+	</ul>
+	</li>
+	<li>[week 3] All variables and parameters 
+	shall be used. That is, the value of any variable or parameter shall be used 
+	to support to generation of output (or return value in the case of a 
+	method).</li>
+	<li>[week 3] There shall be no <b>import</b> 
+	declaration for resources which are not needed/used within that source code 
+	file.</li>
+	<li>The <b>
+	static</b> 
+	keyword shall not be used in homework.<br>
+	Exception:<ul>
+	<li>the application method</li>
+	<li>[week 7] constants: public static final 
+	fields</li>
+</ul>
+	</li>
+</ul>
+<h2>Plain Text Files</h2>
+<p>Plain text files will be used when submitting assignment reports and other 
+textual submissions, for example, some lab write-ups.</p>
+<ul>
+	<li>The name of the text file shall end with the .txt extension.</li>
+	<li>The name of the text file shall consist of alphanumeric (a-z A-Z 0-9), 
+	underscore, and hyphen characters , with exactly one period at the beginning 
+	of the file extension.</li>
+	<li>The name of the text file shall not contain any space characters.</li>
+	<li>The text file shall have an initial comment block. The 
+	initial comment block shall include your name (first and last) and the 
+	number and name of the homework (for example: Assignment 1: Class Tools or 
+	Lab 1: Background). </li>
+	<li>The contents of the text file should include only ASCII characters. See Appendix 
+	C in the textbook. Alternately, if the character appears on a standard 
+	103-key keyboard, it should be "ok".</li>
+	<li>The contents of the text file shall include only "textual" formatting. 
+	These include space, newlines, *bold*, _italics_. The tab character should 
+	be avoided since the interpretation of the tab character can vary.</li>
+	<li>The lines should not exceed 80 characters per line.</li>
+</ul>
+<p><a href="javascript: history.go(-1)">Back</a></p>
+
+
+
+</body></html>Ytext/htmlUUTF-8P_Hhttp://facweb.northseattle.edu/cl_djinguji/csc142-w14/00-guidelines.html¡Ô_WebResourceResponseOÜ.code
+{
+   FONT-FAMILY: Lucida Console, Courier;
+}
+
+dt {
+	float: left;
+	margin-left: 2em;
+}
+
+dd {
+	margin-bottom: 6pt;
+}
+
+.narrow dd {
+	margin-left: 7em;
+}
+
+.wide dd {
+	margin-left: 10em;
+}
+
+.verywide dd {
+	margin-left: 13em;
+}
+
+.right dd {
+	width: 3em;
+	text-align: right;
+}
+
+h1, h2, h3 {
+	font-family: "Arial Unicode MS", Tahoma, Helvetica, sans-serif; 
+}
+
+p, li, dt, dd, td {
+	font-family: "Times New Roman", Garamond, Bookman, serif;
+}Xtext/css_?http://facweb.northseattle.edu/cl_djinguji/csc142-w14/style.cssObplist00ÔbcX$versionX$objectsY$archiverT$top † ¯"()012HIJKLMNOPQRSTUVWX[\]U$nullÝ	
+ !R$6S$10R$2R$7R$3S$11R$8V$classR$4R$9R$0R$5R$1€€€ €€€€€Ó#$%&'WNS.base[NS.relative€ €€_?http://facweb.northseattle.edu/cl_djinguji/csc142-w14/style.cssÒ*+,-Z$classnameX$classesUNSURL¢./UNSURLXNSObject#A¸£Ïé’«›ÈÓ345>GWNS.keysZNS.objects¨6789:;<=€	€
+€€€€€€¨?@ABCDEF€€€€€€€€€VServer\Content-TypeTEtag]Last-ModifiedTDate]Accept-Ranges^Content-LengthZConnection_Apache/2.2.15 (CentOS)Xtext/css_"18e020f-1dc-4ef292e295180"_Sat, 04 Jan 2014 18:27:34 GMT_Thu, 06 Feb 2014 14:12:52 GMTUbytesS476UcloseÒ*+YZ\NSDictionary¢Y/ÜXtext/cssÒ*+^__NSHTTPURLResponse£`a/_NSHTTPURLResponse]NSURLResponse_NSKeyedArchiverÑde_WebResourceResponse€    # - 2 7 W ] x {  ‚ … ˆ Œ  – ™ œ Ÿ ¢ ¥ § © « ­ ¯ ± ³ µ · ¹ » ½ Ä Ì Ø Ú Ü Þ %09?BHQZ\ckvƒ…‡‰‹˜šœž ¢¤¦¨ª±¾ÃÑÖäóþ >^~„ˆŽ“ £¦¯´ÈÌàî              f                  1 < N d ‚ ™ ¨"Ù"ã"é"ê#5#7#@#V%6%?%                           )Œ
