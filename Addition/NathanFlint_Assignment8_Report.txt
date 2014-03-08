@@ -1,0 +1,32 @@
+Nathan Flint
+Assignment 8: Addition
+
+I began this project by implementing the nice algorithm outline in the
+assignment instructions. Getting the minimum implementation working took about 5
+minutes.
+
+I ran into 2 design problems during this assignment:
+1)	The original algorithm broke down while implementing the standard and
+	challenge versions. The loop became very large and hard to follow, so I
+	decided to separate concerns. I pulled apart validation, printing the
+	equation, and printing errors. I created 3 main high level method for each
+	of these features, and used array to interface between the validation, 
+	adding and printing the sum, and printing the errors.
+   
+2)	Validating the comma formatted numbers proved quite difficult. I found a
+	nice built-in java class called NumberFormat which could format numbers in
+	and out	of comma formatting. It was very easy to implement, but there was
+	one	problem: the NumberFormat class was very generous about validation. It
+	would properly validate numbers like 1,0000 or ,1000,000 or 1000,0000. I
+	needed those numbers to fail validation so I had to write my own validator.
+	I decided to validate the arguments by breaking them down into "groupings"
+	between commas. I then iterated over the groupings looking for errors. There
+	were lots of special exceptions I had to account for, and it needed to work
+	for numbers without commas too! I did extensive testing to ensure only
+	properly formatted numbers were accepted. That was a time consuming process.
+
+Something I learned, is not to be afraid to deviate from the prescribed
+instructions (like the algorithm), but only if it's allowed. My alternative
+method of separating the features made the program easier to understand, fix,
+and test. In future projects, like to think about how I can separate features
+before I get started. It quite messy and confusing while switching algorithms.
