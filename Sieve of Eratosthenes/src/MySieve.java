@@ -49,8 +49,9 @@ public class MySieve implements Sieve
 
     private void populatePrimeCanidates(int primeLimit)
     {
-        // Make sure the list is clean
+        // Make sure the lists are clean
         primeCanidates.clear();
+        primes.clear();
 
         // Populate array using loop
         for (int i = 2; i <= primeLimit; i++)

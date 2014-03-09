@@ -97,29 +97,38 @@ public class SieveDriver {
     }
 
     public void printPrimes(int bound, java.util.List<Integer> list) {
-       System.out.println("The primes up to N are:");
+        System.out.printf("Here are the primes between 2 and %d\n", bound);
 
-       // Setup and iterator and counter for the loop
-       Iterator<Integer> iterator = list.iterator();
-       int numberPrimes = 0;
+        // Setup and iterator and counter for the loop
+        Iterator<Integer> iterator = list.iterator();
+        int numberPrimes = 0;
 
-       // Loop through list of primes
-       while (iterator.hasNext())
-       {
-           // check to see if current number is at the end of the row.
-           if (++numberPrimes % 12 != 0)
-           {
-               // Not at end of the row. Just print it.
-               System.out.print(iterator.next() + " ");
-           }
-           else
-           {
-               // number is at the end of the line. print number and print line.
-               System.out.println(iterator.next());
-           }
-       }
-       System.out.println();
-       System.out.println();
+        // Loop through list of primes
+        while (iterator.hasNext())
+        {
+            // check to see if current number is at the end of the row.
+            if (++numberPrimes % 12 != 0)
+            {
+                // Not at end of the row. Just print it.
+                System.out.print(iterator.next() + " ");
+            }
+            else
+            {
+                // number is at the end of the line. print number and print line.
+                System.out.println(iterator.next());
+            }
+        }
+
+        System.out.println();
+
+         // print ratio of primes found
+         printRatioPrimes(list.size(), bound);
+    }
+
+    private void printRatioPrimes(int primesFound, int primeCanidates)
+    {
+        int percent = 100 * primesFound / primeCanidates;
+        System.out.printf("%d%% of the numbers between 1 and %s are prime.\n",percent, primeCanidates );
     }
 
     public static void main(String[] args) {
