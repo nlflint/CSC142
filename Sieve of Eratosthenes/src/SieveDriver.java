@@ -102,17 +102,19 @@ public class SieveDriver {
     public void printPrimes(int bound, java.util.List<Integer> list) {
         System.out.printf("Here are the primes between 2 and %d\n", bound);
 
-        // Setup and iterator and counter for the loop
+        // Setup an iterator to get primes
         Iterator<Integer> iterator = list.iterator();
+
+        // counter tracks the 12th column to trigger new lines
         int numberPrimes = 0;
 
         // Loop through list of primes
         while (iterator.hasNext())
         {
-            // check to see if current number is at the end of the row.
+            // check to see if current number is the 12th column, the end of the row.
             if (++numberPrimes % 12 != 0)
             {
-                // Not at end of the row. Just print it.
+                // Not at end of the row. Just print number.
                 System.out.print(iterator.next() + " ");
             }
             else
@@ -131,7 +133,10 @@ public class SieveDriver {
     // Prints ratio of primes found to total primes searched
     private void printRatioPrimes(int primesFound, int primeCanidates)
     {
+        // Calculates percent has an integer
         int percent = 100 * primesFound / primeCanidates;
+
+        // Print ratio with nice text.
         System.out.printf("%d%% of the numbers between 1 and %s are prime.\n",percent, primeCanidates );
     }
 
