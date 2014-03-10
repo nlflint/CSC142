@@ -1,0 +1,43 @@
+Nathan Flint
+Assignment 9: Sieve of Eratosthenes
+
+I started this assignment by first trying the wrap my head around the algorithm
+outlined in the instructions. It helped that it was discussed in class. As I
+coded, I was afraid I wasn't following the assigned algorithm, but things
+eventually came together and my solution exactly follows the assignment even
+better than first thought. I also tried to integration the min, standard, and
+challenge options into one class, but that didn't work (See last paragraph).
+
+Implementing the standard version, after getting the minimum version working, 
+broke many things. I had a few bugs when my class was executed over and over
+again. For example: private fields still contained data and subsequent runs
+just added more, instead of overwriting. I would get very large lists of
+repeating primes, even outside of the bounds I selected.
+
+I also had a bug where some multiples were not getting canceled out properly. I
+found this by testing a few different cases, especially one where the sqrt
+of N was 11, eg. N=121. My conditional expression for comparing to Sqrt(M) was
+"<" rather than "<=" and that was the problem. Here are the tests that helped me
+find this bug. 
+
+N    Primes
+===  ==========================================================================================
+122  2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97 101 103 107 109 113
+121  2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97 101 103 107 109 113 
+120  2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97 101 103 107 109 113
+
+Originally, in the tests above, N=122 and N=121 failed and showed 121 as prime.
+However, I changed the loop significantly after fixing the bug, and the
+new loop compares using "<" not "<=". Oh well.
+
+One problem that I had was trying to do the challenge version while
+doing the minimum and standard options. I tried to write my original
+implementation so that it could take both an array list or linked list by
+playing around with generics, but that didn't go well. I thought of another way
+to do it, but then I read the rest of the requirements for the challenge version
+and abandoned that idea all together. The challenge option is done in a totally
+different class, so even if I did manage to integrate the min, standard, and
+challenge versions into one class, it would have violated the challenge
+instructions. Next time I need to make sure I read all the small print of the
+challenge version before trying to implement it first.
+

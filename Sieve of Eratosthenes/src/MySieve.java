@@ -53,7 +53,7 @@ public class MySieve implements Sieve
             // Remove all remaining multiples of this prime.
             removeMultiplesOf(primeCandidate);
         }
-        while (primeCandidate <= Math.sqrt(n));
+        while (primeCandidate < Math.sqrt(n));
 
         // All the rest of the prime candidates are primes, so add them to the primes list.
         primes.addAll(primeCanidates);
