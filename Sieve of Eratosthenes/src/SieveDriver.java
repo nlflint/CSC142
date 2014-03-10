@@ -84,7 +84,7 @@ public class SieveDriver {
            }
 
            // Input was invalid. print error.
-           System.out.println("Input not a positive number.");
+           System.out.println("Input must be positive.");
            printPrompt();
        }
        return inputValue;
