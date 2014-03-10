@@ -38,21 +38,25 @@ public class MySieve implements Sieve
         // fill the arrays with data
         populatePrimeCanidates(n);
 
-        // loop while there are still prime candidates to examine.
-        while (primeCanidates.size() > 0)
+        // will be used to store prime candidates one at a time.
+        int primeCandidate;
+
+        // loop while prime candidates are less than or equal to sqrt of n.
+        do
         {
             // remove the first item in the list.
-            int number = primeCanidates.remove(0);
+            primeCandidate = primeCanidates.remove(0);
 
             // it is prime, so add it to the prime list.
-            primes.add(number);
+            primes.add(primeCandidate);
 
-            // After we are greater than the sqrt of N, all remaining prime candidates will be prime
-            // so don't bother searching for multiples anymore.
-            if (number <= Math.sqrt(n))
-                // Remove all remaining multiples of this prime.
-                removeMultiplesOf(number);
+            // Remove all remaining multiples of this prime.
+            removeMultiplesOf(primeCandidate);
         }
+        while (primeCandidate <= Math.sqrt(n));
+
+        // All the rest of the prime candidates are primes, so add them to the primes list.
+        primes.addAll(primeCanidates);
 
         return primes;
     }

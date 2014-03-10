@@ -7,11 +7,14 @@ import java.util.Scanner;
  * @author Nathan Flint
  * @version Assignment 9: Sieve of Eratosthenes
  *
- * Grading Level: Challenge
+ * Grading Level: Standard
  */
 public class SieveDriver {
-   
+
+    // Reads keyboard input
     private java.util.Scanner scan;
+
+    // My implementation of the the sieve algorithm
     private Sieve theSieve;
 
 
@@ -20,6 +23,7 @@ public class SieveDriver {
      */
     public SieveDriver()
     {
+        // Instantiate private fields
        scan = new Scanner(System.in);
        theSieve = new MySieve();
     }
@@ -45,7 +49,6 @@ public class SieveDriver {
 
            // Ask for input again
            n = getNumber();
-
        }
 
        // Print exit message
@@ -125,15 +128,21 @@ public class SieveDriver {
          printRatioPrimes(list.size(), bound);
     }
 
+    // Prints ratio of primes found to total primes searched
     private void printRatioPrimes(int primesFound, int primeCanidates)
     {
         int percent = 100 * primesFound / primeCanidates;
         System.out.printf("%d%% of the numbers between 1 and %s are prime.\n",percent, primeCanidates );
     }
 
+    /**
+     * The application method
+     * @param args command line arguments
+     */
     public static void main(String[] args) {
 
-      new SieveDriver().go();
+        // Starts the program.
+        new SieveDriver().go();
 
     }
 
