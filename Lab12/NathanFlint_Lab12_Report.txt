@@ -1,0 +1,28 @@
+Nathan Flint
+Lab 12: Collections
+
+1) private java.util.ArrayList<String> reindeer;
+
+2) reindeer = new ArrayList<String>();
+
+3) app.reindeer = new java.util.LinkedList<String>();
+
+4) No, not that I can tell.
+
+5) The third call to print(), shows all the names twice.
+
+6) app.reindeer = new java.util.HashSet();
+
+7) Yes, the names are in a different order.
+
+8) In the HashSet, I added the names twice, but they still only print once.
+However, in the LinkedList I added the names twice and they showed up twice.
+
+9)
+public void print()
+{
+    Iterator<String> reindeerIterator = reindeer.iterator();
+    while(reindeerIterator.hasNext())
+        System.out.print(reindeerIterator.next() + " ");
+    System.out.println();
+}
