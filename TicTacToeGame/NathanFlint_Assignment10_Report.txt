@@ -1,0 +1,42 @@
+Nathan Flint
+Assignment 10: Tic-Tac-Toe Game
+
+I started this assignment by reading over the instructions and calculating how
+to test if a player wins. I got a little ahead of myself but that was the
+aspect of the assignment that interested me the most. I figured I could do 8
+checks, 3 across, 3 down, and 2 diagonal. With that seemingly solved, I moved on
+to work the assignment from top to bottom.
+
+The next difficult problem was arranging the buttons in the exact grid pattern.
+This worked surprisingly well for me. I was able to get it to work on the first
+compile which shocked me. I fully expected to debug it and make changes before
+the buttons would align. There was one problem where the buttons were slightly
+transparent and looked wrong. I was able to quickly fix this using the
+.setOpaque() method on the JButton.
+
+The last problem I encountered was how to organize the status updates so they
+showed all the right info. I ended up putting them all in the same function
+named updateGameState() that ran after every click to determine if the game was
+over, who won, or who had the next move. It worked pretty well but I went
+through a few iterations. I originally put the end game logic in the button
+action function, but my status messages at the end of the game got written over
+by who had the next turn.
+
+I ran lots of tests to make sure the logic worked. I finished games with every
+possible combination of wins for X player and O player, which is 16 tests. I
+also tested a few combinations of cat's games. While testing all these end game
+scenarios, I also tested the reset button by using it between each game. My end
+game logic was very solid and testing it didn't find any bugs, but testing did
+help me find a bug in the cats game, and with the reset button.
+
+I learned is how helpful auto-complete IDEs can be. For example, I've been using
+the free version of IntelliJ IDE13, and it has the auto-complete feature that
+shows a handy box after pressing "." on a class name. The list is full of all
+the functions available for that class. With it, I can explore the IDE more
+easily. the list even narrows down as I start to type to only show methods and
+fields that contain that text. So if I type "button.se" it shows all the set
+properties which made it easy to find the "setEnabled()" method on JButton. I
+didn't even have to look in the documentation.
+
+This assignment went pretty smoothly and I cant think of anything I would do
+differently.
