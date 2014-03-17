@@ -12,31 +12,34 @@ This worked surprisingly well for me. I was able to get it to work on the first
 compile which shocked me. I fully expected to debug it and make changes before
 the buttons would align. There was one problem where the buttons were slightly
 transparent and looked wrong. I was able to quickly fix this using the
-.setOpaque() method on the JButton.
+.setOpaque() method on the JButtons.
 
 The last problem I encountered was how to organize the status updates so they
-showed all the right info. I ended up putting them all in the same function
-named updateGameState() that ran after every click to determine if the game was
-over, who won, or who had the next move. It worked pretty well but I went
-through a few iterations. I originally put the end game logic in the button
-action function, but my status messages at the end of the game got written over
-by who had the next turn.
+showed correct state of the game. I ended up putting them all in the same
+function named updateGameState() which ran after every click to determine: if
+the game was over, and who won, or who had the next move. It worked pretty well
+but I went through a few iterations before setting on that design. I originally
+put the end game logic in the button action function, but my end-game messages
+got over-written by who had the next turn. Move all the status updates into the
+same function fixed this.
 
 I ran lots of tests to make sure the logic worked. I finished games with every
 possible combination of wins for X player and O player, which is 16 tests. I
-also tested a few combinations of cat's games. While testing all these end game
-scenarios, I also tested the reset button by using it between each game. My end
+also tested a few combinations of cat's games. While testing all these end-game
+scenarios, I also tested the reset button by using it between each match. My end
 game logic was very solid and testing it didn't find any bugs, but testing did
-help me find a bug in the cats game, and with the reset button.
+find a bug in the cats game, and with the reset button. The reset button wasn't
+enabling all the buttons after pressing it, and the cats game wasn't being 
+detected so that game would say "O's turn" when it should have set "cat game".
 
 I learned is how helpful auto-complete IDEs can be. For example, I've been using
 the free version of IntelliJ IDE13, and it has the auto-complete feature that
 shows a handy box after pressing "." on a class name. The list is full of all
-the functions available for that class. With it, I can explore the IDE more
-easily. the list even narrows down as I start to type to only show methods and
-fields that contain that text. So if I type "button.se" it shows all the set
-properties which made it easy to find the "setEnabled()" method on JButton. I
-didn't even have to look in the documentation.
+the functions available for that class. With it, I can explore the framework
+easily. The list even narrows down as I start to type, and it show only methods
+and fields that contain the incomplete text. So if I type "button.se" it shows
+all the set properties which made it easy to find the "setEnabled()" method on
+JButton. I didn't even have to look in the documentation.
 
-This assignment went pretty smoothly and I cant think of anything I would do
+This assignment went pretty smoothly and I can't think of anything I would do
 differently.
