@@ -28,11 +28,10 @@ public class Tiles
 
         // define tile width and height
         final int tileWidth = tile.getWidth();
-        final int tileHeight = tile.getHeight();
 
         // identify how many tiles will be needed
         int tileCountAcross = WIDTH / tileWidth + 1;
-        int tileCountDown = HEIGHT / tileHeight + 1;
+        int tileCountDown = HEIGHT / tileWidth + 1;
         int totalTiles = tileCountAcross * tileCountDown;
 
         // we know how many tiles to draw, so loop through the total.
@@ -44,7 +43,7 @@ public class Tiles
 
             // Calculates x and y coordinate of next drawing tiles
             int x = currentColumn * tileWidth;
-            int y = currentRow * tileHeight;
+            int y = currentRow * tileWidth;
 
             // Draws the tile
             tile.drawTile(drawingSurface, x, y);
@@ -58,6 +57,7 @@ public class Tiles
         tiles.drawPattern(new Med1());
         tiles.drawPattern(new Med2());
         tiles.drawPattern(new OpenWeave());
+        tiles.drawPattern(new Pythagorean());
     }
 
 
@@ -67,13 +67,11 @@ abstract class Tile
 {
     // Fields
     protected int width;
-    protected int height;
     protected String title;
 
     // Properties
     public String getTitle() { return title; }
     public int getWidth() { return width; }
-    public int getHeight() { return height; }
 
     // Common function
     protected void drawRect(Graphics g, int x, int y, int width, int height, Color c)
@@ -99,7 +97,6 @@ class BasketWeave extends Tile
     public BasketWeave()
     {
         this.width = 80;
-        this.height = 80;
         title = "Basket Weave";
     }
 
@@ -133,7 +130,6 @@ class Med1 extends Tile
     public Med1()
     {
         this.width = 24;
-        this.height = 24;
         title = "Mediterranean 1";
     }
 
@@ -141,7 +137,7 @@ class Med1 extends Tile
     {
         // Fill in red background
         g.setColor(Color.red);
-        g.fillRect(x, y, width, height);
+        g.fillRect(x, y, width, width);
 
         // Setup points to draw an octagon
         int diamondRadius = (int) (width * (7 / 24.0));
@@ -162,8 +158,8 @@ class Med1 extends Tile
                 y,
                 y + diamondRadius,
                 y + diamondRadius + octagonLong,
-                y + height,
-                y + height,
+                y + width,
+                y + width,
                 y + diamondRadius + octagonLong,
                 y + diamondRadius
         };
@@ -186,7 +182,6 @@ class Med2 extends Tile
     public Med2()
     {
         this.width = 34;
-        this.height = 34;
         title = "Mediterranean 2";
     }
 
@@ -194,7 +189,7 @@ class Med2 extends Tile
     {
         // Fill in red background
         g.setColor(new Color(192, 192, 128));
-        g.fillRect(x, y, width, height);
+        g.fillRect(x, y, width, width);
 
         // Setup points to draw an octagon
         int octagonShort = (int) (width * (7 / 34.0));
@@ -241,8 +236,7 @@ class OpenWeave extends Tile
     public OpenWeave()
     {
         this.width = 60;
-        this.height = 60;
-        title = "OpenWeave";
+        title = "Open Weave";
     }
 
     public void drawTile(Graphics g, int x, int y)
@@ -257,7 +251,7 @@ class OpenWeave extends Tile
 
         // Draw background
         g.setColor(pink);
-        g.fillRect(x, y, width, height);
+        g.fillRect(x, y, width, width);
 
         // Draw weaves
         drawRect(g, x, y, longSide, shortSide, pink);
@@ -268,6 +262,46 @@ class OpenWeave extends Tile
         drawRect(g, x, y + shortSide * 2 + squareSide, squareSide, squareSide, maroon);
         drawRect(g, x + squareSide + shortSide, y + shortSide * 2 + squareSide, squareSide, squareSide, maroon);
         drawRect(g, x + squareSide + shortSide, y + shortSide + squareSide, longSide, shortSide, pink);
+
+    }
+}
+
+class Pythagorean extends Tile
+{
+    /**
+     * Constructor initializes values
+     */
+    public Pythagorean()
+    {
+        width = 50;
+        title = "Pythagorean";
+    }
+
+    public void drawTile(Graphics g, int x, int y)
+    {
+        int longSide = (int) (width * (2 / 5.0));
+        int shortSide = longSide / 2;
+
+        // Define colors
+        Color blue = new Color(64, 64, 192);
+        Color aqua = new Color(136, 204, 204);
+
+        // Draw background
+        g.setColor(aqua);
+        g.fillRect(x, y, width, width);
+
+        // Draw weaves
+        drawRect(g, x, y, longSide, longSide, aqua);
+        drawRect(g, x + longSide, y, shortSide, shortSide, blue);
+        drawRect(g, x + shortSide, y + longSide, shortSide, shortSide, blue);
+        drawRect(g, x + longSide, y + shortSide, longSide, longSide, aqua);
+        drawRect(g, x + longSide * 2, y + shortSide, shortSide, shortSide, blue);
+
+        drawRect(g, x, y + longSide * 2, shortSide, shortSide, blue);
+        drawRect(g, x + shortSide, y + longSide + shortSide, longSide, longSide, aqua);
+        drawRect(g, x + longSide + shortSide, y + shortSide + longSide, shortSide, shortSide, blue);
+        drawRect(g, x + longSide + shortSide, y + longSide * 2, longSide, longSide, aqua);
+
 
     }
 }
