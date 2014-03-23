@@ -25,28 +25,28 @@ public class Tiles
         // Get drawing surface
         Graphics drawingSurface = panel.getGraphics();
 
-        // define pattern width and height
-        final int basketPatternWidth = 80;
-        final int basketPatternHeight = 80;
+        // define tile width and height
+        final int tileWidth = 80;
+        final int tileHeight = 80;
 
-        // identify how many patterns will be needed
-        int countPatternsAcross = WIDTH / basketPatternWidth + 1;
-        int countPatternsDown = HEIGHT / basketPatternHeight + 1;
-        int totalPatterns = countPatternsAcross * countPatternsDown;
+        // identify how many tiles will be needed
+        int tileCountAcross = WIDTH / tileWidth + 1;
+        int tileCountDown = HEIGHT / tileHeight + 1;
+        int totalTiles = tileCountAcross * tileCountDown;
 
-        // we know how many patterns to draw, so loop through the total.
-        for (int patternIndex = 0; patternIndex < totalPatterns; patternIndex++)
+        // we know how many tiles to draw, so loop through the total.
+        for (int tileIndex = 0; tileIndex < totalTiles; tileIndex++)
         {
-            // Get column and row of current pattern index
-            int currentColumn = patternIndex % countPatternsAcross;
-            int currentRow = patternIndex / countPatternsAcross;
+            // Get column and row of current tiles index
+            int currentColumn = tileIndex % tileCountAcross;
+            int currentRow = tileIndex / tileCountAcross;
 
-            // Calculates x and y coordinate of next drawing pattern
-            int x = currentColumn * basketPatternWidth;
-            int y = currentRow * basketPatternHeight;
+            // Calculates x and y coordinate of next drawing tiles
+            int x = currentColumn * tileWidth;
+            int y = currentRow * tileHeight;
 
-
-            drawBasketWeaveTile(drawingSurface, x, y, basketPatternWidth, basketPatternHeight);
+            // Draws the tile
+            drawBasketWeaveTile(drawingSurface, x, y, tileWidth, tileHeight);
         }
     }
 
@@ -90,6 +90,12 @@ public class Tiles
         g.drawLine(x, y, x + width, y);
         g.drawLine(x, y, x, y + height);
         g.drawLine(x, y + height / 2, x + width, y + height / 2);
+    }
+
+    public void drawMed1()
+    {
+
+
     }
 
     public static void main(String[] args)
