@@ -39,19 +39,33 @@ public class Tiles
         {
             // Get column and row of current pattern index
             int currentColumn = patternIndex % countPatternsAcross;
-            int currentRow = patternIndex / countPatternsDown;
+            int currentRow = patternIndex / countPatternsAcross;
 
             // Calculates x and y coordinate of next drawing pattern
-            int x = currentColumn + basketPatternWidth;
+            int x = currentColumn * basketPatternWidth;
             int y = currentRow * basketPatternHeight;
 
 
-            drawBasketWeaveTile(drawingSurface, x, y);
+            drawBasketWeaveTile(drawingSurface, x, y, basketPatternWidth, basketPatternHeight);
         }
     }
 
-    private void drawBasketWeaveTile(Graphics drawingSurface, int x, int y)
+    private void drawBasketWeaveTile(Graphics drawingSurface, int x, int y, int width, int height)
     {
+        int backgroundWidth = width / 2;
+
+        // Draw vertical weave background
+        drawingSurface.setColor(new Color(255, 201, 14));
+        drawingSurface.fillRect(x, y, backgroundWidth, height);
+
+        // Draw vertical weave background
+        drawingSurface.setColor(new Color(185, 122, 87));
+        int vertX = x + width / 2;
+        drawingSurface.fillRect(vertX, y, backgroundWidth, height);
+
+
+        //drawingSurface.drawLine(x, y, x + width, y + height);
+
     }
 
     public static void main(String[] args)
