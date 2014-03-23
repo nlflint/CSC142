@@ -4,7 +4,7 @@ import java.awt.*;
  * This class draws several different tessellations.
  *
  * @author Nathan Flint
- * @version Assignment 11: Tilling
+ * @version Assignment 11: Tiling
  *
  * Grading Level: Challenge
  *
@@ -26,26 +26,26 @@ public class Tiles
         // Get drawing surface
         Graphics drawingSurface = panel.getGraphics();
 
-        // define tile width (tiles are square so height is assumed)
+        // define tile width and height
         final int tileWidth = tile.getWidth();
 
-        // identify how many tiles will be needed to fill the panel
+        // identify how many tiles will be needed
         int tileCountAcross = WIDTH / tileWidth + 1;
         int tileCountDown = HEIGHT / tileWidth + 1;
         int totalTiles = tileCountAcross * tileCountDown;
 
-        // we know how many tiles to draw, iterate for each one.
+        // we know how many tiles to draw, so loop through the total.
         for (int tileIndex = 0; tileIndex < totalTiles; tileIndex++)
         {
-            // Get column and row of the tile that will be drawn
+            // Get column and row of current tiles index
             int currentColumn = tileIndex % tileCountAcross;
             int currentRow = tileIndex / tileCountAcross;
 
-            // Calculate where the tile will be drawn (x and y coordinates)
+            // Calculates x and y coordinate of next drawing tiles
             int x = currentColumn * tileWidth;
             int y = currentRow * tileWidth;
 
-            // Draw the tile
+            // Draws the tile
             tile.drawTile(drawingSurface, x, y);
         }
     }
@@ -54,14 +54,14 @@ public class Tiles
     public static void main(String[] args)
     {
         Tiles tiles = new Tiles();
-        //tiles.drawPattern(new BasketWeave());
-        //tiles.drawPattern(new Med1());
-        //tiles.drawPattern(new Med2());
-        //tiles.drawPattern(new OpenWeave());
-        //tiles.drawPattern(new Pythagorean());
-        //tiles.drawPattern(new BrickMortar());
-        //tiles.drawPattern(new BasketWeaveMortar());
-        //tiles.drawPattern(new PythagoreanMortar());
+        tiles.drawPattern(new BasketWeave());
+        tiles.drawPattern(new Med1());
+        tiles.drawPattern(new Med2());
+        tiles.drawPattern(new OpenWeave());
+        tiles.drawPattern(new Pythagorean());
+        tiles.drawPattern(new BrickMortar());
+        tiles.drawPattern(new BasketWeaveMortar());
+        tiles.drawPattern(new PythagoreanMortar());
         tiles.drawPattern(new OpenWeaveMortar());
     }
 }
@@ -537,8 +537,6 @@ class OpenWeaveMortar extends Tile
         drawRect(g, x + mortar, y + mortar * 7 + shortSide * 2 + squareSide, squareSide, squareSide, maroon);
         drawRect(g, x + mortar * 5 + squareSide + shortSide, y + mortar * 7 + shortSide * 2 + squareSide, squareSide, squareSide, maroon);
         drawRect(g, x + mortar * 7 - shortSide - squareSide * 2, y + mortar * 5 + shortSide + squareSide, longSide, shortSide, pink);
-        drawRect(g, x + mortar * 5 + squareSide + shortSide, y + mortar * 5 + shortSide + squareSide, longSide, shortSide, pink);
-        drawRect(g, x + mortar * 3 + longSide, y + mortar * 7 + shortSide * 2 + squareSide, shortSide, longSide, pink);
 
     }
 }
