@@ -123,7 +123,7 @@ class BasketWeave extends Tile
         Color honey = new Color(255, 201, 14);
         Color clay = new Color(185, 122, 87);
 
-        // Draw vertical weaves
+        // Draw tile with rectangles
         drawRect(g, x, y, shortSide, longSide, honey);
         drawRect(g, x + shortSide, y, shortSide, longSide, honey);
         drawRect(g, x + longSide, y, longSide, shortSide, clay);
@@ -190,7 +190,7 @@ class Med1 extends Tile
         g.setColor(new Color(255, 255, 64));
         g.fillPolygon(xPoints, yPoints, xPoints.length);
 
-        // draw lines
+        // draw lines around octagon
         g.setColor(Color.BLACK);
         g.drawPolygon(xPoints, yPoints, xPoints.length);
     }
@@ -249,7 +249,7 @@ class Med2 extends Tile
                 y + octagonShort
         };
 
-        // draw lines
+        // draw octagon
         g.setColor(Color.black);
         g.drawPolygon(xPoints, yPoints, xPoints.length);
 
@@ -293,7 +293,7 @@ class OpenWeave extends Tile
         g.setColor(pink);
         g.fillRect(x, y, width, width);
 
-        // Draw weaves
+        // Draw tile with rectangles
         drawRect(g, x, y, longSide, shortSide, pink);
         drawRect(g, x + longSide, y - squareSide, shortSide, longSide, pink);
         drawRect(g, x, y + shortSide, squareSide, squareSide, maroon);
@@ -339,13 +339,12 @@ class Pythagorean extends Tile
         g.setColor(aqua);
         g.fillRect(x, y, width, width);
 
-        // Draw weaves
+        // Draw tile with rectangles
         drawRect(g, x, y, longSide, longSide, aqua);
         drawRect(g, x + longSide, y, shortSide, shortSide, blue);
         drawRect(g, x + shortSide, y + longSide, shortSide, shortSide, blue);
         drawRect(g, x + longSide, y + shortSide, longSide, longSide, aqua);
         drawRect(g, x + longSide * 2, y + shortSide, shortSide, shortSide, blue);
-
         drawRect(g, x, y + longSide * 2, shortSide, shortSide, blue);
         drawRect(g, x + shortSide, y + longSide + shortSide, longSide, longSide, aqua);
         drawRect(g, x + longSide + shortSide, y + shortSide + longSide, shortSide, shortSide, blue);
@@ -389,7 +388,7 @@ class BrickMortar extends Tile
         g.setColor(Color.lightGray);
         g.fillRect(x, y, width, width);
 
-        // Draw weaves
+        // Draw tile with rectangles
         drawRect(g, x + mortar, y + mortar, longSide, shortSide, brick);
         drawRect(g, x - shortSide - mortar, y + shortSide + mortar * 3, longSide, shortSide, brick);
     }
@@ -431,7 +430,7 @@ class BasketWeaveMortar extends Tile
         g.setColor(Color.lightGray);
         g.fillRect(x, y, width, width);
 
-        // Draw vertical weaves
+        // Draw tile with rectangles
         drawRect(g, x + mortar, y + mortar, shortSide, longSide, honey);
         drawRect(g, x + shortSide + mortar * 3, y + mortar, shortSide, longSide, honey);
         drawRect(g, x + mortar * 3 + longSide, y + mortar, longSide, shortSide, clay);
@@ -478,7 +477,7 @@ class PythagoreanMortar extends Tile
         g.setColor(Color.lightGray);
         g.fillRect(x, y, width, width);
 
-        // Draw weaves
+        // Draw tile with rectangles
         drawRect(g, x + mortar, y + mortar, longSide, longSide, aqua);
         drawRect(g, x + mortar * 3 + longSide, y + mortar * 3 + shortSide, longSide, longSide, aqua);
         drawRect(g, x + mortar * 3 + longSide, y + mortar, shortSide, shortSide, blue);
@@ -529,7 +528,7 @@ class OpenWeaveMortar extends Tile
         g.setColor(Color.lightGray);
         g.fillRect(x, y, width, width);
 
-        // Draw weaves
+        // Draw tile with rectangles
         drawRect(g, x + mortar, y + mortar, longSide, shortSide, pink);
         drawRect(g, x + mortar * 3 + longSide, y - mortar - squareSide, shortSide, longSide, pink);
         drawRect(g, x + mortar, y + mortar * 3 + shortSide, squareSide, squareSide, maroon);
