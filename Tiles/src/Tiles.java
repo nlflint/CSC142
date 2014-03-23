@@ -54,16 +54,25 @@ public class Tiles
 
     private void drawBasketWeaveTile(Graphics g, int x, int y, int width, int height)
     {
-        int weaveWidth = width / 2;
-        int weaveHeight = height / 2;
+        // Define rectangle sides
+        int longSide = width / 2;
+        int shortSide = longSide / 2;
+
+        // Define colors
+        Color honey = new Color(255, 201, 14);
+        Color clay = new Color(185, 122, 87);
 
         // Draw vertical weaves
-        drawVerticalWeave(g, x, y, weaveWidth, weaveHeight);
-        drawVerticalWeave(g, x + weaveWidth, y + weaveHeight, weaveHeight, weaveHeight);
+        drawRect(g, x, y, shortSide, longSide, honey);
+        drawRect(g, x + shortSide, y, shortSide, longSide, honey);
+        drawRect(g, x + longSide, y, longSide, shortSide, clay);
+        drawRect(g, x + longSide, y + shortSide, longSide, shortSide, clay);
+        drawRect(g, x, y + longSide, longSide, shortSide, clay);
+        drawRect(g, x, y + longSide + shortSide, longSide, shortSide, clay);
+        drawRect(g, x + longSide, y + longSide, shortSide, longSide, honey);
+        drawRect(g, x + longSide + shortSide, y + longSide, shortSide, longSide, honey);
 
-        // Draw Horizontal weaves
-        drawHorizontalWeave(g, x + weaveWidth, y, weaveWidth, weaveHeight);
-        drawHorizontalWeave(g, x, y + weaveHeight, weaveWidth, weaveHeight);
+
     }
 
     // Draws vertical weave background
@@ -251,7 +260,6 @@ public class Tiles
         // draw blues squares
         drawRect(g,x + octagonWidth, y + octagonEdge, 10, 10, new Color(0, 112, 192) );
         drawRect(g,x + octagonEdge, y + octagonWidth, 10, 10, new Color(0, 112, 192) );
-
     }
 
     /**
@@ -334,9 +342,9 @@ public class Tiles
     public static void main(String[] args)
     {
         Tiles tiles = new Tiles();
-        //tiles.drawBasketWeave();
+        tiles.drawBasketWeave();
         //tiles.drawMed1();
-        tiles.drawMed2();
+        //tiles.drawMed2();
         //tiles.drawOpenWeave();
     }
 }
