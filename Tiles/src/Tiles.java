@@ -30,8 +30,8 @@ public class Tiles
         final int tileWidth = tile.getWidth();
 
         // identify how many tiles will be needed
-        int tileCountAcross = WIDTH / tileWidth + 1;
-        int tileCountDown = HEIGHT / tileWidth + 1;
+        int tileCountAcross = WIDTH / tileWidth + 2;
+        int tileCountDown = HEIGHT / tileWidth + 2;
         int totalTiles = tileCountAcross * tileCountDown;
 
         // we know how many tiles to draw, so loop through the total.
