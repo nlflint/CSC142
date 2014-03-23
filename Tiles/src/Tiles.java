@@ -11,8 +11,8 @@ import java.awt.*;
  */
 public class Tiles
 {
-    public static final int WIDTH = 500; //200;
-    public static final int HEIGHT = 400; //150;
+    public static final int WIDTH = 200;
+    public static final int HEIGHT = 150;
 
     /**
      * Draws the basket weave pattern
