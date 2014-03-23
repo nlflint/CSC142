@@ -14,7 +14,9 @@ public class Tiles
     public static final int WIDTH = 500; //200;
     public static final int HEIGHT = 400; //150;
 
-
+    /**
+     * Draws the basket weave pattern
+     */
     public void drawBasketWeave()
     {
         // Create drawing panel
@@ -92,6 +94,9 @@ public class Tiles
         g.drawLine(x, y + height / 2, x + width, y + height / 2);
     }
 
+    /**
+     * Draws the Mediterranean 1 pattern
+     */
     public void drawMed1()
     {
         // Create drawing panel
@@ -169,6 +174,9 @@ public class Tiles
 
     }
 
+    /**
+     * Draws the Mediterranean 2 pattern
+     */
     public void drawMed2()
     {
         // Create drawing panel
@@ -252,11 +260,89 @@ public class Tiles
 
     }
 
+    /**
+     * Draws an open weave pattern
+     */
+    public void drawOpenWeave()
+    {
+        // Create drawing panel
+        DrawingPanel panel = new DrawingPanel(WIDTH,HEIGHT);
+        panel.setTitle("Open Weave");
+
+        // Get drawing surface
+        Graphics drawingSurface = panel.getGraphics();
+
+        // define tile width and height
+        final int tileWidth = 60;
+        final int tileHeight = 60;
+
+        // identify how many tiles will be needed
+        int tileCountAcross = WIDTH / tileWidth + 1;
+        int tileCountDown = HEIGHT / tileHeight + 1;
+        int totalTiles = tileCountAcross * tileCountDown;
+
+        // we know how many tiles to draw, so loop through the total.
+        for (int tileIndex = 0; tileIndex < totalTiles; tileIndex++)
+        {
+            // Get column and row of current tiles index
+            int currentColumn = tileIndex % tileCountAcross;
+            int currentRow = tileIndex / tileCountAcross;
+
+            // Calculates x and y coordinate of next drawing tiles
+            int x = currentColumn * tileWidth;
+            int y = currentRow * tileHeight;
+
+            // Draws the tile
+            drawOpenWeaveTile(drawingSurface, x, y, tileWidth, tileHeight);
+        }
+    }
+
+    // Draws an open weave tile
+    private void drawOpenWeaveTile(Graphics g, int x, int y, int width, int height)
+    {
+        int longSide = (int) (width * (2 / 3.0));
+        int shortSide = (int) (width * (1 / 3.0));
+        int squareSide = (int) (width * (1 / 6.0));
+
+        // Define colors
+        Color pink = new Color(204, 136, 204);
+        Color maroon = new Color(154, 32, 64);
+
+        // Draw background
+        g.setColor(pink);
+        g.fillRect(x, y, width, height);
+
+        // Draw weaves
+        drawRect(g, x, y, longSide, shortSide, pink);
+        drawRect(g, x + longSide, y - squareSide, shortSide, longSide, pink);
+        drawRect(g, x, y + shortSide, squareSide, squareSide, maroon);
+        drawRect(g, x + squareSide, y + shortSide, shortSide, longSide, pink);
+        drawRect(g, x + squareSide + shortSide, y + shortSide, squareSide, squareSide, maroon);
+        drawRect(g, x, y + shortSide * 2 + squareSide, squareSide, squareSide, maroon);
+        drawRect(g, x + squareSide + shortSide, y + shortSide * 2 + squareSide, squareSide, squareSide, maroon);
+        drawRect(g, x + squareSide + shortSide, y + shortSide + squareSide, longSide, shortSide, pink);
+
+
+    }
+
+    private void drawRect(Graphics g, int x, int y, int width, int height, Color c)
+    {
+        // the colored rect
+        g.setColor(c);
+        g.fillRect(x, y, width, height);
+
+        // Draw lines around the squres
+        g.setColor(Color.black);
+        g.drawRect(x, y, width, height);
+    }
+
+
     public static void main(String[] args)
     {
         Tiles tiles = new Tiles();
         //tiles.drawBasketWeave();
         //tiles.drawMed1();
-        tiles.drawMed2();
+        //tiles.drawMed2();
+        tiles.drawOpenWeave();
     }
 }
