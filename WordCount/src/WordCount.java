@@ -25,7 +25,7 @@ public class WordCount {
             return;
         }
 
-        // Map will hold the token counts
+        // Map will hold the token (aka word) counts
         Map<String,Integer> tokens = new HashMap<String,Integer>();
 
         // process the file, token by token
@@ -42,7 +42,7 @@ public class WordCount {
             }
             else
             {
-                tokens.put(token,1);
+                tokens.put(token, 1);
             }
         }
 
@@ -52,7 +52,7 @@ public class WordCount {
         // output overall
         System.out.printf("%s: %d different tokens\n", fullTxtFilepath, totalTokens);
 
-        // Loop throught tokens and print stats for counts > 2
+        // Loop through tokens and print stats for counts > 2
         for (Map.Entry<String, Integer> entry: tokens.entrySet())
             if (entry.getValue() > 2)
                 System.out.printf("%4d : %s\n", entry.getValue(), entry.getKey());
@@ -66,6 +66,14 @@ public class WordCount {
      */
     public static void main(String[] args) {
 
+        // Handle if no file names are given
+        if (args.length < 1)
+        {
+            System.out.println("No filename provided. Please provide file names as arguments.");
+            return;
+        }
+
+        // Process each file name
         for(String arg : args) {
             tokenCount(arg);
         }
