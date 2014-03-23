@@ -29,7 +29,8 @@ public class Tiles
         // define tile width and height
         final int tileWidth = tile.getWidth();
 
-        // identify how many tiles will be needed
+        // identify how many tiles will be needed.
+        // Add 2 to rows and columns to fix bug where tiles don't fill the panel.
         int tileCountAcross = WIDTH / tileWidth + 2;
         int tileCountDown = HEIGHT / tileWidth + 2;
         int totalTiles = tileCountAcross * tileCountDown;
