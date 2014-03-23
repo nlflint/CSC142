@@ -17,19 +17,18 @@ public class Tiles
     /**
      * Draws the basket weave pattern
      */
-    public void drawBasketWeave()
+    public void drawPattern(Tile tile)
     {
         // Create drawing panel
         DrawingPanel panel = new DrawingPanel(WIDTH,HEIGHT);
         panel.setTitle("BasketWeave");
 
-
         // Get drawing surface
         Graphics drawingSurface = panel.getGraphics();
 
         // define tile width and height
-        final int tileWidth = 80;
-        final int tileHeight = 80;
+        final int tileWidth = tile.getWidth();
+        final int tileHeight = tile.getHeight();
 
         // identify how many tiles will be needed
         int tileCountAcross = WIDTH / tileWidth + 1;
@@ -48,29 +47,8 @@ public class Tiles
             int y = currentRow * tileHeight;
 
             // Draws the tile
-            drawBasketWeaveTile(drawingSurface, x, y, tileWidth, tileHeight);
+            tile.drawTile(drawingSurface, x, y);
         }
-    }
-
-    private void drawBasketWeaveTile(Graphics g, int x, int y, int width, int height)
-    {
-        // Define rectangle sides
-        int longSide = width / 2;
-        int shortSide = longSide / 2;
-
-        // Define colors
-        Color honey = new Color(255, 201, 14);
-        Color clay = new Color(185, 122, 87);
-
-        // Draw vertical weaves
-        drawRect(g, x, y, shortSide, longSide, honey);
-        drawRect(g, x + shortSide, y, shortSide, longSide, honey);
-        drawRect(g, x + longSide, y, longSide, shortSide, clay);
-        drawRect(g, x + longSide, y + shortSide, longSide, shortSide, clay);
-        drawRect(g, x, y + longSide, longSide, shortSide, clay);
-        drawRect(g, x, y + longSide + shortSide, longSide, shortSide, clay);
-        drawRect(g, x + longSide, y + longSide, shortSide, longSide, honey);
-        drawRect(g, x + longSide + shortSide, y + longSide, shortSide, longSide, honey);
     }
 
     /**
@@ -312,9 +290,82 @@ public class Tiles
     public static void main(String[] args)
     {
         Tiles tiles = new Tiles();
-        tiles.drawBasketWeave();
+        tiles.drawPattern(new BasketWeave());
         //tiles.drawMed1();
         //tiles.drawMed2();
         //tiles.drawOpenWeave();
     }
+
+
 }
+
+abstract class Tile
+{
+    public abstract String getTitle();
+    public abstract int getWidth();
+    public abstract int getHeight();
+    public abstract void drawTile(Graphics g, int x, int y);
+
+    protected void drawRect(Graphics g, int x, int y, int width, int height, Color c)
+    {
+        // the colored rect
+        g.setColor(c);
+        g.fillRect(x, y, width, height);
+
+        // Draw lines around the squres
+        g.setColor(Color.black);
+        g.drawRect(x, y, width, height);
+    }
+}
+
+class BasketWeave extends Tile
+{
+    private final int width;
+    private final int height;
+    private final String title;
+
+    /**
+     * Constructor sets up object properites
+     */
+    public BasketWeave()
+    {
+        this.width = 80;
+        this.height = 80;
+        title = "Basket Weave";
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public void drawTile(Graphics g, int x, int y)
+    {
+        // Define rectangle sides
+        int longSide = width / 2;
+        int shortSide = longSide / 2;
+
+        // Define colors
+        Color honey = new Color(255, 201, 14);
+        Color clay = new Color(185, 122, 87);
+
+        // Draw vertical weaves
+        drawRect(g, x, y, shortSide, longSide, honey);
+        drawRect(g, x + shortSide, y, shortSide, longSide, honey);
+        drawRect(g, x + longSide, y, longSide, shortSide, clay);
+        drawRect(g, x + longSide, y + shortSide, longSide, shortSide, clay);
+        drawRect(g, x, y + longSide, longSide, shortSide, clay);
+        drawRect(g, x, y + longSide + shortSide, longSide, shortSide, clay);
+        drawRect(g, x + longSide, y + longSide, shortSide, longSide, honey);
+        drawRect(g, x + longSide + shortSide, y + longSide, shortSide, longSide, honey);
+    }
+}
+
+
