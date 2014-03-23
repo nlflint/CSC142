@@ -11,8 +11,8 @@ import java.awt.*;
  */
 public class Tiles
 {
-    public static final int WIDTH = 500; //200;
-    public static final int HEIGHT = 300; //150;
+    public static final int WIDTH = 200;
+    public static final int HEIGHT = 150;
 
     /**
      * Tessellates the given tile onto a graphics panel
