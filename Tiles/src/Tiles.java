@@ -71,36 +71,6 @@ public class Tiles
         drawRect(g, x, y + longSide + shortSide, longSide, shortSide, clay);
         drawRect(g, x + longSide, y + longSide, shortSide, longSide, honey);
         drawRect(g, x + longSide + shortSide, y + longSide, shortSide, longSide, honey);
-
-
-    }
-
-    // Draws vertical weave background
-    public void drawVerticalWeave(Graphics g, int x, int y, int width, int height)
-    {
-        // Draw colored shape
-        g.setColor(new Color(255, 201, 14));
-        g.fillRect(x, y, width, height);
-
-        // Draws lines
-        g.setColor(Color.black);
-        g.drawLine(x, y, x + width, y);
-        g.drawLine(x, y, x, y + height);
-        g.drawLine(x + width / 2, y, x + width / 2, y + height);
-    }
-
-    // Draws horizontal weave background
-    public void drawHorizontalWeave(Graphics g, int x, int y, int width, int height)
-    {
-        // Draw colored shape
-        g.setColor(new Color(185, 122, 87));
-        g.fillRect(x, y, width, height);
-
-        // Draws lines
-        g.setColor(Color.black);
-        g.drawLine(x, y, x + width, y);
-        g.drawLine(x, y, x, y + height);
-        g.drawLine(x, y + height / 2, x + width, y + height / 2);
     }
 
     /**
