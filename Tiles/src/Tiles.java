@@ -54,11 +54,12 @@ public class Tiles
     public static void main(String[] args)
     {
         Tiles tiles = new Tiles();
-        tiles.drawPattern(new BasketWeave());
-        tiles.drawPattern(new Med1());
-        tiles.drawPattern(new Med2());
-        tiles.drawPattern(new OpenWeave());
-        tiles.drawPattern(new Pythagorean());
+        //tiles.drawPattern(new BasketWeave());
+        //tiles.drawPattern(new Med1());
+        //tiles.drawPattern(new Med2());
+        //tiles.drawPattern(new OpenWeave());
+        //tiles.drawPattern(new Pythagorean());
+        tiles.drawPattern(new BrickMortar());
     }
 }
 
@@ -303,7 +304,7 @@ class OpenWeave extends Tile
 }
 
 /**
- * Draws a Pythagorean 1 tile
+ * Draws a Pythagorean tile
  */
 class Pythagorean extends Tile
 {
@@ -346,6 +347,49 @@ class Pythagorean extends Tile
         drawRect(g, x + shortSide, y + longSide + shortSide, longSide, longSide, aqua);
         drawRect(g, x + longSide + shortSide, y + shortSide + longSide, shortSide, shortSide, blue);
         drawRect(g, x + longSide + shortSide, y + longSide * 2, longSide, longSide, aqua);
+
+
+    }
+}
+
+/**
+ * Draws a brick with mortor tile
+ */
+class BrickMortar extends Tile
+{
+    /**
+     * Constructor initializes values
+     */
+    public BrickMortar()
+    {
+        width = 40;
+        title = "Brick with Mortar";
+    }
+
+    /**
+     * Draws a tile
+     * @param g Graphics object which will be drawn on
+     * @param x X coordinate to draw the tile
+     * @param y Y coordinate to draw the tile
+     */
+    public void drawTile(Graphics g, int x, int y)
+    {
+        // Define base measurements
+        int mortar = 1;
+        int longSide = width - mortar * 2;
+        int shortSide = longSide / 2 - 1;
+
+        // Define colors
+        Color brick = new Color(136, 0, 21);
+
+        // Draw background
+        g.setColor(Color.lightGray);
+        g.fillRect(x, y, width, width);
+
+        // Draw weaves
+        drawRect(g, x + mortar, y + mortar, longSide, shortSide, brick);
+        drawRect(g, x - shortSide - mortar, y + shortSide + mortar * 3, longSide, shortSide, brick);
+
 
 
     }
