@@ -15,7 +15,7 @@ public class Tiles
     public static final int HEIGHT = 150;
 
     /**
-     * Draws the basket weave pattern
+     * Tessellates the given tile onto a graphics panel
      */
     public void drawPattern(Tile tile)
     {
@@ -50,6 +50,7 @@ public class Tiles
         }
     }
 
+    // Application method
     public static void main(String[] args)
     {
         Tiles tiles = new Tiles();
@@ -59,10 +60,9 @@ public class Tiles
         tiles.drawPattern(new OpenWeave());
         tiles.drawPattern(new Pythagorean());
     }
-
-
 }
 
+// Abstract class is implemented by different tile patterns.
 abstract class Tile
 {
     // Fields
@@ -73,14 +73,14 @@ abstract class Tile
     public String getTitle() { return title; }
     public int getWidth() { return width; }
 
-    // Common function
+    // Utility function to draw rectangles
     protected void drawRect(Graphics g, int x, int y, int width, int height, Color c)
     {
         // the colored rect
         g.setColor(c);
         g.fillRect(x, y, width, height);
 
-        // Draw lines around the squres
+        // Draw lines around the rect
         g.setColor(Color.black);
         g.drawRect(x, y, width, height);
     }
@@ -89,6 +89,9 @@ abstract class Tile
     public abstract void drawTile(Graphics g, int x, int y);
 }
 
+/**
+ * Draws a basket weave tile
+ */
 class BasketWeave extends Tile
 {
     /**
@@ -100,6 +103,12 @@ class BasketWeave extends Tile
         title = "Basket Weave";
     }
 
+    /**
+     * Draws a tile
+     * @param g Graphics object which will be drawn on
+     * @param x X coordinate to draw the tile
+     * @param y Y coordinate to draw the tile
+     */
     public void drawTile(Graphics g, int x, int y)
     {
         // Define rectangle sides
@@ -122,6 +131,9 @@ class BasketWeave extends Tile
     }
 }
 
+/**
+ * Draws the Mediterranean 1 tile
+ */
 class Med1 extends Tile
 {
     /**
@@ -133,6 +145,12 @@ class Med1 extends Tile
         title = "Mediterranean 1";
     }
 
+    /**
+     * Draws a tile
+     * @param g Graphics object which will be drawn on
+     * @param x X coordinate to draw the tile
+     * @param y Y coordinate to draw the tile
+     */
     public void drawTile(Graphics g, int x, int y)
     {
         // Fill in red background
@@ -174,6 +192,9 @@ class Med1 extends Tile
     }
 }
 
+/**
+ * Draws the Mediterranean 2 tile
+ */
 class Med2 extends Tile
 {
     /**
@@ -185,6 +206,12 @@ class Med2 extends Tile
         title = "Mediterranean 2";
     }
 
+    /**
+     * Draws a tile
+     * @param g Graphics object which will be drawn on
+     * @param x X coordinate to draw the tile
+     * @param y Y coordinate to draw the tile
+     */
     public void drawTile(Graphics g, int x, int y)
     {
         // Fill in red background
@@ -228,6 +255,9 @@ class Med2 extends Tile
     }
 }
 
+/**
+ * Draws an open weave tile
+ */
 class OpenWeave extends Tile
 {
     /**
@@ -239,6 +269,12 @@ class OpenWeave extends Tile
         title = "Open Weave";
     }
 
+    /**
+     * Draws a tile
+     * @param g Graphics object which will be drawn on
+     * @param x X coordinate to draw the tile
+     * @param y Y coordinate to draw the tile
+     */
     public void drawTile(Graphics g, int x, int y)
     {
         int longSide = (int) (width * (2 / 3.0));
@@ -266,6 +302,9 @@ class OpenWeave extends Tile
     }
 }
 
+/**
+ * Draws a Pythagorean 1 tile
+ */
 class Pythagorean extends Tile
 {
     /**
@@ -277,6 +316,12 @@ class Pythagorean extends Tile
         title = "Pythagorean";
     }
 
+    /**
+     * Draws a tile
+     * @param g Graphics object which will be drawn on
+     * @param x X coordinate to draw the tile
+     * @param y Y coordinate to draw the tile
+     */
     public void drawTile(Graphics g, int x, int y)
     {
         int longSide = (int) (width * (2 / 5.0));
