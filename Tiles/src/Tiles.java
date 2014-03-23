@@ -11,8 +11,8 @@ import java.awt.*;
  */
 public class Tiles
 {
-    public static final int WIDTH = 200;
-    public static final int HEIGHT = 150;
+    public static final int WIDTH = 500; //200;
+    public static final int HEIGHT = 300; //150;
 
     /**
      * Tessellates the given tile onto a graphics panel
@@ -59,7 +59,8 @@ public class Tiles
         //tiles.drawPattern(new Med2());
         //tiles.drawPattern(new OpenWeave());
         //tiles.drawPattern(new Pythagorean());
-        tiles.drawPattern(new BrickMortar());
+        //tiles.drawPattern(new BrickMortar());
+        tiles.drawPattern(new BasketWeaveMortar());
     }
 }
 
@@ -377,21 +378,66 @@ class BrickMortar extends Tile
         // Define base measurements
         int mortar = 1;
         int longSide = width - mortar * 2;
-        int shortSide = longSide / 2 - 1;
+        int shortSide = longSide / 2 - mortar;
 
         // Define colors
         Color brick = new Color(136, 0, 21);
 
-        // Draw background
+        // Draw background mortar
         g.setColor(Color.lightGray);
         g.fillRect(x, y, width, width);
 
         // Draw weaves
         drawRect(g, x + mortar, y + mortar, longSide, shortSide, brick);
         drawRect(g, x - shortSide - mortar, y + shortSide + mortar * 3, longSide, shortSide, brick);
+    }
+}
 
 
+/**
+ * Draws a basket weave tile
+ */
+class BasketWeaveMortar extends Tile
+{
+    /**
+     * Constructor initializes values
+     */
+    public BasketWeaveMortar()
+    {
+        this.width = 80;
+        title = "Basket Weave with Mortar";
+    }
 
+    /**
+     * Draws a tile
+     * @param g Graphics object which will be drawn on
+     * @param x X coordinate to draw the tile
+     * @param y Y coordinate to draw the tile
+     */
+    public void drawTile(Graphics g, int x, int y)
+    {
+        // Define rectangle sides
+        int mortar = 1;
+        int longSide = width / 2 - mortar * 2;
+        int shortSide = longSide / 2 - mortar;
+
+        // Define colors
+        Color honey = new Color(255, 201, 14);
+        Color clay = new Color(185, 122, 87);
+
+        // Draw mortar background
+        g.setColor(Color.lightGray);
+        g.fillRect(x, y, width, width);
+
+        // Draw vertical weaves
+        drawRect(g, x + mortar, y + mortar, shortSide, longSide, honey);
+        drawRect(g, x + shortSide + mortar * 3, y + mortar, shortSide, longSide, honey);
+        drawRect(g, x + mortar * 3 + longSide, y + mortar, longSide, shortSide, clay);
+        drawRect(g, x + mortar * 3 + longSide, y + mortar * 3 + shortSide, longSide, shortSide, clay);
+        drawRect(g, x + mortar, y + mortar * 3 + longSide, longSide, shortSide, clay);
+        drawRect(g, x + mortar, y + mortar * 5 + longSide + shortSide, longSide, shortSide, clay);
+        drawRect(g, x + mortar * 3 + longSide, y + mortar * 3 + longSide, shortSide, longSide, honey);
+        drawRect(g, x + mortar * 5 + longSide + shortSide, y + mortar * 3 + longSide, shortSide, longSide, honey);
     }
 }
 
