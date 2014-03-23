@@ -60,7 +60,8 @@ public class Tiles
         //tiles.drawPattern(new OpenWeave());
         //tiles.drawPattern(new Pythagorean());
         //tiles.drawPattern(new BrickMortar());
-        tiles.drawPattern(new BasketWeaveMortar());
+        //tiles.drawPattern(new BasketWeaveMortar());
+        tiles.drawPattern(new PythagoreanMortar());
     }
 }
 
@@ -354,7 +355,7 @@ class Pythagorean extends Tile
 }
 
 /**
- * Draws a brick with mortor tile
+ * Draws a brick with mortar tile
  */
 class BrickMortar extends Tile
 {
@@ -395,7 +396,7 @@ class BrickMortar extends Tile
 
 
 /**
- * Draws a basket weave tile
+ * Draws a basket weave with Mortar tile
  */
 class BasketWeaveMortar extends Tile
 {
@@ -438,6 +439,55 @@ class BasketWeaveMortar extends Tile
         drawRect(g, x + mortar, y + mortar * 5 + longSide + shortSide, longSide, shortSide, clay);
         drawRect(g, x + mortar * 3 + longSide, y + mortar * 3 + longSide, shortSide, longSide, honey);
         drawRect(g, x + mortar * 5 + longSide + shortSide, y + mortar * 3 + longSide, shortSide, longSide, honey);
+    }
+}
+
+/**
+ * Draws a Pythagorean with Mortar tile
+ */
+class PythagoreanMortar extends Tile
+{
+    /**
+     * Constructor initializes values
+     */
+    public PythagoreanMortar()
+    {
+        width = 50;
+        title = "Pythagorean with Mortar";
+    }
+
+    /**
+     * Draws a tile
+     * @param g Graphics object which will be drawn on
+     * @param x X coordinate to draw the tile
+     * @param y Y coordinate to draw the tile
+     */
+    public void drawTile(Graphics g, int x, int y)
+    {
+        // Define measures
+        int mortar = 1;
+        int longSide = (int) (width * (2 / 5.0)) - mortar * 2;
+        int shortSide = longSide / 2 - mortar;
+
+        // Define colors
+        Color blue = new Color(64, 64, 192);
+        Color aqua = new Color(136, 204, 204);
+
+        // Draw mortar background
+        g.setColor(Color.lightGray);
+        g.fillRect(x, y, width, width);
+
+        // Draw weaves
+        drawRect(g, x + mortar, y + mortar, longSide, longSide, aqua);
+        drawRect(g, x + mortar * 3 + longSide, y + mortar * 3 + shortSide, longSide, longSide, aqua);
+        drawRect(g, x + mortar * 3 + longSide, y + mortar, shortSide, shortSide, blue);
+        drawRect(g, x - mortar - shortSide, y + mortar * 3 + longSide, longSide, longSide, aqua);
+        drawRect(g, x + mortar * 5 + longSide + shortSide, y - mortar - shortSide, longSide, longSide, aqua);
+        drawRect(g, x + mortar * 3 + shortSide, y + mortar * 3 + longSide, shortSide, shortSide, blue);
+        drawRect(g, x + mortar * 5 + longSide * 2, y + mortar * 3 + shortSide, shortSide, shortSide, blue);
+        drawRect(g, x + mortar, y + mortar * 5 + longSide * 2, shortSide, shortSide, blue);
+        drawRect(g, x + mortar * 3 + shortSide, y + mortar * 5 + longSide + shortSide, longSide, longSide, aqua);
+        drawRect(g, x + mortar * 5 + longSide + shortSide, y + mortar * 5 + shortSide + longSide, shortSide, shortSide, blue);
     }
 }
 
