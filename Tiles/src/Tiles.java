@@ -11,8 +11,8 @@ import java.awt.*;
  */
 public class Tiles
 {
-    public static final int WIDTH = 200;
-    public static final int HEIGHT = 150;
+    public static final int WIDTH = 500; //200;
+    public static final int HEIGHT = 400; //150;
 
 
     public void drawBasketWeave()
@@ -96,7 +96,7 @@ public class Tiles
     {
         // Create drawing panel
         DrawingPanel panel = new DrawingPanel(WIDTH,HEIGHT);
-        panel.setTitle("BasketWeave");
+        panel.setTitle("Mediterranean 1");
 
 
         // Get drawing surface
@@ -169,10 +169,94 @@ public class Tiles
 
     }
 
+    public void drawMed2()
+    {
+        // Create drawing panel
+        DrawingPanel panel = new DrawingPanel(WIDTH,HEIGHT);
+        panel.setTitle("Mediterranean 2");
+
+        // Get drawing surface
+        Graphics drawingSurface = panel.getGraphics();
+
+        // define tile width and height
+        final int tileWidth = 34;
+        final int tileHeight = 34;
+
+        // identify how many tiles will be needed
+        int tileCountAcross = WIDTH / tileWidth + 1;
+        int tileCountDown = HEIGHT / tileHeight + 1;
+        int totalTiles = tileCountAcross * tileCountDown;
+
+        // we know how many tiles to draw, so loop through the total.
+        for (int tileIndex = 0; tileIndex < totalTiles; tileIndex++)
+        {
+            // Get column and row of current tiles index
+            int currentColumn = tileIndex % tileCountAcross;
+            int currentRow = tileIndex / tileCountAcross;
+
+            // Calculates x and y coordinate of next drawing tiles
+            int x = currentColumn * tileWidth;
+            int y = currentRow * tileHeight;
+
+            // Draws the tile
+            drawMed2Tile(drawingSurface, x, y, tileWidth, tileHeight);
+        }
+    }
+
+    // draws a med 2 tile with given dimensions
+    private void drawMed2Tile(Graphics g, int x, int y, int width, int height)
+    {
+        // Fill in red background
+        g.setColor(new Color(192, 192, 128));
+        g.fillRect(x, y, width, height);
+
+        // Setup points to draw an octagon
+        int octagonEdge = (int) (width * (7 / 34.0));
+        int octagonWidth = octagonEdge * 2 + 10;
+
+        int[] xPoints = new int[] {
+                x + octagonEdge,
+                x + octagonEdge + 10,
+                x + octagonWidth,
+                x + octagonWidth,
+                x + octagonEdge + 10,
+                x + octagonEdge,
+                x,
+                x
+        };
+
+        int[] yPoints = new int[] {
+                y,
+                y,
+                y + octagonEdge,
+                y + octagonEdge + 10,
+                y + octagonEdge * 2 + 10,
+                y + octagonEdge * 2 + 10,
+                y + octagonEdge + 10,
+                y + octagonEdge
+        };
+
+        // draw lines
+        g.setColor(Color.black);
+        g.drawPolygon(xPoints, yPoints, xPoints.length);
+
+        // draw blues squares
+        g.setColor(new Color(0, 112, 192));
+        g.fillRect(x + octagonWidth, y + octagonEdge, 10, 10);
+        g.fillRect(x + octagonEdge, y + octagonWidth, 10, 10);
+
+        // Draw lines around the squres
+        g.setColor(Color.black);
+        g.drawRect(x + octagonWidth, y + octagonEdge, 10, 10);
+        g.drawRect(x + octagonEdge, y + octagonWidth, 10, 10);
+
+    }
+
     public static void main(String[] args)
     {
         Tiles tiles = new Tiles();
-        tiles.drawBasketWeave();
-        tiles.drawMed1();
+        //tiles.drawBasketWeave();
+        //tiles.drawMed1();
+        tiles.drawMed2();
     }
 }
