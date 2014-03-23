@@ -27,7 +27,7 @@ public class Tiles
 
         // define pattern width and height
         final int basketPatternWidth = 80;
-        final int basketPatternHeight = 40;
+        final int basketPatternHeight = 80;
 
         // identify how many patterns will be needed
         int countPatternsAcross = WIDTH / basketPatternWidth + 1;
@@ -50,22 +50,46 @@ public class Tiles
         }
     }
 
-    private void drawBasketWeaveTile(Graphics drawingSurface, int x, int y, int width, int height)
+    private void drawBasketWeaveTile(Graphics g, int x, int y, int width, int height)
     {
-        int backgroundWidth = width / 2;
+        int weaveWidth = width / 2;
+        int weaveHeight = height / 2;
 
-        // Draw vertical weave background
-        drawingSurface.setColor(new Color(255, 201, 14));
-        drawingSurface.fillRect(x, y, backgroundWidth, height);
+        // Draw vertical weaves
+        drawVerticalWeave(g, x, y, weaveWidth, weaveHeight);
+        drawVerticalWeave(g, x + weaveWidth, y + weaveHeight, weaveHeight, weaveHeight);
 
-        // Draw vertical weave background
-        drawingSurface.setColor(new Color(185, 122, 87));
-        int vertX = x + width / 2;
-        drawingSurface.fillRect(vertX, y, backgroundWidth, height);
+        // Draw Horizontal weaves
+        drawHorizontalWeave(g, x + weaveWidth, y, weaveWidth, weaveHeight);
+        drawHorizontalWeave(g, x, y + weaveHeight, weaveWidth, weaveHeight);
+    }
 
+    // Draws vertical weave background
+    public void drawVerticalWeave(Graphics g, int x, int y, int width, int height)
+    {
+        // Draw colored shape
+        g.setColor(new Color(255, 201, 14));
+        g.fillRect(x, y, width, height);
 
-        //drawingSurface.drawLine(x, y, x + width, y + height);
+        // Draws lines
+        g.setColor(Color.black);
+        g.drawLine(x, y, x + width, y);
+        g.drawLine(x, y, x, y + height);
+        g.drawLine(x + width / 2, y, x + width / 2, y + height);
+    }
 
+    // Draws horizontal weave background
+    public void drawHorizontalWeave(Graphics g, int x, int y, int width, int height)
+    {
+        // Draw colored shape
+        g.setColor(new Color(185, 122, 87));
+        g.fillRect(x, y, width, height);
+
+        // Draws lines
+        g.setColor(Color.black);
+        g.drawLine(x, y, x + width, y);
+        g.drawLine(x, y, x, y + height);
+        g.drawLine(x, y + height / 2, x + width, y + height / 2);
     }
 
     public static void main(String[] args)
