@@ -249,14 +249,8 @@ public class Tiles
         g.drawPolygon(xPoints, yPoints, xPoints.length);
 
         // draw blues squares
-        g.setColor(new Color(0, 112, 192));
-        g.fillRect(x + octagonWidth, y + octagonEdge, 10, 10);
-        g.fillRect(x + octagonEdge, y + octagonWidth, 10, 10);
-
-        // Draw lines around the squres
-        g.setColor(Color.black);
-        g.drawRect(x + octagonWidth, y + octagonEdge, 10, 10);
-        g.drawRect(x + octagonEdge, y + octagonWidth, 10, 10);
+        drawRect(g,x + octagonWidth, y + octagonEdge, 10, 10, new Color(0, 112, 192) );
+        drawRect(g,x + octagonEdge, y + octagonWidth, 10, 10, new Color(0, 112, 192) );
 
     }
 
@@ -342,7 +336,7 @@ public class Tiles
         Tiles tiles = new Tiles();
         //tiles.drawBasketWeave();
         //tiles.drawMed1();
-        //tiles.drawMed2();
-        tiles.drawOpenWeave();
+        tiles.drawMed2();
+        //tiles.drawOpenWeave();
     }
 }
