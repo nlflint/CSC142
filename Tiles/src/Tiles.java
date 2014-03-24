@@ -55,15 +55,18 @@ public class Tiles
     public static void main(String[] args)
     {
         Tiles tiles = new Tiles();
-        tiles.drawPattern(new BasketWeave());
+        // Draw standard patterns
+        tiles.drawPattern(new BasketWeave(0));
         tiles.drawPattern(new Med1());
         tiles.drawPattern(new Med2());
-        tiles.drawPattern(new OpenWeave());
-        tiles.drawPattern(new Pythagorean());
-        tiles.drawPattern(new BrickMortar());
-        tiles.drawPattern(new BasketWeaveMortar());
-        tiles.drawPattern(new PythagoreanMortar());
-        tiles.drawPattern(new OpenWeaveMortar());
+        tiles.drawPattern(new OpenWeave(0));
+        tiles.drawPattern(new Pythagorean(0));
+
+        // Now with mortar
+        tiles.drawPattern(new Brick(1));
+        tiles.drawPattern(new BasketWeave(1));
+        tiles.drawPattern(new OpenWeave(1));
+        tiles.drawPattern(new Pythagorean(1));
     }
 }
 
@@ -73,6 +76,7 @@ abstract class Tile
     // Fields
     protected int width;
     protected String title;
+    protected int mortar;
 
     // Properties
     public String getTitle() { return title; }
@@ -92,48 +96,6 @@ abstract class Tile
 
     // Must be implemented
     public abstract void drawTile(Graphics g, int x, int y);
-}
-
-/**
- * Draws a basket weave tile
- */
-class BasketWeave extends Tile
-{
-    /**
-     * Constructor initializes values
-     */
-    public BasketWeave()
-    {
-        this.width = 80;
-        title = "Basket Weave";
-    }
-
-    /**
-     * Draws a tile
-     * @param g Graphics object which will be drawn on
-     * @param x X coordinate to draw the tile
-     * @param y Y coordinate to draw the tile
-     */
-    public void drawTile(Graphics g, int x, int y)
-    {
-        // Define rectangle sides
-        int longSide = width / 2;
-        int shortSide = longSide / 2;
-
-        // Define colors
-        Color honey = new Color(255, 201, 14);
-        Color clay = new Color(185, 122, 87);
-
-        // Draw tile with rectangles
-        drawRect(g, x, y, shortSide, longSide, honey);
-        drawRect(g, x + shortSide, y, shortSide, longSide, honey);
-        drawRect(g, x + longSide, y, longSide, shortSide, clay);
-        drawRect(g, x + longSide, y + shortSide, longSide, shortSide, clay);
-        drawRect(g, x, y + longSide, longSide, shortSide, clay);
-        drawRect(g, x, y + longSide + shortSide, longSide, shortSide, clay);
-        drawRect(g, x + longSide, y + longSide, shortSide, longSide, honey);
-        drawRect(g, x + longSide + shortSide, y + longSide, shortSide, longSide, honey);
-    }
 }
 
 /**
@@ -261,110 +223,16 @@ class Med2 extends Tile
 }
 
 /**
- * Draws an open weave tile
- */
-class OpenWeave extends Tile
-{
-    /**
-     * Constructor initializes values
-     */
-    public OpenWeave()
-    {
-        this.width = 60;
-        title = "Open Weave";
-    }
-
-    /**
-     * Draws a tile
-     * @param g Graphics object which will be drawn on
-     * @param x X coordinate to draw the tile
-     * @param y Y coordinate to draw the tile
-     */
-    public void drawTile(Graphics g, int x, int y)
-    {
-        int longSide = (int) (width * (2 / 3.0));
-        int shortSide = (int) (width * (1 / 3.0));
-        int squareSide = (int) (width * (1 / 6.0));
-
-        // Define colors
-        Color pink = new Color(204, 136, 204);
-        Color maroon = new Color(154, 32, 64);
-
-        // Draw background
-        g.setColor(pink);
-        g.fillRect(x, y, width, width);
-
-        // Draw tile with rectangles
-        drawRect(g, x, y, longSide, shortSide, pink);
-        drawRect(g, x + longSide, y - squareSide, shortSide, longSide, pink);
-        drawRect(g, x, y + shortSide, squareSide, squareSide, maroon);
-        drawRect(g, x + squareSide, y + shortSide, shortSide, longSide, pink);
-        drawRect(g, x + squareSide + shortSide, y + shortSide, squareSide, squareSide, maroon);
-        drawRect(g, x, y + shortSide * 2 + squareSide, squareSide, squareSide, maroon);
-        drawRect(g, x + squareSide + shortSide, y + shortSide * 2 + squareSide, squareSide, squareSide, maroon);
-        drawRect(g, x + squareSide + shortSide, y + shortSide + squareSide, longSide, shortSide, pink);
-
-    }
-}
-
-/**
- * Draws a Pythagorean tile
- */
-class Pythagorean extends Tile
-{
-    /**
-     * Constructor initializes values
-     */
-    public Pythagorean()
-    {
-        width = 50;
-        title = "Pythagorean";
-    }
-
-    /**
-     * Draws a tile
-     * @param g Graphics object which will be drawn on
-     * @param x X coordinate to draw the tile
-     * @param y Y coordinate to draw the tile
-     */
-    public void drawTile(Graphics g, int x, int y)
-    {
-        int longSide = (int) (width * (2 / 5.0));
-        int shortSide = longSide / 2;
-
-        // Define colors
-        Color blue = new Color(64, 64, 192);
-        Color aqua = new Color(136, 204, 204);
-
-        // Draw background
-        g.setColor(aqua);
-        g.fillRect(x, y, width, width);
-
-        // Draw tile with rectangles
-        drawRect(g, x, y, longSide, longSide, aqua);
-        drawRect(g, x + longSide, y, shortSide, shortSide, blue);
-        drawRect(g, x + shortSide, y + longSide, shortSide, shortSide, blue);
-        drawRect(g, x + longSide, y + shortSide, longSide, longSide, aqua);
-        drawRect(g, x + longSide * 2, y + shortSide, shortSide, shortSide, blue);
-        drawRect(g, x, y + longSide * 2, shortSide, shortSide, blue);
-        drawRect(g, x + shortSide, y + longSide + shortSide, longSide, longSide, aqua);
-        drawRect(g, x + longSide + shortSide, y + shortSide + longSide, shortSide, shortSide, blue);
-        drawRect(g, x + longSide + shortSide, y + longSide * 2, longSide, longSide, aqua);
-
-
-    }
-}
-
-/**
  * Draws a brick tile with mortar
  */
-class BrickMortar extends Tile
+class Brick extends Tile
 {
     /**
      * Constructor initializes values
      */
-    public BrickMortar()
+    public Brick(int mortarWidth)
     {
+        mortar = mortarWidth;
         width = 40;
         title = "Brick with Mortar";
     }
@@ -378,7 +246,6 @@ class BrickMortar extends Tile
     public void drawTile(Graphics g, int x, int y)
     {
         // Define base measurements
-        int mortar = 1;
         int longSide = width - mortar * 2;
         int shortSide = longSide / 2 - mortar;
 
@@ -389,7 +256,7 @@ class BrickMortar extends Tile
         g.setColor(Color.lightGray);
         g.fillRect(x, y, width, width);
 
-        // Draw tile with rectangles
+        // Draw rectangles with variable mortar to make a complete tile
         drawRect(g, x + mortar, y + mortar, longSide, shortSide, brick);
         drawRect(g, x - shortSide - mortar, y + shortSide + mortar * 3, longSide, shortSide, brick);
     }
@@ -399,14 +266,15 @@ class BrickMortar extends Tile
 /**
  * Draws a basket weave tile with mortar
  */
-class BasketWeaveMortar extends Tile
+class BasketWeave extends Tile
 {
     /**
      * Constructor initializes values
      */
-    public BasketWeaveMortar()
+    public BasketWeave(int mortarWidth)
     {
-        this.width = 80;
+        mortar = mortarWidth;
+        width = 80;
         title = "Basket Weave with Mortar";
     }
 
@@ -419,7 +287,6 @@ class BasketWeaveMortar extends Tile
     public void drawTile(Graphics g, int x, int y)
     {
         // Define rectangle sides
-        int mortar = 1;
         int longSide = width / 2 - mortar * 2;
         int shortSide = longSide / 2 - mortar;
 
@@ -431,7 +298,7 @@ class BasketWeaveMortar extends Tile
         g.setColor(Color.lightGray);
         g.fillRect(x, y, width, width);
 
-        // Draw tile with rectangles
+        // Draw rectangles with variable mortar to make a complete tile
         drawRect(g, x + mortar, y + mortar, shortSide, longSide, honey);
         drawRect(g, x + shortSide + mortar * 3, y + mortar, shortSide, longSide, honey);
         drawRect(g, x + mortar * 3 + longSide, y + mortar, longSide, shortSide, clay);
@@ -446,13 +313,14 @@ class BasketWeaveMortar extends Tile
 /**
  * Draws a Pythagorean tile with mortar
  */
-class PythagoreanMortar extends Tile
+class Pythagorean extends Tile
 {
     /**
      * Constructor initializes values
      */
-    public PythagoreanMortar()
+    public Pythagorean(int mortarWidth)
     {
+        mortar = mortarWidth;
         width = 50;
         title = "Pythagorean with Mortar";
     }
@@ -466,7 +334,6 @@ class PythagoreanMortar extends Tile
     public void drawTile(Graphics g, int x, int y)
     {
         // Define measures
-        int mortar = 1;
         int longSide = (int) (width * (2 / 5.0)) - mortar * 2;
         int shortSide = longSide / 2 - mortar;
 
@@ -478,7 +345,7 @@ class PythagoreanMortar extends Tile
         g.setColor(Color.lightGray);
         g.fillRect(x, y, width, width);
 
-        // Draw tile with rectangles
+        // Draw rectangles with variable mortar to make a complete tile
         drawRect(g, x + mortar, y + mortar, longSide, longSide, aqua);
         drawRect(g, x + mortar * 3 + longSide, y + mortar * 3 + shortSide, longSide, longSide, aqua);
         drawRect(g, x + mortar * 3 + longSide, y + mortar, shortSide, shortSide, blue);
@@ -494,16 +361,17 @@ class PythagoreanMortar extends Tile
 
 
 /**
- * Draws an open weave tile with mortar
+ * Draws an open weave tile with optional mortar width
  */
-class OpenWeaveMortar extends Tile
+class OpenWeave extends Tile
 {
     /**
      * Constructor initializes values
      */
-    public OpenWeaveMortar()
+    public OpenWeave(int mortarWidth)
     {
-        this.width = 60;
+        mortar = mortarWidth;
+        width = 60;
         title = "Open Weave with Mortar";
     }
 
@@ -516,7 +384,6 @@ class OpenWeaveMortar extends Tile
     public void drawTile(Graphics g, int x, int y)
     {
         // Define measures
-        int mortar = 1;
         int longSide = (int) (width * (2 / 3.0));
         int shortSide = (int) (width * (1 / 3.0)) - mortar * 4;
         int squareSide = (int) (width * (1 / 6.0));
@@ -529,7 +396,7 @@ class OpenWeaveMortar extends Tile
         g.setColor(Color.lightGray);
         g.fillRect(x, y, width, width);
 
-        // Draw tile with rectangles
+        // Draw rectangles with variable mortar to make a complete tile
         drawRect(g, x + mortar, y + mortar, longSide, shortSide, pink);
         drawRect(g, x + mortar * 3 + longSide, y - mortar - squareSide, shortSide, longSide, pink);
         drawRect(g, x + mortar, y + mortar * 3 + shortSide, squareSide, squareSide, maroon);
@@ -537,7 +404,7 @@ class OpenWeaveMortar extends Tile
         drawRect(g, x + mortar * 5 + squareSide + shortSide, y + mortar * 3 + shortSide, squareSide, squareSide, maroon);
         drawRect(g, x + mortar, y + mortar * 7 + shortSide * 2 + squareSide, squareSide, squareSide, maroon);
         drawRect(g, x + mortar * 5 + squareSide + shortSide, y + mortar * 7 + shortSide * 2 + squareSide, squareSide, squareSide, maroon);
-        drawRect(g, x + mortar * 7 - shortSide - squareSide * 2, y + mortar * 5 + shortSide + squareSide, longSide, shortSide, pink);
+        drawRect(g, x - mortar * 3 - shortSide - squareSide, y + mortar * 5 + shortSide + squareSide, longSide, shortSide, pink);
 
     }
 }
