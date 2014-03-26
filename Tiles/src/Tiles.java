@@ -11,11 +11,19 @@ import java.awt.*;
  */
 public class Tiles
 {
+    /**
+     * Width of the window where the pattern with be drawn
+     */
     public static final int WIDTH = 200;
+
+    /**
+     * Height of window where the pattern will be drawn
+     */
     public static final int HEIGHT = 150;
 
     /**
      * Tessellates the given tile onto a graphics panel
+     * @param tile A Tile implementation
      */
     public void drawPattern(Tile tile)
     {
@@ -51,10 +59,14 @@ public class Tiles
         }
     }
 
-    // Application method
+    /**
+     * Application method
+     * @param args command line arguments
+     */
     public static void main(String[] args)
     {
         Tiles tiles = new Tiles();
+
         // Draw standard patterns
         tiles.drawPattern(new BasketWeave(0));
         tiles.drawPattern(new Med1());
@@ -70,7 +82,7 @@ public class Tiles
     }
 }
 
-// Abstract class is implemented by different tile patterns.
+// This abstract class is implemented by each tile pattern
 abstract class Tile
 {
     // Fields
@@ -78,8 +90,16 @@ abstract class Tile
     protected String title;
     protected int mortar;
 
-    // Properties
+    /**
+     * Gets the title for the pattern
+     * @return the title
+     */
     public String getTitle() { return title; }
+
+    /**
+     * Gets the width of the tile
+     * @return width in pixels
+     */
     public int getWidth() { return width; }
 
     // Utility function to draw rectangles
@@ -94,7 +114,12 @@ abstract class Tile
         g.drawRect(x, y, width, height);
     }
 
-    // Must be implemented
+    /**
+     * Draws a tile to the given graphics panel, a the given coordinates
+     * @param g graphics object to draw to
+     * @param x X coordinate to draw the tile
+     * @param y Y coordinate to draw the tile
+     */
     public abstract void drawTile(Graphics g, int x, int y);
 }
 
@@ -230,6 +255,7 @@ class Brick extends Tile
 {
     /**
      * Constructor initializes values
+     * @param mortarWidth width of the mortar
      */
     public Brick(int mortarWidth)
     {
@@ -271,6 +297,7 @@ class BasketWeave extends Tile
 {
     /**
      * Constructor initializes values
+     * @param mortarWidth width of the mortar
      */
     public BasketWeave(int mortarWidth)
     {
@@ -322,6 +349,7 @@ class Pythagorean extends Tile
 {
     /**
      * Constructor initializes values
+     * @param mortarWidth width of the mortar
      */
     public Pythagorean(int mortarWidth)
     {
@@ -376,6 +404,7 @@ class OpenWeave extends Tile
 {
     /**
      * Constructor initializes values
+     * @param mortarWidth width of the mortar
      */
     public OpenWeave(int mortarWidth)
     {
