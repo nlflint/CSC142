@@ -17,7 +17,8 @@ I noticed there was a pattern to my main loops, and the majority of my code was
 repeating that main loop. After noticing this, I wanted to reduce the repeated
 code. I decided to generalize the main loop and use interfaces to draw the
 tiles. I factored out the tile drawing routines into class that implemented my
-Tile interface. The master loop could be reused with different tile
+Tile. I wanted to implement something on the interface, so I converted it to 
+and abstract class. The master loop could then be reused with different tile
 implementations. It wasn't that hard to do, and I was able to reduce the code by
 a great amount. I factored out my graphic drawing routines, that drew
 rectangles and outlines, into a single function that further reduced repeated
@@ -48,6 +49,6 @@ I still would like to implement the tree structure I discussed on the forum, and
 I've spent a bit of time fleshing out potential problems. I'm certain I could
 make it work.
 
-This was a great experience for me in using interfaces. I got to see a problem
-and how interfaces could solve it in a nice way. I enjoyed that process the
-most. I can't think of anything I would do differently next time.
+This was a great experience for me in using interfaces/abstract classes. I got
+to see a problem and how interfaces could solve it in a nice way. I enjoyed that
+process the most. I can't think of anything I would do differently next time.
