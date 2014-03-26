@@ -1,0 +1,53 @@
+Nathan Flint
+Assignment 11: Tilling
+
+I first brainstormed how to draw these patterns. You suggested a few different
+ideas in class, and I decided to go with the idea of placing tiles across the
+drawing panel row by row. I created a loop function that I could copy and paste
+for each pattern, and wrote helper functions to draw the tiles. 
+
+I started with the basket weave pattern which went very smoothly. I reused the
+basket weave function by copy and pasting the main loop that drew the tiles (row
+by row), and wrote new helper functions to draw the tile. Constructing the tiles 
+for Basket Weave, and the Mediterraneans were pretty easy to figure out, but the
+Open Weave and Pythagorean took a bit more time and guess and check to get 
+right.
+
+I noticed there was a pattern to my main loops, and the majority of my code was
+repeating that main loop. After noticing this, I wanted to reduce the repeated
+code. I decided to generalize the main loop and use interfaces to draw the
+tiles. I factored out the tile drawing routines into class that implemented my
+Tile interface. The master loop could be reused with different tile
+implementations. It wasn't that hard to do, and I was able to reduce the code by
+a great amount. I factored out my graphic drawing routines, that drew
+rectangles and outlines, into a single function that further reduced repeated
+code.
+
+To test my patterns I compared them to the samples. It was hard to test by eye,
+so I loaded the samples, and screenshots from my output, into a paint program
+and zoomed in. I counted the pixels one by one to make sure they matched the
+assignment exactly. From that, I found that the examples were all off by 1
+pixel. For example, a rectangle that was supposed to be 10x10, was actually 
+11x11. Since my output matched the examples, I decided it would be ok. There was
+only 1 mortar example which I used for testing, but had to decide for myself if
+the other mortar patterns look right. I hope I did them right.
+
+Adding mortar was the most time consuming part of the assignment. It took a lot
+of guess and check to get the patterns to work, and I had to shrink all the
+rectangles to do it. I posted about this in the forum. I was able to integrate
+the mortar functionality into the non-mortar tiles which saved repeated code,
+but also added to debugging time.
+
+I had a lot of fun trying to make the mortar variable width in the Pythagorean
+pattern. I created lots of mocks up on graph paper and posted my findings on the
+forum. I never did implement the Pythagorean pattern to use mortar while
+maintaining the original sizes. This is my one regret, and I wish we could have
+discussed this in class. Since the assignment did not specify that the sizes
+had to stay the same, I didn't think I needed to do it to get challenge credit.
+I still would like to implement the tree structure I discussed on the forum, and
+I've spent a bit of time fleshing out potential problems. I'm certain I could
+make it work.
+
+This was a great experience for me in using interfaces. I got to see a problem
+and how interfaces could solve it in a nice way. I enjoyed that process the
+most. I can't think of anything I would do differently next time.
