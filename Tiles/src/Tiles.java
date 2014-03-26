@@ -4,7 +4,7 @@ import java.awt.*;
  * This class draws several different tessellations.
  *
  * @author Nathan Flint
- * @version Assignment 11: Tiling
+ * @version Assignment 11: Tilling
  *
  * Grading Level: Challenge
  *
@@ -217,8 +217,9 @@ class Med2 extends Tile
         g.drawPolygon(xPoints, yPoints, xPoints.length);
 
         // draw blues squares
-        drawRect(g, x + octagonWidth, y + octagonShort, octagonLong, octagonLong, new Color(0, 112, 192));
-        drawRect(g, x + octagonShort, y + octagonWidth, octagonLong, octagonLong, new Color(0, 112, 192));
+        Color blue = new Color(0, 112, 192);
+        drawRect(g, x + octagonWidth, y + octagonShort, octagonLong, octagonLong, blue);
+        drawRect(g, x + octagonShort, y + octagonWidth, octagonLong, octagonLong, blue);
     }
 }
 
@@ -275,7 +276,11 @@ class BasketWeave extends Tile
     {
         mortar = mortarWidth;
         width = 80;
-        title = "Basket Weave with Mortar";
+        title = "Basket Weave";
+
+        // edit title if mortar
+        if (mortar > 0)
+            title += " with Mortar";
     }
 
     /**
@@ -322,7 +327,11 @@ class Pythagorean extends Tile
     {
         mortar = mortarWidth;
         width = 50;
-        title = "Pythagorean with Mortar";
+        title = "Pythagorean";
+
+        // edit title if mortar
+        if (mortar > 0)
+            title += " with Mortar";
     }
 
     /**
@@ -372,7 +381,11 @@ class OpenWeave extends Tile
     {
         mortar = mortarWidth;
         width = 60;
-        title = "Open Weave with Mortar";
+        title = "Open Weave";
+
+        // edit title if mortar
+        if (mortar > 0)
+            title += " with Mortar";
     }
 
     /**
