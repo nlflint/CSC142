@@ -68,17 +68,20 @@ public class Tiles
         Tiles tiles = new Tiles();
 
         // Draw standard patterns
-        tiles.drawPattern(new BasketWeave(0));
-        tiles.drawPattern(new Med1());
-        tiles.drawPattern(new Med2());
-        tiles.drawPattern(new OpenWeave(0));
-        tiles.drawPattern(new Pythagorean(0));
+//        tiles.drawPattern(new BasketWeave(0));
+//        tiles.drawPattern(new Med1());
+//        tiles.drawPattern(new Med2());
+//        tiles.drawPattern(new OpenWeave(0));
+//        tiles.drawPattern(new PythagoreanTree(0));
 
         // Now with mortar
-        tiles.drawPattern(new Brick(1));
-        tiles.drawPattern(new BasketWeave(1));
-        tiles.drawPattern(new OpenWeave(1));
-        tiles.drawPattern(new Pythagorean(1));
+//        tiles.drawPattern(new Brick(1));
+//        tiles.drawPattern(new BasketWeave(1));
+//        tiles.drawPattern(new OpenWeave(1));
+//        tiles.drawPattern(new PythagoreanTree(1));
+
+        PythagoreanTree pc = new PythagoreanTree(2, 10);
+
     }
 }
 
@@ -343,7 +346,7 @@ class BasketWeave extends Tile
 }
 
 /**
- * Draws a Pythagorean tile with mortar
+ * Draws a PythagoreanTree tile with mortar
  */
 class Pythagorean extends Tile
 {
@@ -355,7 +358,7 @@ class Pythagorean extends Tile
     {
         mortar = mortarWidth;
         width = 50;
-        title = "Pythagorean";
+        title = "PythagoreanTree";
 
         // edit title if mortar
         if (mortar > 0)
