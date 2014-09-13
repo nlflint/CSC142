@@ -72,15 +72,15 @@ public class Tiles
 //        tiles.drawPattern(new Med1());
 //        tiles.drawPattern(new Med2());
 //        tiles.drawPattern(new OpenWeave(0));
-//        tiles.drawPattern(new PythagoreanTree(0));
+//        PythagoreanTree pythagoreanTreeNoMortar = new PythagoreanTree(0, 10);
 
         // Now with mortar
 //        tiles.drawPattern(new Brick(1));
 //        tiles.drawPattern(new BasketWeave(1));
 //        tiles.drawPattern(new OpenWeave(1));
-//        tiles.drawPattern(new PythagoreanTree(1));
+        //tiles.drawPattern(new PythagoreanTree(1));
 
-        PythagoreanTree pc = new PythagoreanTree(2, 10);
+        PythagoreanTree pc = new PythagoreanTree(6, 5);
 
     }
 }

@@ -11,8 +11,8 @@ public class PythagoreanTree
     private DrawingPanel panel;
     private Graphics draw;
 
-    private final int WIDTH = 500;
-    private final int HEIGHT = 500;
+    private final int WIDTH = 121;
+    private final int HEIGHT = 786;
 
     private int longWidth;
     private int shortWidth;
@@ -32,50 +32,65 @@ public class PythagoreanTree
         draw = panel.getGraphics();
         draw.setColor(Color.lightGray);
         draw.fillRect(0,0,WIDTH,HEIGHT);
-        DrawSquare(0, 0, true);
+        DrawSquare(new Point(0,0), true);
         panel.repaint();
     }
 
-    private void DrawSquare(int x, int y, boolean drawBigSquare)
+    private void DrawSquare(Point upperLeftCorner, boolean drawBigSquare)
     {
         int width = drawBigSquare ? longWidth : shortWidth;
 
-        if (x < 0 - width)
-            return;
-        if (x > WIDTH + width)
-            return;
-        if (y < 0 - width)
-            return;
-        if (y > HEIGHT + width)
+        if (squareOutSideWindowBoundary(upperLeftCorner, width))
             return;
 
-        String signature = String.format("%d,%d", x, y);
+        String signature = upperLeftCorner.toString();
         if (shapeTracker.contains(signature))
             return;
 
         Color color = drawBigSquare ? aqua : blue;
-        drawRect(x, y, width, width, color);
-        shapeTracker.add(signature); 
+        drawRect(upperLeftCorner, width, color);
+        shapeTracker.add(signature);
 
+        int x = upperLeftCorner.x;
+        int y = upperLeftCorner.y;
         int multiplyDirection = drawBigSquare ? 1 : -1;
         int longWithMortar = (mortarWidth + longWidth) * multiplyDirection;
         int shortWithMortar = (shortWidth + mortarWidth) * multiplyDirection;
         int shortOnly = shortWidth * multiplyDirection;
 
-        DrawSquare(x + longWithMortar, y, !drawBigSquare);
-        DrawSquare(x + shortOnly, y + longWithMortar, !drawBigSquare);
-        DrawSquare(x - shortWithMortar, y + shortOnly, !drawBigSquare);
-        DrawSquare(x, y - shortWithMortar, !drawBigSquare);
+        DrawSquare(new Point(x + longWithMortar, y), !drawBigSquare);
+        DrawSquare(new Point(x + shortOnly, y + longWithMortar), !drawBigSquare);
+        DrawSquare(new Point(x - shortWithMortar, y + shortOnly), !drawBigSquare);
+        DrawSquare(new Point(x, y - shortWithMortar), !drawBigSquare);
     }
 
-    private void drawRect(int x, int y, int width, int height, Color c) {
+    private boolean squareOutSideWindowBoundary(Point upperLeftCorner, int width) {
+        int x = upperLeftCorner.x;
+        int y = upperLeftCorner.y;
+
+        if (x < 0 - width)
+            return true;
+        if (x > WIDTH + width)
+            return true;
+        if (y < 0 - width)
+            return true;
+        if (y > HEIGHT + width)
+            return true;
+
+        return false;
+    }
+
+    private void drawRect(Point upperLeftCorner, int width, Color c) {
+        int x = upperLeftCorner.x;
+        int y = upperLeftCorner.y;
+
         // the colored rect
         draw.setColor(c);
-        draw.fillRect(x, y, width, height);
+        draw.fillRect(x, y, width, width);
 
         // Draw lines around the rect
         draw.setColor(Color.black);
-        draw.drawRect(x, y, width, height);
+        draw.drawRect(x, y, width, width);
 
         try {
             panel.repaint();
